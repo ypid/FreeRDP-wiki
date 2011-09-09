@@ -1,21 +1,20 @@
 
-===== RemoteApp =====
-
 RemoteApp is defined in: 
-[[http://msdn.microsoft.com/en-us/library/cc242568/|[MS-RDPERP]:   Remote Desktop Protocol: Remote Programs Virtual Channel Extension]] 
+[[MS-RDPERP]:   Remote Desktop Protocol: Remote Programs Virtual Channel Extension](http://msdn.microsoft.com/en-us/library/cc242568/)
 
-==== Packet Captures ====
+# Packet Captures
 
 Windows 7 SP1 to Windows Server 2008 R2 (Firefox 4): {{:mstsc_remoteapp.zip|}}
 
-==== Virtual Channels ====
+# Virtual Channels
 
 Even though [MS-RDPERP] mentions a single virtual channel, "rail", the packet capture shows the client registering "rail", "rail_ri" and "rail_wi".
 
 More details about "rail_ri" and "rail_wi" can be found on this page 
 http://social.msdn.microsoft.com/Forums/en-US/os_windowsprotocols/thread/d91b20a2-96af-406c-aa56-085058a0af44/ 
 
-==== Remote App usage ====
+# Usage
+
 Now this mode is supported only by development branch of FreeRDP-1.0 version.
 You can grab latest sources from here https://github.com/FreeRDP/FreeRDP-1.0 and compile it.
 
