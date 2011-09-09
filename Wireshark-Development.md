@@ -5,26 +5,26 @@ This page is intended for those who wish to develop the FreeRDP Wireshark RDP pr
   * [Wireshark Website](http://www.wireshark.org/)
   * [Wireshark Download](http://www.wireshark.org/download.html)
   * [Wireshark Documentation](http://www.wireshark.org/docs/)
-  * [FreeRDP Wireshark RDP Analyzer](https://github.com/FreeRDP/Wireshark|FreeRDP Wireshark RDP Analyzer)
+  * [FreeRDP Wireshark RDP Analyzer](https://github.com/FreeRDP/Wireshark)
 
 # Prerequisites
 
-To develop for Wireshark, you will need to download its sources and compile it yourself. You have the choice between fetching the latest development sources from subversion, or downloading the latest stable source snapshot. The Wireshark development manual will instruct you to use the latest development sources, but I would advise otherwise: sometimes the development sources aren't stable, which will slow your development work for no valuable reason. Developing using a stable source snapshot will usually cause less problems.\\ 
+To develop for Wireshark, you will need to download its sources and compile it yourself. You have the choice between fetching the latest development sources from subversion, or downloading the latest stable source snapshot. The Wireshark development manual will instruct you to use the latest development sources, but I would advise otherwise: sometimes the development sources aren't stable, which will slow your development work for no valuable reason. Developing using a stable source snapshot will usually cause less problems.
 
-Without waiting any further, download the latest source snapshot from the [Wireshark download page](http://www.wireshark.org/download.html). At the time of writing these lines, the latest stable version of Wireshark is 1.4.4. It will probably be a different version number by the time you read this, since Wireshark releases frequently.
+Without waiting any further, download the latest source snapshot from the [Wireshark download page](http://www.wireshark.org/download.html). At the time of writing these lines, the latest stable version of Wireshark is 1.6.2. It will probably be a different version number by the time you read this, since Wireshark releases frequently.
 
 In order to build Wireshark, you will need to satisfy the following dependencies:
-  * bison
-  * flex
-  * gtk2-dev
-  * libpcap-dev
-  * libgnutls-dev
+* bison
+* flex
+* gtk2-dev
+* libpcap-dev
+* libgnutls-dev
 
 # Building Wireshark
 
 Download the source snapshot, extract it, and run the autogen.sh script:
     
-    awake@workstation:~> wget http://wiresharkdownloads.riverbed.com/wireshark/src/wireshark-1.4.4.tar.bz2
+    awake@workstation:~> wget http://wiresharkdownloads.riverbed.com/wireshark/src/wireshark-1.6.2.tar.bz2
     awake@workstation:~> tar jxf wireshark-1.4.4.tar.bz2
     awake@workstation:~> mv wireshark-1.4.4 wireshark
     awake@workstation:~> cd wireshark/
@@ -69,8 +69,8 @@ If it works, you should now see your version of Wireshark built from source:
 
 In Wireshark terminology, a "protocol analyzer" is a "protocol dissector". It sounds weird the first time, but you get used to it after. There are two ways to write a Wireshark dissector:
 
-  * As a loadable dissector plugin
-  * As a static built-in dissector
+* As a loadable dissector plugin
+* As a static built-in dissector
 
 In our case, we are writing a static built-in dissector. The problem with plugins is that they aren't loaded when Wireshark is ran as root, for obvious security reasons. However, since capturing usually requires admin rights, there would be no way of capturing and dissecting at the same time if it was a plugin. For this reason, the RDP dissector is written built-in dissector, such that it can be used when Wireshark is ran with admin rights, allowing live capture and dissecting.
 
