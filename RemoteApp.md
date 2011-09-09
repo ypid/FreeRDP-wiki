@@ -17,3 +17,4 @@ RemoteApp support was introduced in FreeRDP 1.0, so you should get the latest so
 
     ./client/X11/xfreerdp -u <username> -p <password> --app --plugin channels/rail/rail.so --data "<app>:<working_dir>:<arguments>" -- <hostname>
 
+    ./client/X11/xfreerdp -u Administrator -p Password --app --plugin channels/rail/rail.so --data "||cmd" -- 192.168.1.200
