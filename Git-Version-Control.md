@@ -1,8 +1,6 @@
-====== Git Version Control ======
+# Installation
 
-===== Installation =====
-
-==== Linux ====
+## Linux
 
 Most Linux distributions have a git package, often named "git" or "git-core". On Ubuntu, the package name is git-core:
 
@@ -12,7 +10,7 @@ You can install it on Ubuntu like this:
 
 sudo apt-get install git-core
 
-==== Mac OS X ====
+## Mac OS X
 
 The command-line git client is available in macports:
 
@@ -26,7 +24,7 @@ If you do not have macports installed, you may want to use git-osx-installer ins
 
 [[http://code.google.com/p/git-osx-installer/|git-osx-installer]]
 
-==== Windows ====
+## Windows
 
 If you already have cygwin installed, it might be easier to install git on cygwin:
 
@@ -40,44 +38,21 @@ However, if you intend to use git frequently on Windows, you may want to take a 
 
 [[https://sourceforge.net/projects/gitextensions/|Git Extensions]]
 
-==== Documentation ====
+# Documentation
 
 Git being a popular distributed version control system (DVCS), there are a lot of good documentation written about it. The GitHub help page contains a very nice list of available resources and references:\\ 
 
-[[http://help.github.com/|Help.GitHub]]\\ 
+[[http://help.github.com/|Help.GitHub]]
 
-Otherwise, there is "Pro Git", an excellent free book:\\ 
+Otherwise, there is "Pro Git", an excellent free book:
 
-[[http://progit.org/|Pro Git]]\\ 
+[[http://progit.org/|Pro Git]]
 
-And finally, the git user's manual:\\ 
+And finally, the git user's manual:
 
-[[http://www.kernel.org/pub/software/scm/git/docs/user-manual.html|Git User's Manual]]\\ 
+[[http://www.kernel.org/pub/software/scm/git/docs/user-manual.html|Git User's Manual]]
 
-==== GitHub Migration ====
-
-We are currently in the process of migrating from sourceforge.net to github for our git hosting:
-
-[[https://github.com/FreeRDP/FreeRDP|FreeRDP Github Page]]\\ 
-
-If you have a local git repository that was cloned from sourceforge.net, you can seamlessly switch to github by changing the remote.origin.url git config:
-
-`awake@workstation:~/git/freerdp> git config --list | grep remote.origin.url`
-`remote.origin.url=ssh://mamoreau@freerdp.git.sourceforge.net/gitroot/freerdp/freerdp.git`
-
-Change remote.origin.url to point to github instead:
-
-`awake@workstation:~/git/freerdp> git config remote.origin.url git@github.com:FreeRDP/FreeRDP.git`
-`awake@workstation:~/git/freerdp> git config --list | grep remote.origin.url`
-`remote.origin.url=git@github.com:FreeRDP/FreeRDP.git`
-
-If you are not a registered developer, you can use the read-only url instead: `git://github.com/FreeRDP/FreeRDP.git`
-
-Alternatively, if you want your own repository clone with read/write access, all you need it a github account. When logged in with your github account, you can click the "fork" button on the main FreeRDP repository to get your own copy.
-
-This page will be updated as we migrate to github, so there might still be references to sourceforge.net.
-
-===== SSH Keys =====
+# SSH Keys
 
 One nice feature of git is that you can configure ssh keys such that you do not have to enter your developer password every time you want to interact with the server. On most systems, if you already have generated ssh keys, they will appear within your ~/.ssh directory:
 
@@ -124,7 +99,7 @@ Copy everything, starting from "ssh-rsa" up to "awake@workstation" in the above 
 
 Please note that if you use more than one computer, you will need to set up ssh keys for all of them. If you have more than one ssh key, you need to paste them one per line in the above text box.
 
-===== Usage =====
+# Usage
 
 The url for the public read-only git repository is the following:
 
@@ -134,7 +109,7 @@ Developers with read/write access use the following url instead:
 
 `git@github.com:FreeRDP/FreeRDP.git`
 
-==== Cloning ====
+## Cloning
 
 In order to fetch the sources from git, you will need to **clone** a repository. If you are used to subversion terminology, this is the rough equivalent of doing an "svn checkout":
 
@@ -154,13 +129,13 @@ Here is what it should look like:
 `Receiving objects: 100% (7304/7304), 5.72 MiB | 918 KiB/s, done.`
 `Resolving deltas: 100% (3734/3734), done.`
 
-==== Fetching ====
+## Fetching
 
 A simple "git fetch" sometimes has to be done in order to ensure that your local repository is in sync with the remote repository, especially if new remote branches or tags have been created in the meantime:
 
 `git fetch`
 
-==== Status ====
+## Status
 
 "git status" is probably one of the git commands which you will use often to know your current status. After a fresh git clone, the status should normally look like this:
 
@@ -190,7 +165,7 @@ If you modify a file that is tracked by the version control, it will also be lis
 `#`
 `no changes added to commit (use "git add" and/or "git commit -a")`
 
-==== Config ====
+## Config
 
 Before committing stuff, developers will need to properly configure their git repository with their developer information. You can list the local git configuration with "git config --list":
 
@@ -219,7 +194,7 @@ You will need to edit two variables, "user.name", and "user.email", before commi
 
 You can check that the changes were accepted by doing a "git config --list"
 
-==== Branching ====
+## Branching
 
 Once you have cloned the repository, change directory to it:
 
@@ -338,7 +313,7 @@ To above command "git branch -D <branch_name>" will only delete the local branch
 
 The difference in the above command is that in order to delete a branch, you do a regular "git push" command, except that you precede the remote branch name by a semi-colon ':'.
 
-==== Pulling ====
+## Pulling
 
 "pulling" in git terminology means pulling the latest version of a remote branch onto a local branch. For instance, if you are currently on the master branch, and want to pull the latest version:
 
@@ -395,7 +370,7 @@ If automatic merging was successful, you can now push the merged branch onto the
 
 Sometimes, automatic git merging fails. Files that could not be merged will be listed differently by "git status". In order to resolve the merge, you need to manually inspect each of those files and finish merging by yourself. Once the merging is done, you need to do a "git add" on each of those files, followed by a git commit.
 
-==== Committing ====
+## Committing
 
 In git terminology, the action of committing results in a new version being created. This is a bit different from subversion where the term means pushing changes to the remote repository. With git, committing (creating a new version) is an action separate from pushing that new version to a remote repository.
 
@@ -480,7 +455,7 @@ In this case, automatic merging was successful, so we can attempt pushing again:
 `To git@github.com:FreeRDP/FreeRDP.git`
 `   6f7eb2a..e80996f  master -> master`
 
-==== Pushing ====
+## Pushing
 
 Pushing requires write access, so it is only available to developers.
 
