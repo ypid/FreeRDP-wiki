@@ -86,7 +86,7 @@ If you do not have ssh keys (id_rsa and id_rsa.pub files), generate them using "
     |          o.o    |
     +-----------------+
 
-ssh keys consist of a pair of public and private keys. The private key (~/.ssh/id_rsa), like the name says, is the one which you keep for yourself. The public key (~/.ssh/id_rsa.pub) is the one which you should add to your sourceforge.net account so that it can be used for authentication with git over ssh.
+ssh keys consist of a pair of public and private keys. The private key (~/.ssh/id_rsa), like the name says, is the one which you keep for yourself. The public key (~/.ssh/id_rsa.pub) is the one which you should add to your github account so that it can be used for authentication with git over ssh.
 
 To add ssh keys to your github account, first log in, go to the "Account Settings" page, and click "SSH Public Keys" on the left. Click on "Add another public key".
 
