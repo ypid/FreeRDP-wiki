@@ -1,0 +1,10 @@
+While many programmers do not use an IDE, there are many advantages in using one to speed up your development process. I was previously using NetBeans IDE because I thought it had better support for C/C++ development, but recent updates in Eclipse changed my mind. It still isn't as perfect as I would like it to be, but it's getting pretty good.
+
+[Eclipse](http://www.eclipse.org/) is one of the most popular open source IDE, and can be extended in a large number of ways. While Eclipse is popular for Java, it is also good for C/C++. Not all Eclipse bundles come with C/C++ support out of the box, so make sure you have [Eclipse CDT](http://www.eclipse.org/cdt/) installed. Since Eclipse is an extensible platform, you can install additional tools right within Eclipse by going to Help->Install New Software.
+
+With the [Linux Tools](http://www.eclipse.org/linuxtools/) project, Eclipse can be integrated with various Linux profilers and advanced debugging tools, including my favorite, valgrind. Even though this is a major improvement over previous versions of Eclipse, full libtool integration is not yet available.
+
+This guide assumes that you have taken the time to fetch the development sources using [[git version control]] (or, alternatively, a source snapshot). [[compilation|Compilation instructions]] should also be followed prior to this guide, since we need to generate the makefiles for Eclipse to use.
+
+For applying this instructions you need to install Helios version of Eclipse.
+Simplest method  - download latest "Eclipse IDE for C/C++ developers" package from http://www.eclipse.org/downloads/, unpack it to your home directory and run it directly. And if your system is Ubuntu - this link helps you save nervous and time with "strange black pop-up" - http://tipstank.com/2010/05/23/solve-eclipse-black-pop-up-code-assist-box-in-ubuntu-10-4-lucid/
