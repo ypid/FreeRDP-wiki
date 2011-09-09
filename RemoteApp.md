@@ -17,9 +17,11 @@ RemoteApp support was introduced in FreeRDP 1.0, so you should get the latest so
 
     ./client/X11/xfreerdp -u <username> -p <password> --app --plugin channels/rail/rail.so --data "<exe_or_file>:<working_dir>:<arguments>" -- <hostname>
 
-<exe_or_file>: usually a program alias prefixed with "||", otherwise a full path to an executable file.
-<working_dir>: the working directory to use for running the application
-<arguments>: arguments to pass to be passed to the application when it is being launched
+**exe_or_file**: usually a program alias prefixed with "||", otherwise a full path to an executable file.
+
+**working_dir**: the working directory to use for running the application
+
+**arguments**: arguments to pass to be passed to the application when it is being launched
 
 For instance, if you configure your server to export the command prompt, it will have the "cmd" alias by default. You could then get the windows command prompt with a command like this:
 
