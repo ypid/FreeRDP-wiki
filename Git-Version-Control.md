@@ -4,7 +4,7 @@
 
 Most Linux distributions have a git package, often named "git" or "git-core". On Ubuntu, the package name is git-core:
 
-[[https://help.ubuntu.com/community/Git|Ubuntu Git]]
+[Ubuntu Git](https://help.ubuntu.com/community/Git)
 
 You can install it on Ubuntu like this:
 
@@ -14,7 +14,7 @@ sudo apt-get install git-core
 
 The command-line git client is available in macports:
 
-[[http://trac.macports.org/browser/trunk/dports/devel/git-core/Portfile|macports git]]
+[macports git](http://trac.macports.org/browser/trunk/dports/devel/git-core/Portfile)
 
 If you already have macports installed, you can install it like this:
 
@@ -22,35 +22,35 @@ sudo port install git-core
 
 If you do not have macports installed, you may want to use git-osx-installer instead:
 
-[[http://code.google.com/p/git-osx-installer/|git-osx-installer]]
+[git-osx-installer](http://code.google.com/p/git-osx-installer/)
 
 ## Windows
 
 If you already have cygwin installed, it might be easier to install git on cygwin:
 
-[[http://cygwin.com/cgi-bin2/package-cat.cgi?file=git/git-1.7.4-1&grep=git-core|git on cygwin]]
+[cygwin git](http://cygwin.com/cgi-bin2/package-cat.cgi?file=git/git-1.7.4-1&grep=git-core)
 
 An easy to install command-line git client for Windows is msysgit:
 
-[[http://code.google.com/p/msysgit/|msysgit]]
+[msysgit](http://code.google.com/p/msysgit/)
 
 However, if you intend to use git frequently on Windows, you may want to take a look at Git Extensions, a very nice git gui with full native Windows integration:
 
-[[https://sourceforge.net/projects/gitextensions/|Git Extensions]]
+[git extensions](https://sourceforge.net/projects/gitextensions/)
 
 # Documentation
 
 Git being a popular distributed version control system (DVCS), there are a lot of good documentation written about it. The GitHub help page contains a very nice list of available resources and references:\\ 
 
-[[http://help.github.com/|Help.GitHub]]
+[Help.GitHub](http://help.github.com/)
 
 Otherwise, there is "Pro Git", an excellent free book:
 
-[[http://progit.org/|Pro Git]]
+[Pro Git](http://progit.org/)
 
 And finally, the git user's manual:
 
-[[http://www.kernel.org/pub/software/scm/git/docs/user-manual.html|Git User's Manual]]
+[Git User's Manual](http://www.kernel.org/pub/software/scm/git/docs/user-manual.html)
 
 # SSH Keys
 
