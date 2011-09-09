@@ -1,8 +1,6 @@
-===== Doxygen =====
+[Doxygen](http://www.doxygen.org) is a popular documentation generation tool. It works by using specially formatted comments within the code that are then used by doxygen for generation. With little effort, excellent and nice looking documentation can be done.
 
-[[http://www.doxygen.org|Doxygen]] is a popular documentation generation tool. It works by using specially formatted comments within the code that are then used by doxygen for generation. With little effort, excellent and nice looking documentation can be done.
-
-While no special tool is required to write doxygen-formatted comments, a lot of time can be saved if your editor supports the auto-completion of such comments. Auto-completion of doxygen comments is supported by [[eclipse|Eclipse IDE]].
+While no special tool is required to write doxygen-formatted comments, a lot of time can be saved if your editor supports the auto-completion of such comments. Auto-completion of doxygen comments is supported by [[Eclipse]].
 # Installation
 
 Doxygen binaries are available for Linux, Windows and Mac OS X on the [doxygen download page](http://www.stack.nl/~dimitri/doxygen/download.html#latestsrc). It is also available for most Linux distributions, and Mac OS X users can also install it from macports.
