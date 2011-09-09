@@ -14,11 +14,7 @@ To develop for Wireshark, you will need to download its sources and compile it y
 Without waiting any further, download the latest source snapshot from the [Wireshark download page](http://www.wireshark.org/download.html). At the time of writing these lines, the latest stable version of Wireshark is 1.6.2. It will probably be a different version number by the time you read this, since Wireshark releases frequently.
 
 In order to build Wireshark, you will need to satisfy the following dependencies:
-* bison
-* flex
-* gtk2-dev
-* libpcap-dev
-* libgnutls-dev
+sudo apt-get install bison flex libpcap-dev libgnutls-dev libgtk2.0-dev
 
 # Building Wireshark
 
@@ -65,7 +61,7 @@ If it works, you should now see your version of Wireshark built from source:
 
 {{:wireshark:source_build.png|}}
 
-==== Building RDP Analyzer ====
+# Building RDP Analyzer
 
 In Wireshark terminology, a "protocol analyzer" is a "protocol dissector". It sounds weird the first time, but you get used to it after. There are two ways to write a Wireshark dissector:
 
