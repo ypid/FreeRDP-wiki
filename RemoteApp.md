@@ -15,30 +15,5 @@ More details about "rail_ri" and "rail_wi" can be found on this [page](http://so
 
 RemoteApp support was introduced in FreeRDP 1.0, so you should get the latest sources from git.
 
-**How to run xfreerdp with RemoteApp support mode?**
+    ./client/X11/xfreerdp -u <username> -p <password> --app --plugin channels/rail/rail.so --data "<app>:<working_dir>:<arguments>" -- <hostname>
 
-./client/X11/xfreerdp -u <UserName> -p <Password> ---app ---plugin channels/rail/rail.so ---data <ExeOfFile>:<WorkingDir>:<Arguments> --- <ServerHost>
-
-where:
-<UserName>
-user name (login)
-
-<Password>
-password credentials
-
-<ExeOfFile>
-application identification.
-Is can be specified by alias ('||cmd') and by full path to executive file ('c:\windows\system32\cmd.exe')
-For creating alias you must add '||' prefix to alias name, which specifies in RemoteApp Manager on TS server.
-
-<WorkingDir>
-Working directory for application, which is set on application start.
-
-<Arguments>
-Command line arguments for application. They are MUST be allowed on server for each application individually.
-
-<ServerHost>
-IP address or DNS name of RDP server.
-Examples:
-./client/X11/xfreerdp -u test -p testpassword ---app ---plugin channels/rail/rail.so ---data '||wordpad' --- terminal.contoso.com
-./client/X11/xfreerdp -u test -p testpassword ---app ---plugin channels/rail/rail.so ---data 'c:\notepad.exe' --- terminal.contoso.com
