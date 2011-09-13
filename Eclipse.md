@@ -8,3 +8,14 @@ This guide assumes that you have taken the time to fetch the development sources
 
 For applying this instructions you need to install Helios version of Eclipse.
 Simplest method  - download latest "Eclipse IDE for C/C++ developers" package from http://www.eclipse.org/downloads/, unpack it to your home directory and run it directly. And if your system is Ubuntu - this link helps you save nervous and time with "strange black pop-up" - http://tipstank.com/2010/05/23/solve-eclipse-black-pop-up-code-assist-box-in-ubuntu-10-4-lucid/
+
+# Creating Project
+
+One of the advantages of cmake is that it can generate project files for a variety of IDEs, including Eclipse. Instructions on how to generate an Eclipse project can be found in the [[compilation]] instructions.
+
+Once the project is created, you can import it in your current workspace:
+
+1. File -> Import
+2. General -> Existing Projects into Workspace
+3. Browse to project directory, click OK, then Finish
+
