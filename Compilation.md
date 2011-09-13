@@ -7,10 +7,10 @@ Optionally, you can install the following dependencies:
     sudo apt-get install libcunit1-dev libdirectfb-dev xmlto doxygen
 
 Generate makefiles:
-    cmake .
+
+    cmake -DCMAKE_BUILD_TYPE=Debug -DWITH_SSE2=ON .
 
 If you are using Eclipse, you can also generate Eclipse project files:
-    cmake -G "Eclipse CDT4 - Unix Makefiles" .
 
     cmake -G "Eclipse CDT4 - Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug -DWITH_SSE2=ON .
 
