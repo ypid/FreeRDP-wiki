@@ -6,6 +6,8 @@ Optionally, you can install the following dependencies:
 
     sudo apt-get install libcunit1-dev libdirectfb-dev xmlto doxygen
 
+where cunit is for the unit tests, directfb is for dfreerdp, xmlto is for man pages, and doxygen for API documentation.
+
 Generate makefiles:
 
     cmake -DCMAKE_BUILD_TYPE=Debug -DWITH_SSE2=ON .
