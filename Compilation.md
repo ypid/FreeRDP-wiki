@@ -19,3 +19,33 @@ If you are using Eclipse, you can also generate Eclipse project files:
 Build:
 
     make
+
+Install:
+
+    sudo make install
+
+Now create /etc/ld.so.conf.d/freerdp.conf and add the following line to it:
+    /usr/local/lib/freerdp
+
+and then run ldconfig. You should now have xfreerdp installed in /usr/local/bin:
+
+    awake@envy:~$ which xfreerdp
+    /usr/local/bin/xfreerdp
+
+Plugins are installed in /usr/local/lib/freerdp:
+
+    awake@envy:/usr/local/lib/freerdp$ ls
+    cliprdr.so  disk.so  drdynvc.so  printer.so  rail.so  rdpdbg.so  rdpdr.so  rdpsnd_alsa.so  rdpsnd.so
+
+keymaps are installed in /usr/local/share/freerdp:
+
+    awake@envy:/usr/local/share/freerdp$ ls keymaps/
+    aliases  ataritt       empty  fujitsu  ibm        macosx    sony  xfree86  xkb.pl
+    amiga    digital_vndr  evdev  hp       macintosh  sgi_vndr  sun   xfree98
+
+After launching FreeRDP at least once, ~/.freerdp will be created to store known hosts:
+
+    awake@envy:~/.freerdp$ ls
+    cacert  known_hosts
+
+CA certificates can be added to ~/.freerdp/cacert for additional trusted CAs.
