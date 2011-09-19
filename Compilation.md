@@ -25,6 +25,7 @@ Install:
     sudo make install
 
 Now create /etc/ld.so.conf.d/freerdp.conf and add the following line to it:
+
     /usr/local/lib/freerdp
 
 and then run ldconfig. You should now have xfreerdp installed in /usr/local/bin:
