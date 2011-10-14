@@ -1,8 +1,16 @@
 Install the suggested base dependencies:
 
+_debian based_
+
     sudo apt-get install build-essential git cmake libssl-dev libx11-dev libxext-dev libxinerama-dev libxcursor-dev libxv-dev libxkbfile-dev libasound2-dev libcups2-dev
 
+_rhel based_
+
+    sudo yum install gcc openssl-devel libX11-devel libXext-devel libXinerama-devel libXcursor-devel libXv-devel libxkbfile-devel alsa-lib-devel cups-devel
+
 Optionally, you can install the following dependencies:
+
+ _debian based_
 
     sudo apt-get install libcunit1-dev libdirectfb-dev xmlto doxygen
 
