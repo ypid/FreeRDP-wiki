@@ -2,7 +2,7 @@ Install the suggested base dependencies:
 
 _debian based_
 
-    sudo apt-get install build-essential git cmake libssl-dev libx11-dev libxext-dev libxinerama-dev libxcursor-dev libxv-dev libxkbfile-dev libasound2-dev libcups2-dev
+    sudo apt-get install build-essential git cmake libssl-dev libx11-dev libxext-dev libxinerama-dev libxcursor-dev libxdamage-dev libxv-dev libxkbfile-dev libasound2-dev libcups2-dev
 
 _rhel based_
 
