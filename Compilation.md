@@ -6,7 +6,7 @@ _debian based_
 
 _rhel based_
 
-    sudo yum install gcc openssl-devel libX11-devel libXext-devel libXinerama-devel libXcursor-devel libXv-devel libxkbfile-devel alsa-lib-devel cups-devel
+    sudo yum install gcc cmake openssl-devel libX11-devel libXext-devel libXinerama-devel libXcursor-devel libXdamage-devel libXv-devel libxkbfile-devel alsa-lib-devel cups-devel
 
 Optionally, you can install the following dependencies:
 
