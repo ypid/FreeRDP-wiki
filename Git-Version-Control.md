@@ -50,7 +50,7 @@ Otherwise, there is "Pro Git", an excellent free book:
 
 And finally, the git user's manual:
 
-[Git User's Manual](http://www.kernel.org/pub/software/scm/git/docs/user-manual.html)
+[Git User's Manual](http://schacon.github.com/git/user-manual.html)
 
 # SSH Keys
 
