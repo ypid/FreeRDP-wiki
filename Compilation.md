@@ -36,7 +36,11 @@ Now create /etc/ld.so.conf.d/freerdp.conf and add the following line to it:
 
     /usr/local/lib/freerdp
 
-and then run ldconfig. You should now have xfreerdp installed in /usr/local/bin:
+Depending on your OS/distribution, you may also need to add this line:
+
+    /usr/local/lib
+
+Run ldconfig. You should now have xfreerdp installed in /usr/local/bin:
 
     awake@envy:~$ which xfreerdp
     /usr/local/bin/xfreerdp
