@@ -1,0 +1,32 @@
+h1. Coding Guidelines
+
+The FreeRDP coding guidelines are mostly based on the previous coding guidelines for rdesktop, but have changed over time. In terms of writing portable C code, the Wireshark project provides good guidelines in section 1.1 "Code Style" of their "README.developer":http://anonsvn.wireshark.org/viewvc/trunk/doc/README.developer?revision=HEAD&view=raw.
+
+h2. Naming Conventions
+
+h2. Function Names
+
+FreeRDP functions are named using only lower case characters and underscores. Names should also be chosen as close as possible to the names used in the Microsoft RDP documentation so that it is easier to find the documentation associated with a particular function. For instance, [MS-RDPBCGR] defines the "Server Security Data" structure in section 2.2.1.4.3. This structure is processed in secure.c by sec_process_server_security_data().
+
+Function names should also start with the name of their module, such that functions in license.c begin with license_, functions in tls.c begin with tls_, etc.
+
+FreeRDP extensively uses structures that are dynamically allocated and then passed around, allowing full multi-session support in libfreerdp-core. For a module named "license", a "license_new" function is defined to initialize the "rdpLicense" structure, and "license_free" function is defined to free it.
+
+h2. Variable Names
+
+A lot of variables in FreeRDP follow a convention similar to function names, but not always. Here's the rule to follow:
+
+If the variable name refers to a field defined in the Microsoft documentation, then the variable name should be the one from the Microsoft document with the first letter as lower case.
+If the variable name does NOT refer to a field defined in the Microsoft documentation, then use the same naming convention as for the function names.
+
+For instance, [MS-RDPBCGR] defines a "serverRandomLen" field in section 2.2.1.4.3. "serverRandomLen" should be used as the variable name, and not "server_random_len". This makes it easier to search in the documentation, and also easier to distinguish between variables for protocol fields and other things.
+
+h2. Comments
+
+Use ==/**/== instead of ==//==, some exotic compilers don't support it.
+
+To comment out a block of code, use #if 0 #endif instead of ==/**/==, as ==/**/== may cause problems if comments are already present in the commented out block of code.
+
+h2. Tab Style
+
+Set your editor such that it uses tab characters, not spaces, of length 8.

@@ -1,0 +1,17 @@
+h1. MSDN Referencing
+
+MSDN URLs follow a specific format which is explained here: "MSDN URL Cheat Sheet":http://thirdblogfromthesun.com/msdn-url-cheatsheet/
+
+It is important to understand the structure of those URLs so that whenever you want to reference MSDN, you do it properly such that links won't break in the future.
+ 
+!images/msdn/url_format.png!
+
+The above diagram (taken from the blog) describes beautifully the MSDN URL structure. In most cases, we only care about the "id" part of the URL. When you browse MSDN documentation, you will likely have URLs with the product family being explicitly specified. For instance, here is the full URL to [MS-RDPBCGR]:
+
+@http://msdn.microsoft.com/en-us/library/cc240445(v=PROT.10).aspx@
+
+In the case of [MS-RDPBCGR], the id is cc240445. We can easily take off the rest of the URL to get:
+
+@http://msdn.microsoft.com/en-us/library/cc240445/@
+
+which will work, independently of a product version. To avoid future breakage, it is suggested to keep just the id, and remove explicit references to product versions, unless they are particularly useful.
