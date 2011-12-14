@@ -1,0 +1,60 @@
+h1. Developer Reference Documentation
+
+Remote Desktop Protocol:
+
+"Windows Communication Protocols (MCPP)":http://msdn.microsoft.com/en-us/library/cc216513/
+
+"==[MS-RDPBCGR]:  Remote Desktop Protocol: Basic Connectivity and Graphics Remoting Specification==":http://msdn.microsoft.com/en-us/library/cc240445/
+"==[MS-RDPCR2]:   Remote Desktop Protocol: Composited Remoting V2 Specification==":http://msdn.microsoft.com/en-us/library/dd302831/
+"==[MS-RDPEA]:    Remote Desktop Protocol: Audio Output Virtual Channel Extension==":http://msdn.microsoft.com/en-us/library/cc240933/
+"==[MS-RDPEAI]:   Remote Desktop Protocol: Audio Input Redirection Virtual Channel Extension==":http://msdn.microsoft.com/en-us/library/dd342521/
+"==[MS-RDPECLIP]: Remote Desktop Protocol: Clipboard Virtual Channel Extension==":http://msdn.microsoft.com/en-us/library/cc241066/
+"==[MS-RDPEDC]:   Remote Desktop Protocol: Desktop Composition Virtual Channel Extension==":http://msdn.microsoft.com/en-us/library/dd358323/
+"==[MS-RDPEDYC]:  Remote Desktop Protocol: Dynamic Channel Virtual Channel Extension==":http://msdn.microsoft.com/en-us/library/cc241215/
+"==[MS-RDPEFS]:   Remote Desktop Protocol: File System Virtual Channel Extension==":http://msdn.microsoft.com/en-us/library/cc241305/
+"==[MS-RDPEGDI]:  Remote Desktop Protocol: Graphics Device Interface (GDI) Acceleration Extensions==":http://msdn.microsoft.com/en-us/library/cc241537/
+"==[MS-RDPELE]:   Remote Desktop Protocol: Licensing Extension==":http://msdn.microsoft.com/en-us/library/cc241880/
+"==[MS-RDPEMC]:   Remote Desktop Protocol: Multiparty Virtual Channel Extension==":http://msdn.microsoft.com/en-us/library/cc242017/
+"==[MS-RDPEPC]:   Remote Desktop Protocol: Print Virtual Channel Extension==":http://msdn.microsoft.com/en-us/library/cc242116/
+"==[MS-RDPEPNP]:  Remote Desktop Protocol: Plug and Play Devices Virtual Channel Extension==":http://msdn.microsoft.com/en-us/library/cc242231/
+"==[MS-RDPEPS]:   Remote Desktop Protocol: Session Selection Extension==":http://msdn.microsoft.com/en-us/library/cc242359/
+"==[MS-RDPERP]:   Remote Desktop Protocol: Remote Programs Virtual Channel Extension==":http://msdn.microsoft.com/en-us/library/cc242568/
+"==[MS-RDPESC]:   Remote Desktop Protocol: Smart Card Virtual Channel Extension==":http://msdn.microsoft.com/en-us/library/cc242596/
+"==[MS-RDPESP]:   Remote Desktop Protocol: Serial and Parallel Port Virtual Channel Extension==":http://msdn.microsoft.com/en-us/library/cc242856/
+"==[MS-RDPEUSB]:  Remote Desktop Protocol: USB Devices Virtual Channel Extension==":http://msdn.microsoft.com/en-us/library/ff635589/
+"==[MS-RDPEV]:    Remote Desktop Protocol: Video Redirection Virtual Channel Extension==":http://msdn.microsoft.com/en-us/library/dd342975/
+"==[MS-RDPEXPS]:  Remote Desktop Protocol: XML Paper Specification (XPS) Print Virtual Channel Extension==":http://msdn.microsoft.com/en-us/library/cc242947/
+"==[MS-RDPNSC]:   Remote Desktop Protocol: NSCodec Extension==":http://msdn.microsoft.com/en-us/library/ff635378/
+"==[MS-RDPRFX]:   Remote Desktop Protocol: RemoteFX Codec Extension==":http://msdn.microsoft.com/en-us/library/ff635423/
+
+Protocols Used in RDP:
+"T.125 : Multipoint communication service protocol specification":http://www.itu.int/rec/T-REC-T.125-199802-I/
+"T.123: Network-specific data protocol stacks for multimedia conferencing":http://www.itu.int/rec/T-REC-T.123/
+"RFC 1006 - ISO Transport Service on top of the TCP":http://tools.ietf.org/html/rfc1006
+"X.224: Protocol for providing the connection-mode transport service":http://www.itu.int/rec/T-REC-X.224-199511-I/
+"X.690: ASN.1 encoding rules: Specification of BER, CER and DER":http://www.itu.int/ITU-T/studygroups/com17/languages/X.690-0207.pdf
+"X.691: ASN.1 encoding rules: Specification of PER":http://www.itu.int/ITU-T/studygroups/com17/languages/X.691-0207.pdf
+"T.124 : Generic Conference Control":http://www.itu.int/rec/T-REC-T.124-199802-S/en
+
+Algorithms Used in RDP:
+"Microsoft Point-To-Point Compression (MPPC) Protocol":http://www.ietf.org/rfc/rfc2118.txt
+
+Remote Desktop Services API:
+"Virtual Channel Client DLL":http://msdn.microsoft.com/en-us/library/aa383580/
+"Writing a Client DVC Module":http://msdn.microsoft.com/en-us/library/bb540880/
+"Remote Desktop Services API Reference":http://msdn.microsoft.com/en-us/library/aa383468/
+
+Network Level Authentication (NLA):
+"==[MS-KILE]: Kerberos Protocol Extensions==":http://msdn.microsoft.com/en-us/library/cc233855/
+"==[MS-NLMP]: NT LAN Manager (NTLM) Authentication Protocol Specification==":http://msdn.microsoft.com/en-us/library/cc236621/
+"==[MS-CSSP]: Credential Security Support Provider (CredSSP) Protocol Specification==":http://msdn.microsoft.com/en-us/library/cc226764/
+"==[MS-SPNG]: Simple and Protected Generic Security Service Application Program Interface Negotiation Mechanism (SPNEGO) Protocol Extensions==":http://msdn.microsoft.com/en-us/library/cc247021/
+
+Terminal Server Gateway (TS Gateway):
+"==[MS-TSGU]: Terminal Services Gateway Server Protocol Specification==":http://msdn.microsoft.com/en-us/library/cc248485(PROT.10).aspx
+"==[MS-RPCE]: Remote Procedure Call Protocol Extensions==":http://msdn.microsoft.com/en-us/library/cc243560(PROT.13).aspx
+"==[MS-RPCH]: Remote Procedure Call over HTTP Protocol Specification==":http://msdn.microsoft.com/en-us/library/cc243950(PROT.13).aspx
+
+Active Directory:
+"==[MS-ADTS]: Active Directory Technical Specification==":http://msdn.microsoft.com/en-us/library/cc223122/
+
