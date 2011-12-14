@@ -63,6 +63,7 @@ bc.
 
 h2. AUTHENTICATE_MESSAGE
 
+bc. 
 4e 54 4c 4d 53 53 50 00 Signature "NTLMSSP"
 03 00 00 00 MessageType (AUTHENTICATE)
 18 00 18 00 6a 00 00 00 LmChallengeResponse (length = 24, offset = 106)
@@ -76,6 +77,7 @@ f2 00 00 00 EncryptedRandomSessionKeyBufferOffset (242)
 35 82 88 e2 NegotiateFlags
 05 01 28 0a 00 00 00 0f Version (5.1, Build 2600)
 
+bc. 
 77 00 69 00 6e 00 37 00 DomainName "win7" (offset 72, length 8)
 75 00 73 00 65 00 72 00 6e 00 61 00 6d 00 65 00 UserName "username" (offset 80, length 16)
 57 00 49 00 4e 00 58 00 50 00 Workstation "WINXP" (offset 96, length 10)
