@@ -1,3 +1,5 @@
+h1. Wireshark Development
+
 This page is intended for those who wish to develop the FreeRDP Wireshark RDP protocol analyzer. If you only want to use Wireshark, you should look at the [[Wireshark Usage]] page instead.
 
 h1. Useful Links
@@ -11,7 +13,7 @@ h1. Prerequisites
 
 To develop for Wireshark, you will need to download its sources and compile it yourself. You have the choice between fetching the latest development sources from subversion, or downloading the latest stable source snapshot. The Wireshark development manual will instruct you to use the latest development sources, but I would advise otherwise: sometimes the development sources aren't stable, which will slow your development work for no valuable reason. Developing using a stable source snapshot will usually cause less problems.
 
-Without waiting any further, download the latest source snapshot from the "Wireshark download page":http://www.wireshark.org/download.html". At the time of writing these lines, the latest stable version of Wireshark is 1.6.2. It will probably be a different version number by the time you read this, since Wireshark releases frequently.
+Without waiting any further, download the latest source snapshot from the "Wireshark download page":http://www.wireshark.org/download.html. At the time of writing these lines, the latest stable version of Wireshark is 1.6.2. It will probably be a different version number by the time you read this, since Wireshark releases frequently.
 
 In order to build Wireshark, you will need to satisfy the following dependencies:
 @sudo apt-get install bison flex libpcap-dev libgnutls-dev libgtk2.0-dev@

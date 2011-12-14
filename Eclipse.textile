@@ -1,4 +1,4 @@
-h1. Overview
+h1. Eclipse IDE
 
 While many programmers do not use an IDE, there are many advantages in using one to speed up your development process. I was previously using NetBeans IDE because I thought it had better support for C/C++ development, but recent updates in Eclipse changed my mind. It still isn't as perfect as I would like it to be, but it's getting pretty good.
 

@@ -1,3 +1,4 @@
+h1. Changelog
 
 FreeRDP 1.0
 

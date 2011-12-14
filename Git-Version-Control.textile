@@ -1,3 +1,5 @@
+h1. Git Version Control
+
 h1. Installation
 
 h2. Linux
