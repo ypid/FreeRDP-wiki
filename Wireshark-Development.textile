@@ -22,6 +22,7 @@ h1. Building Wireshark
 
 Download the source snapshot, extract it, and run the autogen.sh script:
 
+bc. 
 awake@workstation:~> wget http://wiresharkdownloads.riverbed.com/wireshark/src/wireshark-1.6.2.tar.bz2
 awake@workstation:~> tar jxf wireshark-1.4.4.tar.bz2
 awake@workstation:~> mv wireshark-1.4.4 wireshark
@@ -39,24 +40,27 @@ autoheader
 automake --add-missing --gnu
 configure.in: installing `./ylwrap'
 autoconf
-
 Now type "./configure [options]" and "make" to compile Wireshark.
 
 Now, run the configure script with the --with-ssl option. It is very important to build Wireshark with SSL support, since the Wireshark RDP Analyzer needs it.
 
+bc. 
 awake@workstation:~/wireshark> ./configure --with-ssl
 
 If the configure script fails, make sure that you have installed all the required development libraries. If the configure script succeeds, verify that the configure summary says the following:
 
+bc. 
              Use GNU crypto library : yes
              Use SSL crypto library : yes
 
 If "Use GNU crypto library" is set to "no", make sure that you have installed libgnutls-dev. Without the development package of GnuTLS, Wireshark will build, but won't have the full SSL dissector that we need. Once you're done, you can build Wireshark:
 
+bc. 
 awake@workstation:~/wireshark> make
 
 Building Wireshark takes a while, so you have time for a coffee. When it is done, try running it:
 
+bc. 
 awake@workstation:~/wireshark> ./wireshark &
 
 If it works, you should now see your version of Wireshark built from source:
@@ -83,11 +87,13 @@ Receiving objects: 100% (5/5), 7.83 KiB, done.
 
 In this example, the wireshark source directory is ~/wireshark, and the RDP dissector sources are in ~/git/Wireshark. Wireshark built-in dissector sources are located in ~/wireshark/epan/dissectors/. So that we can our own sources separate, we will use symlinks:
 
+bc. 
 awake@workstation:~/wireshark/epan/dissectors> ln -s ../../../git/Wireshark/packet-rdp.c packet-rdp.c
 awake@workstation:~/wireshark/epan/dissectors> ln -s ../../../git/Wireshark/packet-rdp.h packet-rdp.h
 
 The next step is to edit ~/wireshark/epan/dissectors/Makefile.common to insert "packet-rdp.c" right before "packet-rdt.c", and "packet-rdp.h" right before "packet-rdt.h", such that you have:
 
+bc. 
 ...
 	packet-raw.c		\
 	packet-rdm.c		\
@@ -105,12 +111,14 @@ The next step is to edit ~/wireshark/epan/dissectors/Makefile.common to insert "
 
 Now go back to the root of the Wireshark sources, and regenerate configure scripts:
 
+bc. 
 awake@workstation:~/wireshark> autoreconf
 awake@workstation:~/wireshark> ./autogen.sh
 awake@workstation:~/wireshark> ./configure --with-ssl
 
 Build Wireshark again, and run it:
 
+bc. 
 awake@workstation:~/wireshark> make
 awake@workstation:~/wireshark> ./wireshark &
 
@@ -128,6 +136,7 @@ To try using the RDP analyzer, download one of the sample packet captures availa
 
 Download and extract nla_winxp_win7.zip:
 
+bc. 
 awake@workstation:~/Downloads> unzip nla_winxp_win7.zip 
 Archive:  nla_winxp_win7.zip
    creating: nla_winxp_win7/

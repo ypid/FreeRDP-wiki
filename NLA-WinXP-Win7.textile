@@ -1,0 +1,517 @@
+h1. NTLMv2 Authentication, Windows XP to Windows 7, Local Logon
+
+"nla_winxp_win7.zip":files/pcap/nla_winxp_win7.zip
+
+h2. NEGOTIATE_MESSAGE
+
+bc. 
+4e 54 4c 4d 53 53 50 00 Signature "NTLMSSP"
+01 00 00 00 MessageType (NEGOTIATE)
+b7 82 08 e2 NegotiateFlags
+00 00 00 00 00 00 00 00 DomainName (length = 0, offset = 0)
+00 00 00 00 00 00 00 00 WorkstationBufferOffset (length = 0, offset = 0)
+05 01 28 0a 00 00 00 0f Version (5.1, Build 2600)
+
+h2. CHALLENGE_MESSAGE
+
+bc. 
+4e 54 4c 4d 53 53 50 00 Signature "NTLMSSP"
+02 00 00 00 MessageType (CHALLENGE)
+08 00 08 00 38 00 00 00 TargetName (length = 8, offset = 56)
+35 82 8a e2 NegotiateFlags
+26 6e cd 75 aa 41 e7 6f ServerChallenge
+00 00 00 00 00 00 00 00 Reserved
+40 00 40 00 40 00 00 00 TargetInfoBufferOffset (length = 64, offset = 64)
+06 01 b0 1d 00 00 00 0f Version (6.1, Build 7600)
+
+bc. 
+TargetName "WIN7" (offset 56, length 8)
+57 00 49 00 4e 00 37 00
+
+h3. TargetInfo
+
+TargetInfo (offset 64, length 64)
+
+bc. 
+02 00 AvId (MsvAvNbDomainName)
+08 00 AvLen (8)
+57 00 49 00 4e 00 37 00 "WIN7"
+
+bc. 
+01 00 AvId (MsvAvNbComputerName)
+08 00 AvLen (8)
+57 00 49 00 4e 00 37 00 "WIN7"
+
+bc. 
+04 00 AvId (MsvAvDnsDomainName)
+08 00 AvLen (8)
+77 00 69 00 6e 00 37 00 "win7"
+
+bc. 
+03 00 AvId (MsvAvDnsComputerName)
+08 00 AvLen (8)
+77 00 69 00 6e 00 37 00 "win7"
+
+bc. 
+07 00 AvId (MsvAvTimestamp)
+08 00 AvLen (8)
+a9 8d 9b 1a 6c b0 cb 01
+
+bc. 
+00 00 AvId (MsvAvEOL)
+00 00 AvLen (0)
+
+h2. AUTHENTICATE_MESSAGE
+
+4e 54 4c 4d 53 53 50 00 Signature "NTLMSSP"
+03 00 00 00 MessageType (AUTHENTICATE)
+18 00 18 00 6a 00 00 00 LmChallengeResponse (length = 24, offset = 106)
+70 00 70 00 82 00 00 00 NtChallengeResponse (length = 112, offset = 130)
+08 00 08 00 48 00 00 00 DomainName (length = 8, offset = 72)
+10 00 10 00 50 00 00 00 UserName (length = 16, offset = 80)
+0a 00 0a 00 60 00 00 00 Workstation (length = 10, offset = 96)
+10 00 EncryptedRandomSessionKeyLen (16)
+10 00 EncryptedRandomSessionKeyMaxLen (16)
+f2 00 00 00 EncryptedRandomSessionKeyBufferOffset (242)
+35 82 88 e2 NegotiateFlags
+05 01 28 0a 00 00 00 0f Version (5.1, Build 2600)
+
+77 00 69 00 6e 00 37 00 DomainName "win7" (offset 72, length 8)
+75 00 73 00 65 00 72 00 6e 00 61 00 6d 00 65 00 UserName "username" (offset 80, length 16)
+57 00 49 00 4e 00 58 00 50 00 Workstation "WINXP" (offset 96, length 10)
+a0 98 01 10 19 bb 5d 00 f6 be 00 33 90 20 34 b3 47 a2 e5 cf 27 f7 3c 43 LmChallengeResponse (offset 106, length 24)
+
+h3. NtChallengeResponse
+
+NtChallengeResponseBufferOffset (offset 130, length 112)
+
+bc. 
+NTLMv2 Response (NtProofStr)
+01 4a d0 8c 24 b4 90 74 39 68 e8 bd 0d 2b 70 10
+
+bc. 
+NTLMv2_CLIENT_CHALLENGE
+01 RespType (1)
+01 HighRespType (1)
+00 00 00 00 00 00 Reserved
+c3 83 a2 1c 6c b0 cb 01 Timestamp
+47 a2 e5 cf 27 f7 3c 43 ClientChallenge
+00 00 00 00 Reserved
+
+TargetInfo (same as in CHALLENGE_MESSAGE)
+
+bc. 
+02 00 08 00 57 00 49 00 4e 00 37 00
+01 00 08 00 57 00 49 00 4e 00 37 00
+04 00 08 00 77 00 69 00 6e 00 37 00
+03 00 08 00 77 00 69 00 6e 00 37 00
+07 00 08 00 a9 8d 9b 1a 6c b0 cb 01
+00 00 00 00
+
+bc. 
+00 00 00 00 Reserved
+
+bc. 
+EncryptedRandomSessionKey (offset 242, length 16)
+b1 d2 45 42 0f 37 9a 0e e0 ce 77 40 10 8a da ba
+
+h2. Encrypted Public Key
+  
+pubKeyAuth (length 286)
+  
+h3. NTLM_MESSAGE_SIGNATURE
+
+bc. 
+Signature
+01 00 00 00 91 5e b0 6e 72 82 53 ae 00 00 00 00
+
+bc. 
+Encrypted SubjectPublicKey (length 270)
+27 29 73 a9 fa 46 17 3c 74 14 45 2a d1 e2 92 a1
+c6 0a 30 d4 cc e0 92 f6 b3 20 b3 a0 f1 38 b1 f4
+e5 96 df a1 65 5b d6 0c 2a 86 99 cc 72 80 bd e9
+19 1f 42 53 f6 84 a3 da 0e ec 10 29 15 52 5c 77
+40 c8 3d 44 01 34 b6 0a 75 33 c0 25 71 d3 25 38
+3b fc 3b a8 cf ba 2b f6 99 0e 5f 4e a9 16 2b 52
+9f bb 76 f8 03 fc 11 5e 36 83 d8 4c 9a dc 9d 35
+e2 c8 63 a9 3d 07 97 52 64 54 72 9e 9a 8c 56 79
+4a 78 91 0a 4c 52 84 5a 4a b8 28 0b 2f e6 89 7d
+07 3b 7b 6e 22 cc 4c ff f4 10 96 f2 27 29 a0 76
+0d 4c 7e 7a 42 e4 1e 6a 95 7d 4c af db 86 49 5c
+bf c2 65 b6 f2 ed ae 8d 57 ed f0 d4 cb 7a bb 23
+de e3 43 ea b1 02 e3 b4 96 e9 e7 48 69 b0 aa ec
+89 38 8b c2 bd dd f7 df a1 37 e7 34 72 7f 91 10
+14 73 fe 32 dc fe 68 2b c0 08 df 05 f7 bd 46 33
+fb c9 fc 89 aa 5d 25 49 c8 6e 86 ee c2 ce c4 8e
+85 9f e8 30 b3 86 11 d5 b8 34 4a e0 03 e5
+
+h2. Encrypted Public Key +1
+
+pubKeyAuth (length 286)
+
+bc. 
+Signature
+01 00 00 00 c9 88 fc f1 11 68 2c 72 00 00 00 00
+
+bc. 
+Encrypted SubjectPublicKey +1 (length 270)
+c7 51 f4 71 d3 9f b6 50 be a8 f6 20 77 a1 fc dd
+8e 02 f0 a4 6b ba 3f 9d 65 9d ab 4a 95 c9 b4 38
+03 87 04 b1 fe 42 ec fa fc aa 85 f1 31 2d 26 cf
+63 fd 62 36 cf 56 c3 fb f6 36 9b e5 b2 e7 ce cb
+e1 82 b2 89 ff dd 87 5e d3 d8 ff 2e 16 35 ad db
+da c9 c5 81 ad 48 f1 8b 76 3d 74 34 df 80 6b f3
+68 6d f6 ec 5f be ea b7 6c ea e4 eb e9 17 f9 4e
+0d 79 d5 82 dd b7 dc cd fc bb f1 0b 9b e9 18 e7
+b3 b3 8b 40 82 a0 9d 58 73 da 54 a2 2b d2 b6 41
+60 8a 64 f2 a2 59 64 cf 27 1a e6 b5 1a 0e 0e e1
+14 ef 26 68 eb c8 49 e2 66 bb 11 71 49 ad 7e ae
+de a8 78 fd 64 51 d8 18 01 11 c0 8d 3b ec 40 2b
+1f c5 a4 45 1e 07 ae 5a d8 1c ab df 89 96 dc dc
+29 d8 30 db bf 48 2a 42 27 c2 50 ac f9 02 d1 20
+12 dd 50 22 09 44 ac e0 22 1f 66 64 ec fa 2b b8
+cd 43 3a ce 40 74 e1 34 81 e3 94 47 6f 49 01 f8
+b5 fc d0 75 80 c6 35 ac c0 fd 1b b5 a2 d3
+
+h2. Encrypted Credentials
+
+bc. 
+30 5a a0 03 02 01 02 a2 53 04 51 01 00 00 00 b3
+2c 3b a1 36 f6 55 71 01 00 00 00 a8 85 7d 11 ef
+92 a0 d6 ff ee a1 ae 6d c5 2e 4e 65 50 28 93 75
+30 e1 c3 37 eb ac 1f dd f3 e0 92 f6 21 bc 8f a8
+d4 e0 5a a6 ff da 09 50 24 0d 8f 8f f4 92 fe 49
+2a 13 52 a6 52 75 50 8d 3e e9 6b 57
+
+bc. 
+30 SEQUENCE
+5a Length 90
+	a0 [0]
+	03 Length 3
+		02 INTEGER
+		01 Length 1
+		02 Value
+	a2 [2]
+	53 Length 83
+		04 OCTET STRING
+		51 Length 81
+
+bc. 
+Signature
+01 00 00 00 b3 2c 3b a1 36 f6 55 71 01 00 00 00
+"\x01\x00\x00\x00\xb3\x2c\x3b\xa1\x36\xf6\x55\x71\x01\x00\x00\x00"
+
+bc. 
+Encrypted TSCredentials
+a8 85 7d 11 ef 92 a0 d6 ff ee a1 ae 6d c5 2e 4e
+65 50 28 93 75 30 e1 c3 37 eb ac 1f dd f3 e0 92
+f6 21 bc 8f a8 d4 e0 5a a6 ff da 09 50 24 0d 8f
+8f f4 92 fe 49 2a 13 52 a6 52 75 50 8d 3e e9 6b
+57
+
+bc. 
+"\xa8\x85\x7d\x11\xef\x92\xa0\xd6\xff\xee\xa1\xae\x6d\xc5\x2e\x4e"
+"\x65\x50\x28\x93\x75\x30\xe1\xc3\x37\xeb\xac\x1f\xdd\xf3\xe0\x92"
+"\xf6\x21\xbc\x8f\xa8\xd4\xe0\x5a\xa6\xff\xda\x09\x50\x24\x0d\x8f"
+"\x8f\xf4\x92\xfe\x49\x2a\x13\x52\xa6\x52\x75\x50\x8d\x3e\xe9\x6b"
+"\x57"
+
+TSCredentials
+
+bc. 
+30 3f a0 03 02 01 01 a1 38 04 36 30 34 a0 0a 04
+08 77 00 69 00 6e 00 37 00 a1 12 04 10 75 00 73
+00 65 00 72 00 6e 00 61 00 6d 00 65 00 a2 12 04
+10 70 00 61 00 73 00 73 00 77 00 6f 00 72 00 64
+00
+
+bc. 
+"\x30\x3f\xa0\x03\x02\x01\x01\xa1\x38\x04\x36\x30\x34\xa0\x0a\x04"
+"\x08\x77\x00\x69\x00\x6e\x00\x37\x00\xa1\x12\x04\x10\x75\x00\x73"
+"\x00\x65\x00\x72\x00\x6e\x00\x61\x00\x6d\x00\x65\x00\xa2\x12\x04"
+"\x10\x70\x00\x61\x00\x73\x00\x73\x00\x77\x00\x6f\x00\x72\x00\x64"
+"\x00"
+
+bc. 
+30 SEQUENCE
+37 Length 55
+	a0 [0]
+	03 Length 3
+		02 INTEGER
+		01 Length 1
+		01 Value
+	a1 [1]
+	30 Length 48
+		04 OCTET STRING 
+		2e Length 46
+			30 SEQUENCE
+			2c Length 44
+				a0 [0]
+				02 Length 2
+				04 00
+				a1 [1]
+				12 Length 18
+					04 OCTET STRING
+					10 Length 16
+					75 00 73 00 65 00 72 00 6e 00 61 00 6d 00 65 00 "username"
+				a2 [2]
+				12 Length 18
+					04 OCTET STRING
+					10 Length 16
+					70 00 61 00 73 00 73 00 77 00 6f 00 72 00 64 00 "password"
+
+
+h2. Protocol Variables
+
+Username
+"username"
+
+Password
+"password"
+
+Domain
+"win7"
+
+bc. 
+NTOWFv2("password", "username", "win7")
+ef c2 c0 9f 06 11 3d 71 08 d0 d2 29 fa 4d e6 98
+
+bc. 
+LmClientChallenge
+47 a2 e5 cf 27 f7 3c 43
+"\x47\xa2\xe5\xcf\x27\xf7\x3c\x43"
+
+bc. 
+LMv2 Response
+a0 98 01 10 19 bb 5d 00 f6 be 00 33 90 20 34 b3
+
+bc. 
+LmChallengeResponse
+a0 98 01 10 19 bb 5d 00 f6 be 00 33 90 20 34 b3 47 a2 e5 cf 27 f7 3c 43
+"\xa0\x98\x01\x10\x19\xbb\x5d\x00\xf6\xbe\x00\x33\x90\x20\x34\xb3\x47\xa2\xe5\xcf\x27\xf7\x3c\x43"
+
+bc. 
+Timestamp
+c3 83 a2 1c 6c b0 cb 01
+"\xc3\x83\xa2\x1c\x6c\xb0\xcb\x01"
+
+bc. 
+NtClientChallenge
+47 a2 e5 cf 27 f7 3c 43
+"\x47\xa2\xe5\xcf\x27\xf7\x3c\x43"
+
+bc. 
+ServerChallenge
+26 6e cd 75 aa 41 e7 6f
+"\x26\x6e\xcd\x75\xaa\x41\xe7\x6f"
+
+bc. 
+TargetInfo
+02 00 08 00 57 00 49 00 4e 00 37 00
+01 00 08 00 57 00 49 00 4e 00 37 00
+04 00 08 00 77 00 69 00 6e 00 37 00
+03 00 08 00 77 00 69 00 6e 00 37 00
+07 00 08 00 a9 8d 9b 1a 6c b0 cb 01
+00 00 00 00
+
+bc. 
+"\x02\x00\x08\x00\x57\x00\x49\x00\x4e\x00\x37\x00"
+"\x01\x00\x08\x00\x57\x00\x49\x00\x4e\x00\x37\x00"
+"\x04\x00\x08\x00\x77\x00\x69\x00\x6e\x00\x37\x00"
+"\x03\x00\x08\x00\x77\x00\x69\x00\x6e\x00\x37\x00"
+"\x07\x00\x08\x00\xa9\x8d\x9b\x1a\x6c\xb0\xcb\x01"
+"\x00\x00\x00\x00"
+
+bc. 
+NTLMv2 Response
+01 4a d0 8c 24 b4 90 74 39 68 e8 bd 0d 2b 70 10
+
+bc. 
+NtChallengeResponse
+01 4a d0 8c 24 b4 90 74 39 68 e8 bd 0d 2b 70 10
+01 01 00 00 00 00 00 00 c3 83 a2 1c 6c b0 cb 01
+47 a2 e5 cf 27 f7 3c 43 00 00 00 00 02 00 08 00
+57 00 49 00 4e 00 37 00 01 00 08 00 57 00 49 00
+4e 00 37 00 04 00 08 00 77 00 69 00 6e 00 37 00
+03 00 08 00 77 00 69 00 6e 00 37 00 07 00 08 00
+a9 8d 9b 1a 6c b0 cb 01 00 00 00 00 00 00 00 00
+
+bc. 
+"\x01\x4a\xd0\x8c\x24\xb4\x90\x74\x39\x68\xe8\xbd\x0d\x2b\x70\x10"
+"\x01\x01\x00\x00\x00\x00\x00\x00\xc3\x83\xa2\x1c\x6c\xb0\xcb\x01"
+"\x47\xa2\xe5\xcf\x27\xf7\x3c\x43\x00\x00\x00\x00\x02\x00\x08\x00"
+"\x57\x00\x49\x00\x4e\x00\x37\x00\x01\x00\x08\x00\x57\x00\x49\x00"
+"\x4e\x00\x37\x00\x04\x00\x08\x00\x77\x00\x69\x00\x6e\x00\x37\x00"
+"\x03\x00\x08\x00\x77\x00\x69\x00\x6e\x00\x37\x00\x07\x00\x08\x00"
+"\xa9\x8d\x9b\x1a\x6c\xb0\xcb\x01\x00\x00\x00\x00\x00\x00\x00\x00"
+
+bc. 
+SessionBaseKey
+6e f1 6b 79 88 f2 3d 7e 54 2a 1a 38 4e a0 6b 52
+"\x6e\xf1\x6b\x79\x88\xf2\x3d\x7e\x54\x2a\x1a\x38\x4e\xa0\x6b\x52"
+
+bc. 
+KeyExchangeKey
+6e f1 6b 79 88 f2 3d 7e 54 2a 1a 38 4e a0 6b 52
+"\x6e\xf1\x6b\x79\x88\xf2\x3d\x7e\x54\x2a\x1a\x38\x4e\xa0\x6b\x52"
+
+bc. 
+EncryptedRandomSessionKey
+b1 d2 45 42 0f 37 9a 0e e0 ce 77 40 10 8a da ba
+"\xb1\xd2\x45\x42\x0f\x37\x9a\x0e\xe0\xce\x77\x40\x10\x8a\xda\xba"
+
+bc. 
+ExportedSessionKey
+89 90 0d 5d 2c 53 2b 36 31 cc 1a 46 ce a9 34 f1
+"\x89\x90\x0d\x5d\x2c\x53\x2b\x36\x31\xcc\x1a\x46\xce\xa9\x34\xf1"
+
+bc. 
+ClientSignKey
+bf 5e 42 76 55 68 38 97 45 d3 b4 9f 5e 2f bc 89
+"\xbf\x5e\x42\x76\x55\x68\x38\x97\x45\xd3\xb4\x9f\x5e\x2f\xbc\x89"
+
+bc. 
+ServerSignKey
+9b 3b 64 89 da 84 52 17 d5 c2 6e 90 16 3b 42 11
+"\x9b\x3b\x64\x89\xda\x84\x52\x17\xd5\xc2\x6e\x90\x16\x3b\x42\x11"
+
+bc. 
+ClientSealKey
+ca 41 cd 08 48 07 22 6e 0d 84 c3 88 a5 07 a9 73
+"\xca\x41\xcd\x08\x48\x07\x22\x6e\x0d\x84\xc3\x88\xa5\x07\xa9\x73"
+
+bc. 
+ServerSealKey
+14 b7 1d 06 2c 68 2e ad 4b 0e 95 23 70 91 98 90
+"\x14\xb7\x1d\x06\x2c\x68\x2e\xad\x4b\x0e\x95\x23\x70\x91\x98\x90"
+
+bc. 
+Public Key
+30 82 01 0a 02 82 01 01 00 c2 1c 54 af 07 f1 16
+97 c3 0f 6b a6 33 2e dd 1e e4 b2 9c e4 12 7f da
+58 21 c0 68 e6 d3 f5 20 1c ba 06 64 7d 7f 44 b5
+bf e3 d5 c7 a4 86 8b bc 6f ca 25 78 df eb cf 5a
+96 f6 c7 00 be 7d 6d 06 1f 1d 7f 30 af c4 59 4f
+91 6d 97 e8 55 8b 39 01 68 50 59 bb e4 65 71 32
+76 9e 1b cf 58 fc 52 d9 43 01 8e 33 c1 74 14 bc
+1f 5c 1d db 0e bd bb 37 50 13 78 57 93 34 3b 73
+c9 5c 44 1f 16 e6 2e 00 57 a3 e6 5c 6a 2c 90 dc
+a3 6d 7f 92 df 2f e5 97 ae 3b 07 23 03 91 71 d4
+f2 50 3a 3a b9 de 1f b1 d5 a1 38 7c f7 07 49 83
+68 aa df ad fd 1a e9 b5 0a 1e 8b f3 88 ae 3f 32
+d0 3b d8 c7 50 11 f7 ad 3b 11 e6 92 bb 2a 73 8b
+ed fd 45 29 50 bf 0d 1e 47 fd 61 1d 18 27 58 a2
+b2 1f b5 2d 84 18 2f 88 8e 7f 70 ed 4e bf 14 5d
+1b bc 0b 47 66 16 3a 7b 6d 8e cf 55 e8 8c 8a fe
+24 ce 19 99 c3 5a e5 c2 f3 02 03 01 00 01
+
+bc. 
+"\x30\x82\x01\x0a\x02\x82\x01\x01\x00\xc2\x1c\x54\xaf\x07\xf1\x16"
+"\x97\xc3\x0f\x6b\xa6\x33\x2e\xdd\x1e\xe4\xb2\x9c\xe4\x12\x7f\xda"
+"\x58\x21\xc0\x68\xe6\xd3\xf5\x20\x1c\xba\x06\x64\x7d\x7f\x44\xb5"
+"\xbf\xe3\xd5\xc7\xa4\x86\x8b\xbc\x6f\xca\x25\x78\xdf\xeb\xcf\x5a"
+"\x96\xf6\xc7\x00\xbe\x7d\x6d\x06\x1f\x1d\x7f\x30\xaf\xc4\x59\x4f"
+"\x91\x6d\x97\xe8\x55\x8b\x39\x01\x68\x50\x59\xbb\xe4\x65\x71\x32"
+"\x76\x9e\x1b\xcf\x58\xfc\x52\xd9\x43\x01\x8e\x33\xc1\x74\x14\xbc"
+"\x1f\x5c\x1d\xdb\x0e\xbd\xbb\x37\x50\x13\x78\x57\x93\x34\x3b\x73"
+"\xc9\x5c\x44\x1f\x16\xe6\x2e\x00\x57\xa3\xe6\x5c\x6a\x2c\x90\xdc"
+"\xa3\x6d\x7f\x92\xdf\x2f\xe5\x97\xae\x3b\x07\x23\x03\x91\x71\xd4"
+"\xf2\x50\x3a\x3a\xb9\xde\x1f\xb1\xd5\xa1\x38\x7c\xf7\x07\x49\x83"
+"\x68\xaa\xdf\xad\xfd\x1a\xe9\xb5\x0a\x1e\x8b\xf3\x88\xae\x3f\x32"
+"\xd0\x3b\xd8\xc7\x50\x11\xf7\xad\x3b\x11\xe6\x92\xbb\x2a\x73\x8b"
+"\xed\xfd\x45\x29\x50\xbf\x0d\x1e\x47\xfd\x61\x1d\x18\x27\x58\xa2"
+"\xb2\x1f\xb5\x2d\x84\x18\x2f\x88\x8e\x7f\x70\xed\x4e\xbf\x14\x5d"
+"\x1b\xbc\x0b\x47\x66\x16\x3a\x7b\x6d\x8e\xcf\x55\xe8\x8c\x8a\xfe"
+"\x24\xce\x19\x99\xc3\x5a\xe5\xc2\xf3\x02\x03\x01\x00\x01"
+
+Encrypted Public Key
+
+bc. 
+27 29 73 a9 fa 46 17 3c 74 14 45 2a d1 e2 92 a1
+c6 0a 30 d4 cc e0 92 f6 b3 20 b3 a0 f1 38 b1 f4
+e5 96 df a1 65 5b d6 0c 2a 86 99 cc 72 80 bd e9
+19 1f 42 53 f6 84 a3 da 0e ec 10 29 15 52 5c 77
+40 c8 3d 44 01 34 b6 0a 75 33 c0 25 71 d3 25 38
+3b fc 3b a8 cf ba 2b f6 99 0e 5f 4e a9 16 2b 52
+9f bb 76 f8 03 fc 11 5e 36 83 d8 4c 9a dc 9d 35
+e2 c8 63 a9 3d 07 97 52 64 54 72 9e 9a 8c 56 79
+4a 78 91 0a 4c 52 84 5a 4a b8 28 0b 2f e6 89 7d
+07 3b 7b 6e 22 cc 4c ff f4 10 96 f2 27 29 a0 76
+0d 4c 7e 7a 42 e4 1e 6a 95 7d 4c af db 86 49 5c
+bf c2 65 b6 f2 ed ae 8d 57 ed f0 d4 cb 7a bb 23
+de e3 43 ea b1 02 e3 b4 96 e9 e7 48 69 b0 aa ec
+89 38 8b c2 bd dd f7 df a1 37 e7 34 72 7f 91 10
+14 73 fe 32 dc fe 68 2b c0 08 df 05 f7 bd 46 33
+fb c9 fc 89 aa 5d 25 49 c8 6e 86 ee c2 ce c4 8e
+85 9f e8 30 b3 86 11 d5 b8 34 4a e0 03 e5
+
+bc. 
+"\x27\x29\x73\xa9\xfa\x46\x17\x3c\x74\x14\x45\x2a\xd1\xe2\x92\xa1"
+"\xc6\x0a\x30\xd4\xcc\xe0\x92\xf6\xb3\x20\xb3\xa0\xf1\x38\xb1\xf4"
+"\xe5\x96\xdf\xa1\x65\x5b\xd6\x0c\x2a\x86\x99\xcc\x72\x80\xbd\xe9"
+"\x19\x1f\x42\x53\xf6\x84\xa3\xda\x0e\xec\x10\x29\x15\x52\x5c\x77"
+"\x40\xc8\x3d\x44\x01\x34\xb6\x0a\x75\x33\xc0\x25\x71\xd3\x25\x38"
+"\x3b\xfc\x3b\xa8\xcf\xba\x2b\xf6\x99\x0e\x5f\x4e\xa9\x16\x2b\x52"
+"\x9f\xbb\x76\xf8\x03\xfc\x11\x5e\x36\x83\xd8\x4c\x9a\xdc\x9d\x35"
+"\xe2\xc8\x63\xa9\x3d\x07\x97\x52\x64\x54\x72\x9e\x9a\x8c\x56\x79"
+"\x4a\x78\x91\x0a\x4c\x52\x84\x5a\x4a\xb8\x28\x0b\x2f\xe6\x89\x7d"
+"\x07\x3b\x7b\x6e\x22\xcc\x4c\xff\xf4\x10\x96\xf2\x27\x29\xa0\x76"
+"\x0d\x4c\x7e\x7a\x42\xe4\x1e\x6a\x95\x7d\x4c\xaf\xdb\x86\x49\x5c"
+"\xbf\xc2\x65\xb6\xf2\xed\xae\x8d\x57\xed\xf0\xd4\xcb\x7a\xbb\x23"
+"\xde\xe3\x43\xea\xb1\x02\xe3\xb4\x96\xe9\xe7\x48\x69\xb0\xaa\xec"
+"\x89\x38\x8b\xc2\xbd\xdd\xf7\xdf\xa1\x37\xe7\x34\x72\x7f\x91\x10"
+"\x14\x73\xfe\x32\xdc\xfe\x68\x2b\xc0\x08\xdf\x05\xf7\xbd\x46\x33"
+"\xfb\xc9\xfc\x89\xaa\x5d\x25\x49\xc8\x6e\x86\xee\xc2\xce\xc4\x8e"
+"\x85\x9f\xe8\x30\xb3\x86\x11\xd5\xb8\x34\x4a\xe0\x03\xe5"
+
+bc. 
+Signature
+01 00 00 00 91 5e b0 6e 72 82 53 ae 00 00 00 00
+"\x01\x00\x00\x00\x91\x5e\xb0\x6e\x72\x82\x53\xae\x00\x00\x00\x00"
+
+Encrypted Public Key +1
+
+bc. 
+Signature
+01 00 00 00 c9 88 fc f1 11 68 2c 72 00 00 00 00
+"\x01\x00\x00\x00\xc9\x88\xfc\xf1\x11\x68\x2c\x72\x00\x00\x00\x00"
+
+Encrypted Public Key +1
+
+bc. 
+c7 51 f4 71 d3 9f b6 50 be a8 f6 20 77 a1 fc dd
+8e 02 f0 a4 6b ba 3f 9d 65 9d ab 4a 95 c9 b4 38
+03 87 04 b1 fe 42 ec fa fc aa 85 f1 31 2d 26 cf
+63 fd 62 36 cf 56 c3 fb f6 36 9b e5 b2 e7 ce cb
+e1 82 b2 89 ff dd 87 5e d3 d8 ff 2e 16 35 ad db
+da c9 c5 81 ad 48 f1 8b 76 3d 74 34 df 80 6b f3
+68 6d f6 ec 5f be ea b7 6c ea e4 eb e9 17 f9 4e
+0d 79 d5 82 dd b7 dc cd fc bb f1 0b 9b e9 18 e7
+b3 b3 8b 40 82 a0 9d 58 73 da 54 a2 2b d2 b6 41
+60 8a 64 f2 a2 59 64 cf 27 1a e6 b5 1a 0e 0e e1
+14 ef 26 68 eb c8 49 e2 66 bb 11 71 49 ad 7e ae
+de a8 78 fd 64 51 d8 18 01 11 c0 8d 3b ec 40 2b
+1f c5 a4 45 1e 07 ae 5a d8 1c ab df 89 96 dc dc
+29 d8 30 db bf 48 2a 42 27 c2 50 ac f9 02 d1 20
+12 dd 50 22 09 44 ac e0 22 1f 66 64 ec fa 2b b8
+cd 43 3a ce 40 74 e1 34 81 e3 94 47 6f 49 01 f8
+b5 fc d0 75 80 c6 35 ac c0 fd 1b b5 a2 d3
+
+bc. 
+"\xc7\x51\xf4\x71\xd3\x9f\xb6\x50\xbe\xa8\xf6\x20\x77\xa1\xfc\xdd"
+"\x8e\x02\xf0\xa4\x6b\xba\x3f\x9d\x65\x9d\xab\x4a\x95\xc9\xb4\x38"
+"\x03\x87\x04\xb1\xfe\x42\xec\xfa\xfc\xaa\x85\xf1\x31\x2d\x26\xcf"
+"\x63\xfd\x62\x36\xcf\x56\xc3\xfb\xf6\x36\x9b\xe5\xb2\xe7\xce\xcb"
+"\xe1\x82\xb2\x89\xff\xdd\x87\x5e\xd3\xd8\xff\x2e\x16\x35\xad\xdb"
+"\xda\xc9\xc5\x81\xad\x48\xf1\x8b\x76\x3d\x74\x34\xdf\x80\x6b\xf3"
+"\x68\x6d\xf6\xec\x5f\xbe\xea\xb7\x6c\xea\xe4\xeb\xe9\x17\xf9\x4e"
+"\x0d\x79\xd5\x82\xdd\xb7\xdc\xcd\xfc\xbb\xf1\x0b\x9b\xe9\x18\xe7"
+"\xb3\xb3\x8b\x40\x82\xa0\x9d\x58\x73\xda\x54\xa2\x2b\xd2\xb6\x41"
+"\x60\x8a\x64\xf2\xa2\x59\x64\xcf\x27\x1a\xe6\xb5\x1a\x0e\x0e\xe1"
+"\x14\xef\x26\x68\xeb\xc8\x49\xe2\x66\xbb\x11\x71\x49\xad\x7e\xae"
+"\xde\xa8\x78\xfd\x64\x51\xd8\x18\x01\x11\xc0\x8d\x3b\xec\x40\x2b"
+"\x1f\xc5\xa4\x45\x1e\x07\xae\x5a\xd8\x1c\xab\xdf\x89\x96\xdc\xdc"
+"\x29\xd8\x30\xdb\xbf\x48\x2a\x42\x27\xc2\x50\xac\xf9\x02\xd1\x20"
+"\x12\xdd\x50\x22\x09\x44\xac\xe0\x22\x1f\x66\x64\xec\xfa\x2b\xb8"
+"\xcd\x43\x3a\xce\x40\x74\xe1\x34\x81\xe3\x94\x47\x6f\x49\x01\xf8"
+"\xb5\xfc\xd0\x75\x80\xc6\x35\xac\xc0\xfd\x1b\xb5\xa2\xd3"

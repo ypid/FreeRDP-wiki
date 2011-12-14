@@ -1,0 +1,56 @@
+h1. Network Level Authentication
+
+h1. Annotated Packet Captures
+
+"Windows XP to Windows 7, Local Logon":NLA-WinXP-Win7
+"Windows 7 to Windows Server 2008 R2, Domain Logon":NLA-Win7-Win2K8R2
+"Windows 7 to Windows Server 2008 R2, Domain Logon, Suppress Extended Protection":NLA-Win7-Win2K8R2-SEP
+
+Each annotated packet capture comes with the original wireshark packet capture bundled with the private key required to decrypt the packets. To configure wireshark such that it can use the private keys to decrypt the captures, refer to the "Wireshark Usage":Wireshark-Usage article.
+
+h1. Documentation
+
+"==[MS-NLMP]: NT LAN Manager (NTLM) Authentication Protocol Specification==":http://msdn.microsoft.com/en-us/library/cc236621/
+"==[MS-CSSP]: Credential Security Support Provider (CredSSP) Protocol Specification==":http://msdn.microsoft.com/en-us/library/cc226764/
+"==[MS-SPNG]: Simple and Protected Generic Security Service Application Program Interface Negotiation Mechanism (SPNEGO) Protocol Extensions==":http://msdn.microsoft.com/en-us/library/cc247021/
+
+h1. Registry Tweaks
+
+h2. NTLM Authentication Level
+
+"LmCompatibilityLevel":http://technet.microsoft.com/en-us/library/cc960646.aspx
+
+@HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\LmCompatibilityLevel@
+
+|_. Value |_. Meaning |
+| 0 | Clients use LM and NTLM authentication, but they never use NTLMv2 session security. Domain controllers accept LM, NTLM, and NTLMv2 authentication. |
+| 1 | Clients use LM and NTLM authentication, and they use NTLMv2 session security if the server supports it. Domain controllers accept LM, NTLM, and NTLMv2 authentication. |
+| 2 | Clients use only NTLM authentication, and they use NTLMv2 session security if the server supports it. Domain controller accepts LM, NTLM, and NTLMv2 authentication. |
+| 3 | Clients use only NTLMv2 authentication, and they use NTLMv2 session security if the server supports it. Domain controllers accept LM, NTLM, and NTLMv2 authentication. |
+| 4 | Clients use only NTLMv2 authentication, and they use NTLMv2 session security if the server supports it. Domain controller refuses LM authentication responses, but it accepts NTLM and NTLMv2. |
+| 5 | Clients use only NTLMv2 authentication, and they use NTLMv2 session security if the server supports it. Domain controller refuses LM and NTLM authentication responses, but it accepts NTLMv2. |
+
+h2. Enable NLA on Windows XP SP3
+
+"Description of the Credential Security Support Provider (CredSSP) in Windows XP Service Pack 3":http://support.microsoft.com/kb/951608
+
+Add "tspkg" to:
+@HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\Security Packages@
+
+Then add "credssp.dll" to:
+@HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SecurityProviders@
+
+And then reboot for the changes to take effect. From experience, this should work even with the latest version of Windows Server 2008 R2, but I noticed that while NTLM authentication is used for a local logon, Kerberos authentication is used for a domain logon. Tweaking LmCompatibilityLevel helps forcing certain versions of NTLM.
+
+h2. Extended Protection for Authentication
+
+Extended Protection for Authentication is enabled by default on Windows 7 and Windows Server 2008 R2. When enabled, certain features of NTLMv2 authentication are used, such as the ChannelBindingToken (CBT). Since FreeRDP is not using that feature, it might be a good idea to disable it before taking a packet capture from mstsc.exe that you want to analyze.
+
+To disable Extended Protection for Authentication, create the following DWORD key with the value "1":
+@HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\LSA\SuppressExtendedProtection@
+
+To re-enable it, either delete the above key, or set its value to "0".
+
+"Extended Protection for Authentication":http://support.microsoft.com/kb/968389
+"Microsoft Security Advisory: Extended protection for authentication":http://support.microsoft.com/kb/973811
+"Microsoft Security Advisory (973811): Extended Protection for Authentication":http://www.microsoft.com/technet/security/advisory/973811.mspx
