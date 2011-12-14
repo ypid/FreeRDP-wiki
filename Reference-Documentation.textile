@@ -1,4 +1,4 @@
-h1. Developer Reference Documentation
+h1. Reference Documentation
 
 Remote Desktop Protocol:
 
