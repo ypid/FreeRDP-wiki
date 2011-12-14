@@ -1,0 +1,21 @@
+h1. RemoteFX
+
+RemoteFX is defined in:
+* "==[MS-RDPRFX]: Remote Desktop Protocol: RemoteFX Codec Extension==":http://msdn.microsoft.com/en-us/library/ff635423/
+* "==[ARLGR]: Adaptive Run-Length / Golomb-Rice Encoding of Quantized Generalized Gaussian Sources with Unknown Statistics==":http://research.microsoft.com/apps/pubs/default.aspx?id=102069
+
+h1. Packet Captures
+
+Windows 7 SP1 to Windows Server 2008 R2 SP1 (RSDH): "mstsc_remotefx.zip":mstsc_remotefx.zip
+
+h1. RDSH Deployment
+
+RemoteFX can be enabled in the Remote Desktop Session Host. While this deployment scenario is the most trivial, it is not the best: in this case, no GPU acceleration is used and you don't get the complete RemoteFX experience. If you are using a virtual machine, or do not have hardware that meets the minimum specifications for a VDI deployment, I suggest you try this one first.
+
+"Deploying Microsoft RemoteFX on a Remote Desktop Session Host Server Step-by-Step Guide":http://technet.microsoft.com/en-us/library/ff817595(WS.10).aspx
+
+h1. RDVH Deployment
+
+This is the full-blown RemoteFX deployment, but requires more work and also more powerful hardware. Since Hyper-V is required, Windows Server 2008 R2 SP1 will need a physical machine with a processor that supports Intel VT. In this scenario, the GPU is used for RemoteFX encoding, so you need a supported graphics card as well.
+
+"Deploying Microsoft RemoteFX on a Single Remote Desktop Virtualization Host Server Step-by-Step Guide":http://technet.microsoft.com/en-us/library/ff817586(WS.10).aspx
