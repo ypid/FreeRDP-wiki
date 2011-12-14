@@ -1,23 +1,25 @@
-A protocol analyzer such as [Wireshark](http://www.wireshark.com) can become quite handy during FreeRDP development, as it can display packets in an interface that makes it really easy to visualize what's going on. If you've never used Wireshark before, it's one of the most popular open source network protocol analyzer, often considered a de facto standard. In order to analyze RDP packets with it, we must first give Wireshark the necessary information to decrypt an encrypted RDP session. As Wireshark has built-in support for TLS encryption but not for the older RDP encryption, it is only possible at this point to use Wireshark to analyze a TLS-encrypted RDP session.
+h1. Overview
+
+A protocol analyzer such as "Wireshark":http://www.wireshark.com can become quite handy during FreeRDP development, as it can display packets in an interface that makes it really easy to visualize what's going on. If you've never used Wireshark before, it's one of the most popular open source network protocol analyzer, often considered a de facto standard. In order to analyze RDP packets with it, we must first give Wireshark the necessary information to decrypt an encrypted RDP session. As Wireshark has built-in support for TLS encryption but not for the older RDP encryption, it is only possible at this point to use Wireshark to analyze a TLS-encrypted RDP session.
 
 If you are looking for instructions on how to develop the FreeRDP Wireshark RDP Analyzer, read the [[Wireshark Development]] article instead.
 
-# Sample Wireshark RDP Captures
+h1. Sample Wireshark RDP Captures
 
 Sample Wireshark RDP captures can be found in the [[Network Level Authentication]] article.
 
-# Exporting Self-Signed Certificate with its Private Key
+h1. Exporting Self-Signed Certificate with its Private Key
 
 If you want to take your own captures, you will need to extract your server's certificate with its private key. The easiest way to do so is with [[Jailbreak]]. Once you managed to get a certificate with an exportable private key, you can follow the steps for [[Certificate Exportation]] in a format usable by Wireshark.
 
-# Configuring the Wireshark SSL Dissector
+h1. Configuring the Wireshark SSL Dissector
 
 If the word "dissector" sounds weird to you, it is a term used to refer to the Wireshark module responsible for the analysis of a particular protocol. In this case, we want to configure the built-in SSL dissector ("TLS" is more correct, but the dissector is still called SSL) with the required information to decrypt an RDP session. The SSL dissector needs to be given the following information:
 
-   - Server IP Address
-   - Server Port
-   - Dissector to use on decrypted data
-   - Full path to the private key file
+* Server IP Address
+* Server Port
+* Dissector to use on decrypted data
+* Full path to the private key file
 
 For instance, if I have a packet capture for an RDP session where the server is located at 192.168.1.125 on port 3389, and that I have stored the private key file (pem format) in C:\privkey.pem, and that I want to analyze the decrypted TLS data to the "rdp" dissector, the configuration line would be:
 
@@ -31,22 +33,22 @@ To avoid having to change the SSL dissector configuration every time we look at 
 
 192.168.1.125,3389,rdp,C:\privkey.pem;10.0.5.70,4000,data,C:\privkey_data.pem
 
-# Self-Signed Certificate (Windows Server 2008 R2)
+h1. Self-Signed Certificate (Windows Server 2008 R2)
 
 If Windows normally generates self-signed certificates for RDP by default, most of the time the associated private key is marked as non-exportable, making them unusable for us. Windows Server 2008 R2 (R2 is important, since 2008 alone marks the key as non-exportable), on the other hand, can generate self-signed certificates with an exportable private key.
 
 Windows Server 2008 R2 is available in limited-time trial versions, which makes it suitable for a development virtual machine. Here is how to configure a fresh Windows Server 2008 R2 installation with the Terminal Server and a self-signed certificate for which you can extract the private key.
 
-## Installation
+h2. Installation
 
 Install the "Remote Desktop Services" role with the following features:
-  * Remote Desktop Session Host
-  * Remote Desktop Licensing
-  * Remote Desktop Gateway
+* Remote Desktop Session Host
+* Remote Desktop Licensing
+* Remote Desktop Gateway
 
 By default, a self-signed certificate is generated with a non-exportable private key. The trick here is to install the Remote Desktop Gateway, which will generate another self-signed certificate in the "Personal" certificate store. Unlike the previous self-signed certificate, this one has an exportable private key, and can be used by the terminal server.
 
-## Selecting Certificate
+h2. Selecting Certificate
 
 In the start menu, go in Administrative Tools->Remote Desktop Services->Remote Desktop Session Host Configuration
 

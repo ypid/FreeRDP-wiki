@@ -1,2 +1,131 @@
+h1. Overview
+
 According to [MS-RDPEV], Multimedia Redirection is “used to transfer synchronized audio and video data from a terminal server to a terminal client. The client can play the audio and video data and synchronize this data by using the timing information provided by this protocol”. It's also called “Video Redirection”.
 
+h2. Usage
+
+h3. Server Requirement
+
+The Multimedia Redirection requires the server running the following Windows version:
+
+* Windows 2008 R2: audio and video playback redirection must be enabled manually.
+* Windows 7 Ultimate/Enterprise: works out of the box.
+
+Please refer to "this blog":http://blogs.msdn.com/b/rds/archive/2009/07/24/multimedia-redirection-improvements-in-windows-7-and-ws2008-r2-part-1.aspx regarding how to configure Windows 2008 R2.
+
+Note that currently only Windows Media Player supports this feature.
+
+h3. Compilation
+
+The following development packages must be installed to have full Multimedia Redirection features compiled in.
+
+* FFmpeg (libavcodec-dev)
+* ALSA (libasound2-dev) and/or PulseAudio (libpulse-dev)
+* XVideo (libxv-dev)
+
+h3. Quick Start
+
+To use the feature, register the "tsmf" dynamic virtual channel as following:
+
+@xfreerdp --plugin drdynvc --data tsmf -- (server)@
+
+h3. Audio Device
+
+By default, FreeRDP will detect PulseAudio availability and then falls back to ALSA, and then use the default audio device. You can force an audio backend and optionally a sound device by adding additional arguments after tsmf. The following example forces to use the default audio device with PulseAudio:
+
+@xfreerdp --plugin drdynvc --data tsmf:audio:pulse -- (server)@
+
+The following example forces to use the audio device "plughw:0,0" with ALSA:
+
+@xfreerdp --plugin drdynvc --data tsmf:audio:alsa:plughw:0,0 -- (server)@
+
+Note that you do not need to register the rdpsnd plugin to have audio playback. The tsmf plugin generally gives higher audio quality than rdpsnd.
+
+h3. XVideo Adaptor
+
+By default, FreeRDP will choose the base port of the last available XVideo adaptor, which should just work in most cases. However sometimes you might want to manually choose a different port, for example, the default adaptor does not work well, or the port is being used by other process. You can specify the --xv-port argument:
+
+@xfreerdp --xv-port (port) --plugin drdynvc --data tsmf -- (server)@
+
+For a complete list of all available adaptors and ports in your system, run "xvinfo".
+
+h3. Demuxing and Decoding
+
+Every video file is basically constructed in two steps. Firstly, raw video and audio streams are encoded using some kind of algorithms, called "codec", such as H264, WVC1, MP3, AC3, etc. This step is called "Encoding". Then the encoded streams are packed together into a single file using specific container format, such as Matroska(mkv), AVI, MP4, etc. This step is called "Muxing".
+
+So in order to play a video file, two steps called "Demuxing" and "Decoding" are performed respetively. Those are done transparently when the video is played locally. However when we use Multimedia Redirection, it's very important to understand that those two steps are performed on different host and different stage: demuxing is performed by the server first, then decoding is performed by the client afterwards. When a video file is opened on the server, the media player will first parse the video file container, retrieve all necessary header information, and separate the content of all video and audio streams. Then the server sends them to the client. The client needs to prepare necessary codec to decode the streams and play them.
+
+It's obvious that in order to be able to redirect specific video file, the server MUST understand the container format. For example, by default Window Media Player does not support Matroska. You must install the Matroska filter on the server to play mkv files. However, the server does not need to have the codec installed, since once demuxing is done, the original stream content are sent to the client for decoding.
+
+h3. Supported Codecs
+
+Currently the following codecs are supported and tested.
+
+Video:
+* WVC1
+* WMV3
+* H264/AVC1
+
+Audio:
+* WMA2
+* MP3
+* AAC
+* AC3
+
+h3. Bandwidth
+
+Based on some observations, 100M ethernet is pretty much enough play HD 720P content as if it plays locally. When testing with 54M Wifi (which has much higher latency), a DVD quality video can still play smoothly, but sometimes there will be some noticeable frame drops.
+
+h3. Test Scenario
+
+Here is a test scenario that is known to work:
+
+Download "Big Buck Bunny":http://www.bigbuckbunny.org/index.php/download/ in 854x480 resolution and H.264 format.
+By default, Windows Server 2008 R2 SP1 won't be able to play the video. Install "K-Lite Codec Pack Basic":http://www.free-codecs.com/k_lite_codec_pack_download.htm to get the proper codecs.
+
+Once you know that the server is able to play the video, try connecting and playing the video remotely. If it works, you should get something smooth enough like this:
+
+!images/screenshots/freerdp_tsmf_bbb.png!
+
+h2. Hacking
+
+h3. Adding a New Codec
+
+A stream has three main attributes in order to be understood by the client: Major Type, Sub Type and Format Type.
+
+h4. Major Type
+
+There are currently only two major types: video and audio. They are defined as fixed GUID, and mapped to constants defined by our own, in tsmf_constants.h. There could be the third useful major type - subtitle, however it seems that Windows Media Player is not redirecting it even though the subtitle stream is available in the video file.
+
+h4. Sub Type
+
+Sub types are actually the codec needed to decode the stream. Again they are defined as fixed GUID, and we map them to constants in tsmf_constants.h. When the sub types are passed to FFmpeg, the codec constants are mapped again into the FFmpeg codec enum. It's necessary to separate the mapping into two steps and have our own abstraction layer, since FFmpeg is designed as a sub-plugin and we could support other decoding library in the future.
+
+h4. Format Type
+
+Codecs require information to be able to start decoding properly. For example, the dimension of the video size. Many codecs also require certain codec-specific extra data. In Matroska specification, such extra data is called "CodecPrivate". In RDP protocol, all those information is packed into a struct called Format Type, defined mostly in MF (Media Foundation) or DirectShow API. Every Format Type is given a fixed GUID and again we map them to our own constants.
+
+Sometimes it could become tricky to retrieve the codec extra data from the Format Type struct. In this case, the Matroska container format might become handy, since it's much easier to be analyzed by some EBML tree viewer application.
+
+h3. Pixel Format
+
+After a video frame in a stream is decoded, the outcome is a raw image consists of width x height pixels. Those pixels are packed in certain pixel format, usually YUV. Then the image is passed to XVideo directly for hardware decoding and scaling.
+
+The video codecs we currently supported are all producing I420(YUV420P), which is probably the most common format. We also support converting I420 to YV12 in case the video driver does not support it. However, it is yet to investigate whether other pixel formats exist.
+
+h3. Known Issues
+
+* The "Landscapes.wtv" file shipped with Windows 7 by default won't be able to play. It's difficult to analyze this file format, since FFmpeg does not even able to convert it to mkv.
+* Fast-forwarding is not yet implemented.
+* Volume control is not yet implemented.
+
+h2. FAQ
+
+Q: What does "TSMF" mean?
+A: "TSMF" is the channel name of the Multimedia Redirection protocol, but unfortunately there's no official explanation in the MS documentation. A reasonable guess would be "Terminal Service Media Foundation".
+
+Q: I have enough bandwidth and I have registered the tsmf plugin. However my video is very slow like slideshow.
+A: The video codec is not yet supported, so the video frames are decoded on the server and sent to the client as normal RDP bitmaps. Please look at the standard output for some useful information.
+
+Q: I have registered the tsmf plugin but I cannot hear audio. However if I also registered rdpsnd I can hear it.
+A: The audio codec is not yet supported, so the audio samples are decoded on the server and sent to the client through rdpsnd plugin. If rdpsnd is not registered, you will not be able to hear anything. But note that even you can hear sound through rdpsnd, video/audio will be out of sync. So the best solution is to request the audio codec support.

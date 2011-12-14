@@ -1,67 +1,67 @@
 This page is intended for those who wish to develop the FreeRDP Wireshark RDP protocol analyzer. If you only want to use Wireshark, you should look at the [[Wireshark Usage]] page instead.
 
-# Useful Links
+h1. Useful Links
 
-  * [Wireshark Website](http://www.wireshark.org/)
-  * [Wireshark Download](http://www.wireshark.org/download.html)
-  * [Wireshark Documentation](http://www.wireshark.org/docs/)
-  * [FreeRDP Wireshark RDP Analyzer](https://github.com/FreeRDP/Wireshark)
+* "Wireshark Website":http://www.wireshark.org/
+* "Wireshark Download":http://www.wireshark.org/download.html
+* "Wireshark Documentation":http://www.wireshark.org/docs/
+* "FreeRDP Wireshark RDP Analyzer":https://github.com/FreeRDP/Wireshark
 
-# Prerequisites
+h1. Prerequisites
 
 To develop for Wireshark, you will need to download its sources and compile it yourself. You have the choice between fetching the latest development sources from subversion, or downloading the latest stable source snapshot. The Wireshark development manual will instruct you to use the latest development sources, but I would advise otherwise: sometimes the development sources aren't stable, which will slow your development work for no valuable reason. Developing using a stable source snapshot will usually cause less problems.
 
-Without waiting any further, download the latest source snapshot from the [Wireshark download page](http://www.wireshark.org/download.html). At the time of writing these lines, the latest stable version of Wireshark is 1.6.2. It will probably be a different version number by the time you read this, since Wireshark releases frequently.
+Without waiting any further, download the latest source snapshot from the "Wireshark download page":http://www.wireshark.org/download.html". At the time of writing these lines, the latest stable version of Wireshark is 1.6.2. It will probably be a different version number by the time you read this, since Wireshark releases frequently.
 
 In order to build Wireshark, you will need to satisfy the following dependencies:
-sudo apt-get install bison flex libpcap-dev libgnutls-dev libgtk2.0-dev
+@sudo apt-get install bison flex libpcap-dev libgnutls-dev libgtk2.0-dev@
 
-# Building Wireshark
+h1. Building Wireshark
 
 Download the source snapshot, extract it, and run the autogen.sh script:
-    
-    awake@workstation:~> wget http://wiresharkdownloads.riverbed.com/wireshark/src/wireshark-1.6.2.tar.bz2
-    awake@workstation:~> tar jxf wireshark-1.4.4.tar.bz2
-    awake@workstation:~> mv wireshark-1.4.4 wireshark
-    awake@workstation:~> cd wireshark/
-    awake@workstation:~/wireshark> ./autogen.sh 
-    Checking for python.
-    aclocal -I ./aclocal-fallback
-    libtoolize --copy --force
-    libtoolize: putting auxiliary files in `.'.
-    libtoolize: copying file `./ltmain.sh'
-    libtoolize: Consider adding `AC_CONFIG_MACRO_DIR([m4])' to configure.in and
-    libtoolize: rerunning libtoolize, to keep the correct libtool macros in-tree.
-    libtoolize: Consider adding `-I m4' to ACLOCAL_AMFLAGS in Makefile.am.
-    autoheader
-    automake --add-missing --gnu
-    configure.in: installing `./ylwrap'
-    autoconf
 
-    Now type "./configure [options]" and "make" to compile Wireshark.
+awake@workstation:~> wget http://wiresharkdownloads.riverbed.com/wireshark/src/wireshark-1.6.2.tar.bz2
+awake@workstation:~> tar jxf wireshark-1.4.4.tar.bz2
+awake@workstation:~> mv wireshark-1.4.4 wireshark
+awake@workstation:~> cd wireshark/
+awake@workstation:~/wireshark> ./autogen.sh 
+Checking for python.
+aclocal -I ./aclocal-fallback
+libtoolize --copy --force
+libtoolize: putting auxiliary files in `.'.
+libtoolize: copying file `./ltmain.sh'
+libtoolize: Consider adding `AC_CONFIG_MACRO_DIR([m4])' to configure.in and
+libtoolize: rerunning libtoolize, to keep the correct libtool macros in-tree.
+libtoolize: Consider adding `-I m4' to ACLOCAL_AMFLAGS in Makefile.am.
+autoheader
+automake --add-missing --gnu
+configure.in: installing `./ylwrap'
+autoconf
+
+Now type "./configure [options]" and "make" to compile Wireshark.
 
 Now, run the configure script with the --with-ssl option. It is very important to build Wireshark with SSL support, since the Wireshark RDP Analyzer needs it.
 
-    awake@workstation:~/wireshark> ./configure --with-ssl
+awake@workstation:~/wireshark> ./configure --with-ssl
 
 If the configure script fails, make sure that you have installed all the required development libraries. If the configure script succeeds, verify that the configure summary says the following:
 
-                 Use GNU crypto library : yes
-                 Use SSL crypto library : yes
+             Use GNU crypto library : yes
+             Use SSL crypto library : yes
 
 If "Use GNU crypto library" is set to "no", make sure that you have installed libgnutls-dev. Without the development package of GnuTLS, Wireshark will build, but won't have the full SSL dissector that we need. Once you're done, you can build Wireshark:
 
-    awake@workstation:~/wireshark> make
+awake@workstation:~/wireshark> make
 
 Building Wireshark takes a while, so you have time for a coffee. When it is done, try running it:
 
-    awake@workstation:~/wireshark> ./wireshark &
+awake@workstation:~/wireshark> ./wireshark &
 
 If it works, you should now see your version of Wireshark built from source:
 
-{{:wireshark:source_build.png|}}
+!images/wireshark/source_build.png!
 
-# Building RDP Analyzer
+h1. Building RDP Analyzer
 
 In Wireshark terminology, a "protocol analyzer" is a "protocol dissector". It sounds weird the first time, but you get used to it after. There are two ways to write a Wireshark dissector:
 
@@ -72,108 +72,108 @@ In our case, we are writing a static built-in dissector. The problem with plugin
 
 The first step is to fetch the sources for the [FreeRDP Wireshark RDP Analyzer](https://github.com/FreeRDP/Wireshark). If you have a github account, you can easily "fork" it such that you have write access to your own copy, otherwise you can use the public read-only version:
 
-    awake@workstation:~/git> git clone git://github.com/FreeRDP/Wireshark.git
-    Initialized empty Git repository in /home/awake/git/Wireshark/.git/
-    remote: Counting objects: 5, done.
-    remote: Compressing objects: 100% (5/5), done.
-    remote: Total 5 (delta 0), reused 0 (delta 0)
-    Receiving objects: 100% (5/5), 7.83 KiB, done.
+awake@workstation:~/git> git clone git://github.com/FreeRDP/Wireshark.git
+Initialized empty Git repository in /home/awake/git/Wireshark/.git/
+remote: Counting objects: 5, done.
+remote: Compressing objects: 100% (5/5), done.
+remote: Total 5 (delta 0), reused 0 (delta 0)
+Receiving objects: 100% (5/5), 7.83 KiB, done.
 
 In this example, the wireshark source directory is ~/wireshark, and the RDP dissector sources are in ~/git/Wireshark. Wireshark built-in dissector sources are located in ~/wireshark/epan/dissectors/. So that we can our own sources separate, we will use symlinks:
 
-    awake@workstation:~/wireshark/epan/dissectors> ln -s ../../../git/Wireshark/packet-rdp.c packet-rdp.c
-    awake@workstation:~/wireshark/epan/dissectors> ln -s ../../../git/Wireshark/packet-rdp.h packet-rdp.h
+awake@workstation:~/wireshark/epan/dissectors> ln -s ../../../git/Wireshark/packet-rdp.c packet-rdp.c
+awake@workstation:~/wireshark/epan/dissectors> ln -s ../../../git/Wireshark/packet-rdp.h packet-rdp.h
 
 The next step is to edit ~/wireshark/epan/dissectors/Makefile.common to insert "packet-rdp.c" right before "packet-rdt.c", and "packet-rdp.h" right before "packet-rdt.h", such that you have:
 
-    ...
-    	packet-raw.c		\
-    	packet-rdm.c		\
-    	packet-rdp.c		\
-    	packet-rdt.c		\
-    	packet-redback.c 	\
-    	packet-redbackli.c 	\
-    ...    
-    	packet-raw.h	\
-    	packet-rdp.h	\
-    	packet-rdt.h	\
-    	packet-rgmp.h	\
-    	packet-ripng.h	\
-    ...
+...
+	packet-raw.c		\
+	packet-rdm.c		\
+	packet-rdp.c		\
+	packet-rdt.c		\
+	packet-redback.c 	\
+	packet-redbackli.c 	\
+...
+	packet-raw.h	\
+	packet-rdp.h	\
+	packet-rdt.h	\
+	packet-rgmp.h	\
+	packet-ripng.h	\
+...
 
 Now go back to the root of the Wireshark sources, and regenerate configure scripts:
 
-    awake@workstation:~/wireshark> autoreconf
-    awake@workstation:~/wireshark> ./autogen.sh
-    awake@workstation:~/wireshark> ./configure --with-ssl
+awake@workstation:~/wireshark> autoreconf
+awake@workstation:~/wireshark> ./autogen.sh
+awake@workstation:~/wireshark> ./configure --with-ssl
 
 Build Wireshark again, and run it:
 
-    awake@workstation:~/wireshark> make
-    awake@workstation:~/wireshark> ./wireshark &
+awake@workstation:~/wireshark> make
+awake@workstation:~/wireshark> ./wireshark &
 
 Then go in "Analyze->Enabled Protocols":
 
-{{:wireshark:enabled_protocols_menu.png|}}\\ 
+!images/wireshark/enabled_protocols_menu.png! 
 
 If the RDP dissector was properly built in Wireshark, you should now be able to see "RDP - Remote Desktop Protocol" in the list of enabled protocols:
 
-{{:wireshark:enabled_protocols_panel.png|}}\\ 
+!images/wireshark/enabled_protocols_panel.png!
 
-# Using the RDP Analyzer
+h1. Using the RDP Analyzer
 
-To try using the RDP analyzer, download one of the sample packet captures available in the [[Network Level Authentication|Network Level Authentication]] article. For this sample, we will use the [[nla_winxp_win7|NTLMv2 Authentication, Windows XP to Windows 7, Local Logon]] packet capture, available for download in {{:nla_winxp_win7.zip|}}.\\ 
+To try using the RDP analyzer, download one of the sample packet captures available in the [[Network Level Authentication|Network Level Authentication]] article. For this sample, we will use the [[nla_winxp_win7|NTLMv2 Authentication, Windows XP to Windows 7, Local Logon]] packet capture, available for download in "nla_winxp_win7.zip":files/pcap/nla_winxp_win7.zip
 
 Download and extract nla_winxp_win7.zip:
 
-    awake@workstation:~/Downloads> unzip nla_winxp_win7.zip 
-    Archive:  nla_winxp_win7.zip
-       creating: nla_winxp_win7/
-      inflating: nla_winxp_win7/nla_winxp_to_win7.pcap  
-      inflating: nla_winxp_win7/win7.key  
-      inflating: nla_winxp_win7/win7.pfx  
-      inflating: nla_winxp_win7/win7.pem  
+awake@workstation:~/Downloads> unzip nla_winxp_win7.zip 
+Archive:  nla_winxp_win7.zip
+   creating: nla_winxp_win7/
+  inflating: nla_winxp_win7/nla_winxp_to_win7.pcap  
+  inflating: nla_winxp_win7/win7.key  
+  inflating: nla_winxp_win7/win7.pfx  
+  inflating: nla_winxp_win7/win7.pem  
 
 Open nla_winxp_win7.zip in Wireshark:
 
-{{:wireshark:rdp_tpkt.png|}}\\ 
+!images/wireshark/rdp_tpkt.png!
 
 By default, Wireshark will use the TPKT dissector on packets sent on port 3389. TPKT is related to RDP, but it won't dissect anything useful to us, so we will disable it to avoid a conflict with our own RDP dissector. Go in "Analyze->Enabled Protocols" and disable the TPKT dissector:
 
-{{:wireshark:rdp_tpkt_disable.png|}}\\ 
+!images/wireshark/rdp_tpkt_disable.png!
 
 Disabling the TPKT dissector should have the effect of dissecting RDP packet using the TCP dissector instead. We now want to enable the RDP dissector for packets on port 3389, so right-click one of the packets in the capture and select "Decode As":
 
-{{:wireshark:rdp_decode_as.png|}}\\ 
+!images/wireshark/rdp_decode_as.png!
 
 In the "Transport" tab of the "Decode As" panel, select the "SSL" dissector and press "OK":
 
-{{:wireshark:rdp_decode_as_ssl.png|}}\\ 
+!images/wireshark/rdp_decode_as_ssl.png!
 
 You should now see "TLSv1" in the protocol column of most packets, but we're not done yet: the SSL dissector needs to know the private key used in the RDP connection in order to decrypt it. To configure the SSL dissector, go in "Edit->Preferences":
 
-{{:wireshark:preferences.png|}}\\ 
+!images/wireshark/preferences.png! 
 
 In the "Preferences" panel, select "Protocols/SSL" on the left:
 
-{{:wireshark:preferences_ssl.png|}}\\ 
+!images/wireshark:preferences_ssl.png!
 
 In the "RSA keys list" field of the SSL dissector preferences, enter:
 
-    192.168.1.125,3389,rdp,/home/awake/Downloads/nla_winxp_win7/win7.pem
+192.168.1.125,3389,rdp,/home/awake/Downloads/nla_winxp_win7/win7.pem
 
 where "/home/awake/Downloads/nla_winxp_win7/win7.pem" is replaced by the full path to the win7.pem file included in nla_winxp_win7.zip. The "RSA keys list" field is a semi-colon separated list of entries of the following format:
 
-    <server address>,<server port>,<dissector>,<private key file>
+<server address>,<server port>,<dissector>,<private key file>
 
 If you do not see the "RSA keys list" in the SSL dissector preferences, and it looks like this instead:
 
-{{:wireshark:preferences_no_ssl.png|}}\\ 
+!images/wireshark/preferences_no_ssl.png!
 
 It means that you didn't build Wireshark with proper SSL and GnuTLS support.
 
 If everything was done properly, you should now be able to see partial analysis of RDP packets, with "RDP" in the protocol column:
 
-{{:wireshark:rdp_dissector.png|}}\\ 
+!images/wireshark/rdp_dissector.png!
 
 Please note that the RDP dissector is in early development, and doesn't analyze all packets, or fail in certain places.
