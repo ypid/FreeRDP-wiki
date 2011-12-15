@@ -1,4 +1,6 @@
-h1. NTLMv2 Authentication, Windows XP to Windows 7, Local Logon
+h1. NLA WinXP Win7
+
+NTLMv2 Authentication, Windows XP to Windows 7, Local Logon
 
 "nla_winxp_win7.zip":files/pcap/nla_winxp_win7.zip
 

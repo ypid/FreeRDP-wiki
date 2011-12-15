@@ -1,4 +1,6 @@
-h1. NTLMv2 Authentication, Windows 7 to Windows Server 2008 R2, Domain Logon
+h1. NLA Win7 Win2K8R2
+
+NTLMv2 Authentication, Windows 7 to Windows Server 2008 R2, Domain Logon
 
 "nla_win7_win2k8r2.zip":files/pcap/nla_win7_win2k8r2.zip
 
