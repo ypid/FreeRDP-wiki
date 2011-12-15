@@ -1,5 +1,19 @@
 Welcome to the FreeRDP wiki!
 
-This wiki is not yet our official wiki, so unless you know what you are doing you should use "www.freerdp.com/wiki":http://www.freerdp.com/wiki instead.
-
-Ideally, this should become our new wiki as we upgrade the documentation for FreeRDP 1.0.
+* "Compilation":Compilation
+* "Eclipse IDE":Eclipse
+* "Coding Guidelines":Coding-Guidelines
+* "Reference Documentation":Reference-Documentation
+* "Network Level Authentication":Network-Level-Authentication
+* "Git Version Control":Git-Version-Control
+* "Multimedia Redirection":Multimedia-Redirection
+* "RemoteApp":RemoteApp
+* "RemoteFX":RemoteFX
+* "Doxygen":Doxygen
+* "Keyboard":Keyboard
+* "PandaBoard":PandaBoard
+* "License Change":License-Change
+* "USB Redirection":USB-Redirection
+* "Wireshark Usage":Wireshark-Usage
+* "Wireshark Development":Wireshark-Development
+* "Windows GDI":Windows-GDI
