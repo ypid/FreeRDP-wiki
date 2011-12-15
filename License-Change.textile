@@ -1,0 +1,33 @@
+h1. License Change
+
+This page was originally written to document the license change of what would have been FreeRDP 0.9. Since then, FreeRDP 0.9 was cancelled so that we could concentrate our efforts on rewriting FreeRDP in the 1.x development branch. With FreeRDP 1.0, we consider the licensing issue resolved for good. More details can be found in the "FreeRDP 1.0 announcement":http://sourceforge.net/mailarchive/message.php?msg_id=27782543
+
+On February 15th 2010, the decision was taken to "change the license of FreeRDP from GPLv2 to Apache License 2.0":http://sourceforge.net/mailarchive/message.php?msg_id=27067344. The current FreeRDP code base was forked from rdesktop two years ago. At the time, the rdesktop source code was GPLv2. The rdesktop license change to GPLv3 was done after the fork, so FreeRDP never had GPLv3 source code. Over the last two years, the code base has been significantly changed, with a lot of code being completely rewritten to match a new software architecture. We've been very active, and we will continue to be. 
+
+If you feel like you own copyright on code within the FreeRDP code base, please contact us as soon as possible to tell us:
+* The affected source code
+* If you agree to the license change
+
+If you own copyright on source code for which you do not agree to the license change, we will respect your right and simply get rid of it. Of course, it is a sad thing to do, but it is necessary in order to complete the license change.
+
+Here is a list of copyright holders that agreed to the license change:
+
+* Marc-André Moreau
+* Jay Sorg
+* Vic Lee
+* Mads Kiilerich
+* O.S. Systems
+** Otavio Salvador
+** Eduardo Beloni
+* Nils Andresen
+* Matthew Chapman
+* Jeroen Meijer
+* Norbert Federa
+
+At this point, we have reached most people that should be asked for their permission. However, we are perfectly aware that we cannot rely only on the name of contributors mentioned in file headers, since it often happens that people contribute code without putting their names. This part is harder to do, since we need to review the code more thoroughly to identify who we should contact.
+
+It has been proposed on rdesktop-devel that we contact the "Software Freedom Law Center":http://www.softwarefreedom.org/ for advice on the matter. We contacted them, but they were too long to proceed, so we went for a paid IP assessment from "Black Duck":http://www.blackducksoftware.com/ instead.
+
+The Black Duck IP assessment report, along with the source snapshots used, can be obtained "http://www.freerdp.com/downloads/freerdp_blackduck.zip":http://www.freerdp.com/downloads/freerdp_blackduck.zip.
+
+There were no major problem identified as part of the assessment that cannot be promptly fixed. Please note that source snapshots included with the report do not correspond to the latest development version of FreeRDP in which certain issues have been addressed already. These results are to be discussed further on the mailing list, until we decide that the project is finally good to go with finalizing the license change and releasing FreeRDP 0.9.

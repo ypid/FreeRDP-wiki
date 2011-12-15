@@ -1,0 +1,110 @@
+h1. Keyboard Input
+
+The FreeRDP keyboard input system is quite different from the one found in rdesktop, and requires quite an explanation to be well understood. Keyboard input is not an easy to understand subject, and just to add to the complexity the terminology varies a lot between operating systems.
+
+h2. Physical Keyboard Input
+
+When a key on a physical keyboard is pressed, the keyboard controller sends a scan code to the computer to indicate that a key has been pressed. The scan code is the number used to identify the key. Depending on the keyboard, flags are often used to differentiate "key down" and "key up" messages, or to take into account special keys like shift. In an ideal world, all keyboards would follow the same convention, but it is sadly not the case: in reality, a wide variety of keyboard exists, and they do not all send the same scan codes in the same way. This means that if on one keyboard the 'A' key corresponds to the scan code 28, one cannot safely assume that it will always be the case on all keyboards. To absorb the difference of scan codes between different physical keyboards, operating systems often have their own abstraction layer that maps scan codes to a consistent set of "virtual" key codes. Windows has virtual code key codes, and XKB has symbolic key codes for that matter. Unlike scan codes, those consistent sets of key codes are made to safely assumed to remain the same. For instance, if you press the space bar in Windows, you will always get 32 (VK_SPACE) as the resulting virtual key code. Similarly, XKB would map the space bar to the symbolic key code <SPCE>.
+
+h2. Scan Codes
+
+If you are interested in reading more about keyboard scan codes, an excellent source of information is "http://www.win.tue.nl/~aeb/linux/kbd/scancodes.html":http://www.win.tue.nl/~aeb/linux/kbd/scancodes.html
+Wikipedia is also a nice start: "http://en.wikipedia.org/wiki/Scancode":http://en.wikipedia.org/wiki/Scancode
+
+There are three major keyboard scan code sets:
+"Scan Code Set 1":http://www.computer-engineering.org/ps2keyboard/scancodes1.html
+"Scan Code Set 2":http://www.computer-engineering.org/ps2keyboard/scancodes2.html
+"Scan Code Set 3":http://www.computer-engineering.org/ps2keyboard/scancodes3.html
+
+h2. Virtual Key Codes
+
+Virtual key codes can be found on MSDN: "Microsoft Virtual Key Codes":http://msdn.microsoft.com/en-us/library/dd375731
+In FreeRDP, they are all defined in libfreerdp-kbd/keyboard.h
+
+Virtual key codes are used on Windows, but since RDP has been designed with Windows in mind, the RDP keyboard messages are also based on them. In fact, RDP sends "scan codes" that map directly to virtual key codes. There is no real advantage to sending scan codes instead of virtual key codes, and it is mostly confusing, but that's the way it's being done.
+
+h2. Keycodes
+
+XKB, or the X Keyboard Extension, is an extension often used to bring enhanced keyboard support to an X11 server. The X11 server alone only knows of "keycodes" which map directly to physical scan codes of the current keyboard. Since keycodes are based on the physical keyboard scan codes, they cannot be relied on for consistency. If you want to know the keycodes for keys on your keyboard, there is the always useful xev tool that logs X11 events with detailed information. Pressing the space bar in the xev window generates the following output:
+
+bc. 
+KeyPress event, serial 40, synthetic NO, window 0x2600001,
+    root 0x15d, subw 0x0, time 438820795, (79,111), root:(3074,544),
+    state 0x20, keycode 65 (keysym 0x20, space), same_screen YES,
+    XLookupString gives 1 bytes: (20) " "
+    XmbLookupString gives 1 bytes: (20) " "
+    XFilterEvent returns: False
+
+bc. 
+KeyRelease event, serial 40, synthetic NO, window 0x2600001,
+    root 0x15d, subw 0x0, time 438820891, (79,111), root:(3074,544),
+    state 0x20, keycode 65 (keysym 0x20, space), same_screen YES,
+    XLookupString gives 1 bytes: (20) " "
+    XFilterEvent returns: False
+
+If you are interested in seeing how scan codes can differ between keyboards, there is an old program called xkeycaps that is no longer maintained but allows you to see various keyboards with their layout and scan codes.
+
+h2. XKB Symbolic Key Codes
+
+Symbolic key codes are XKB's equivalent of Virtual Key Codes. XKB uses the "X Keyboard Configuration Database":http://freedesktop.org/wiki/Software/XKeyboardConfig to know how to handle keycodes from various keyboards and map them to symbolic key codes. Those symbolic key codes are then mapped to keysyms (key symbols) according to a keyboard layout also defined in  the X Keyboard Configuration Database. One advantage of the database being accessible without XKB is that it can be used as the basis of the FreeRDP keyboard input system without adding XKB as a dependency. Since the database contains keycode to symbolic keycode maps, and that new versions of the database come out with updates, it can be used as a valuable source of information for mapping keycodes to virtual key codes.
+
+However, since the database does not use virtual key codes, but symbolic key codes, a translation between the two systems has to be done first. FreeRDP comes with a perl script (keymaps/xkb.pl) that can parse the X Keyboard Configuration Database for keycode to symbolic key code maps and generate new keycode to virtual key code maps instead that can be used by FreeRDP. Those generated keymaps are packaged with FreeRDP so you don't have to do it yourself. Since it's all handled with a perl script, all that needs to be done when a new version of the database comes out is to run the script on the new version. The translation between symbolic key codes and virtual key codes is handled in xkb.pl, so if there is an error in the symbolic key code translation, it must be fixed in the script and not on the generated key maps since a re-generation of the keymaps will overwrite the change.
+
+As an example, if you look in the X Keyboard Configuration Database in keycodes/evdev, you would see something like this:
+
+bc. 
+	<SPCE> = 65;
+
+Which tells us that with this particular keyboard, the symbolic key code <SPCE> (space) maps to keycode 65. To see how this is going to be translated, we go in xkb.pl, and we find the following line:
+
+bc. 
+        "SPCE" => "VK_SPACE",
+
+The above line tells us that we translate the symbolic key code to <SPCE> to the virtual key code VK_SPACE. If for any reason this was wrong, it would need to be fixed there. Mistakes could still be found with rarely used symbolic key codes that have been assumed to map to the wrong virtual key code due to the lack of knowledge of what the key really is.
+
+The resulting line can be found in keymaps/evdev, in the following format:
+
+bc. 
+	VK_SPACE	<65>
+
+Which tells us that for this keyboard we map keycode 65 to the virtual key code VK_SPACE.
+
+h2. FreeRDP Implementation
+
+h3. Keymap Detection
+
+FreeRDP first starts by trying to detect an existing XKB installation, and tries to get its current configuration. Since the name of the keymaps have been kept the same in their translated format, the current XKB configuration can be used as an excellent way of finding which keymap would be the most accurate. Solaris/OpenSolaris has its own detection routine based on the fact that OpenSolaris ships with XKB while Solaris doesn't, and some sort of mapping has been done between the two systems in its transition. If XKB configuration cannot be found, the current system locale will be used to try to find a keymap. Since locale is not very accurate, it's a last resort detection method, but it happens to be the only detection method used by rdesktop.
+
+h3. Keyboard Layout Detection
+
+Keyboard layout detection happens at the same time as keymap detection. If XKB configuration is present, the keyboard layout can be detected quite accurately. Since Windows identifies keyboard layouts using its own system, a translation is being made between the XKB naming and Windows keyboard layouts. If keyboard layout is incorrectly detected in an XKB environment, then it should be fixed in libfreerdp-kbd/keyboard.h, where the mapping between the two systems is done. If XKB detection fails, then keyboard layout detection will be done using the current system locale. The mapping between the system locale and the keyboard layout id is done in libfreerdp-kbd/locales.h, and is based on the list of default keyboard layouts for each locale that can be found on microsoft.com: "Windows XP/Server 2003 - List of Locale IDs, Input Locale, and Language Collection":http://www.microsoft.com/globaldev/reference/winxp/xp-lcid.mspx
+
+h3. Key Mapping
+
+FreeRDP uses keycodes as the source of keyboard input events, translates them to virtual key codes using the X Keyboard Configuration Database translated keymaps, which are then mapped directly to RDP scan codes.
+
+h3. Flaws
+
+The flaws in the FreeRDP keyboard input are mostly "fix once for everybody". For instance, if a key code to virtual key code map contains an error, it only needs to be fixed once for that particular keyboard and then the key will work for all keyboard layouts. The point of failure of the FreeRDP keyboard system is mostly the physical keyboard. If your physical keyboard works well and the correct keymap is loaded for it, then it will work with all keyboard layouts (detection could still fail, but a keyboard layout id can be forced).
+
+h3. Strengths
+
+Since the main failure point is the physical keyboard, if your keyboard is well supported then it will work correctly for all keyboard layouts. For people using all sorts of weird keyboard layouts or keyboard layouts that are not supported in rdesktop, this is a major advantage. Some would argue that we could simply write new rdesktop-like keymaps for each and every keyboard layout on Earth, which would take a lot of time and still be error-prone since there exists a large number of keyboard layouts and some people customize them. Since keymaps are generated from the X Keyboard Configuration Database, and that the database is a separate project that is maintained and kept up to date, there is less maintenance work associated with it. Fixing problems often is just fixing an entry in a table for an incorrect conversion or mapping instead of writing a new keymap like with rdesktop for an unsupported keyboard layout.
+
+h2. rdesktop Implementation
+
+h3. Keymap / Keyboard Layout Detection
+
+rdesktop checks the current system locale and loads a keymap with a name based on the locale automatically. The locale-based keymap provides a map between X11 keysyms to RDP scan codes, and also contains a keyboard layout id. Since keysyms are the result of the conversion of symbolic key codes according to a keyboard layout, and that this conversion is not lossless (there can be multiple ways of generating the same keysym), using them directly can cause certain problems. Also, since there usually exists more than one keyboard layout for a particular locale, and that the locale-based keymap is highly dependent on the current keyboard layout, many other errors may be introduced. For instance, if rdesktop detects that my current locale is "fr-ca" (French Canadian) and that I'm currently using a Canadian Multilingual Standard keyboard layout, it would screw up many important letters for the French language since the "fr-ca" keymap assumes a French Canadian keyboard layout while there is nothing particularly wrong with my system locale or keyboard layout.
+
+h3. Key Mapping
+
+rdesktop uses keysyms as the source of keyboard input events, translates them directly to RDP scan codes using hand-made keymaps that need to be written for each keyboard layout.
+
+h3. Flaws
+
+Detection method assumes one keyboard layout per system locale, which is not a safe assumption since it's not always the case. Keysyms may be consistent, but they are translated from symbolic key codes in a lossy conversion. This may not be obvious to English-speakers since the US keyboard layout works will with this method, but it gets all messy when you start taking into account dead keys and languages with a lot of accents. Also, since the mapping is done using keysyms, one could not change the input keyboard layout of the rdesktop window after it has started without messing up the keyboard input, as a new keyboard layout would not generate the same keysyms. Since there are a lot of keyboard layouts, making a new keymap for each of them is a never ending task. It is also more work to write a new keymap then fix just a few bad key translations in FreeRDP. It is more work to maintain since the keymaps are written manually, while with FreeRDP they are based off the X Keyboard Configuration Database which is maintained separately and kept up to date.
+
+h3. Strengths
+
+If you use the same keyboard layout and if it is well supported in rdesktop, then keyboard input will work smoothly for you, but this only applies to those who have a keyboard layout well supported in rdesktop such as "en-us".

@@ -1,0 +1,12 @@
+h1. Windows GDI
+
+The Microsoft Windows Graphics Device Interface (GDI) API is particularly relevant to FreeRDP since it is used as the basis of many RDP graphical operations. The API is made such that GDI "objects" can be created and passed around using a handle, without ever directly accessing the content referred by the GDI object handles. FreeRDP provides a re-implementation of the Windows GDI API, sharing only the function names and definitions.
+
+"Windows GDI on MSDN":http://msdn.microsoft.com/en-us/library/dd145203
+
+Important Functions:
+* "BitBlt()":http://msdn.microsoft.com/en-us/library/dd183370
+* "LineTo()":http://msdn.microsoft.com/en-us/library/dd145029
+* "Polyline()":http://msdn.microsoft.com/en-us/library/dd162815
+* "Ellipse()":http://msdn.microsoft.com/en-us/library/dd162510
+* "Polygon()":http://msdn.microsoft.com/en-us/library/dd162814
