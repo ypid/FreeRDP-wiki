@@ -17,3 +17,5 @@ Welcome to the FreeRDP wiki!
 * "Wireshark Usage":Wireshark-Usage
 * "Wireshark Development":Wireshark-Development
 * "Windows GDI":Windows-GDI
+
+The old wiki can still be accessed "here":http://www.freerdp.com/wiki/.
