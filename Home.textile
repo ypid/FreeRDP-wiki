@@ -1,4 +1,4 @@
-Welcome to the FreeRDP wiki!
+**Welcome to the FreeRDP wiki!**
 
 * "Compilation":wiki/Compilation
 * "Eclipse IDE":wiki/Eclipse
@@ -19,3 +19,17 @@ Welcome to the FreeRDP wiki!
 * "Windows GDI":wiki/Windows-GDI
 
 The old wiki can still be accessed "here":http://www.freerdp.com/wiki/.
+
+h2. Usage
+
+This wiki is written in the "textile markup language":http://en.wikipedia.org/wiki/Textile_(markup_language). By default, the online GitHub editor will use the markdown mode, so make sure to change it to the textile mode.
+
+Textile is fairly straightforward:
+* "Textile Quick Reference":http://txt.io/static/a/textile.html
+* "Textile Reference Manual":http://thresholdstate.com/articles/4312/the-textile-reference-manual
+
+This GitHub wiki system (known as "Gollum":https://github.com/github/gollum) is special in the sense that it is built on top of git. This enables developers to edit the wiki locally with a text editor and easily merge their changes. Instructions on how to use git to access the wiki can be found "here":https://github.com/FreeRDP/FreeRDP/wiki/_access.
+
+Adding images cannot be done in the online editor, you need to add the image you want to reference inside the wiki git repository and then push it before you can use it. For this reason, it is recommended to edit the wiki offline.
+
+While you can use any text editor to edit a textile article, it is usually better to use an editor that has support for it. There are many tools out there that can do it, but my favorite is the "Mylyn WikiText plugin":http://wiki.eclipse.org/Mylyn/Incubator/WikiText for Eclipse. It does syntax highlighting, provides a quick textile reference, shows the document structure and also allows you to preview the formatted article.
