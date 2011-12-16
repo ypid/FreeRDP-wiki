@@ -13,7 +13,7 @@ Simplest method  - download latest "Eclipse IDE for C/C++ developers" package fr
 
 h1. Creating Project
 
-One of the advantages of cmake is that it can generate project files for a variety of IDEs, including Eclipse. Instructions on how to generate an Eclipse project can be found in the "compilation instructions":wiki/Compilation.
+One of the advantages of cmake is that it can generate project files for a variety of IDEs, including Eclipse. Instructions on how to generate an Eclipse project can be found in the "compilation instructions":Compilation.
 
 Once the project is created, you can import it in your current workspace:
 

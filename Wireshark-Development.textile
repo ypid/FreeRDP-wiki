@@ -1,6 +1,6 @@
 h1. Wireshark Development
 
-This page is intended for those who wish to develop the FreeRDP Wireshark RDP protocol analyzer. If you only want to use Wireshark, you should look at the "Wireshark Usage":wiki/Wireshark-Usage page instead.
+This page is intended for those who wish to develop the FreeRDP Wireshark RDP protocol analyzer. If you only want to use Wireshark, you should look at the "Wireshark Usage":Wireshark-Usage page instead.
 
 h1. Useful Links
 
