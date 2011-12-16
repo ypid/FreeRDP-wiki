@@ -1,0 +1,13 @@
+h1. Jailbreak
+
+"Jailbreak":http://www.isecpartners.com/application-security-tools/jailbreak.html is a tool for exporting certificates with their private keys, even if the private key was marked as non-exportable in the first place. Since auto-generated self-signed certificates usually have their private key marked as non-exportable, Jailbreak can become very handy.
+
+First, download "Jailbreak":http://www.isecpartners.com/application-security-tools/jailbreak.html and extract it. Right-click "Jailbreak.exe" and select "Run as administrator":
+
+!images/jailbreak/run_as_administrator.png!
+
+Jailbreak should now launch MMC (Microsoft Management Console) with the "certificates" snap-in. Unlike the regular console, this one will allow the exporting of private keys even if they were marked as non-exportable. To start the certificate exportation wizard, go in "Certificates (Local Computer)/Remote Desktop/Certificates", right-click the certificate listed on the right, and then select "All Tasks->Export":
+
+!images/jailbreak/certificate_export.png!
+
+This should launch the certificate export wizard. From this point, it should be the same as a regular certificate export. Follow the rest of the instructions in the "Certificate Export":Certificate-Export article.

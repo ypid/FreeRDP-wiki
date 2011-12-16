@@ -1,0 +1,58 @@
+h1. Certificate Export
+
+h2. Certificate Export Wizard
+
+The Certificate Export Wizard is used to export certificates on Windows. Here are the steps required to export a certificate with its private key, such that it can be used for decryption of packet captures. To begin, click "Next" at the welcome screen:
+
+!images/certificate/export_welcome.png!
+
+Select "Yes, export the private key" at the "Export Private Key" screen. If this option is unavailable, then the key has been marked as non-exportable. Refer to the "Wireshark Usage":Wireshark-Usage article to find ways of getting an exportable private key.
+
+!images/certificate/export_private_key.png!
+
+Leave all default options at the "Export File Format" screen:
+
+!images/certificate/export_format.png!
+
+In the "Password" screen, enter a password that will be required to read the exported certificate. In this case, the password is simply "password".
+
+!images/certificate/export_password.png!
+
+In the "File to Export" screen, choose a file name for the exported certificate. In this case, the certificate will be exported to C:\Users\Awake\Documents\windows7.pfx.
+
+!images/certificate/export_file.png!
+
+The certificate export wizard then shows a report. Click "Finish":
+
+!images/certificate/export_report.png!
+
+h2. Converting Certificate
+
+Certificates exported by Windows are in .pfx format, and they need to be converted before they can be used by Wireshark. From the above sample, we copy "windows7.pfx" to a Linux machine, in a ~/certificates folder:
+
+bc. 
+awake@workstation:~/certificates> ls
+windows7.pfx
+
+Please note that the same can be done on Windows, if you install OpenSSL on Windows and configure your PATH accordingly.
+
+First, convert the certificate from pfx to pem format. When asked for a password, use the password you've entered previously in the certificate export wizard:
+
+bc. 
+awake@workstation:~/certificates> openssl pkcs12 -in windows7.pfx -nocerts -nodes -out windows7.pem
+Enter Import Password:
+MAC verified OK
+
+The wireshark SSL dissector sometimes has problems with extra information present in pem certificates. From experience, using just the private key with nothing else works all the time. Extract the private key out of the certificate to a .key file:
+
+bc. 
+awake@workstation:~/certificates> openssl rsa -in windows7.pem -out windows7.key
+writing RSA key
+
+You should now have three files:
+
+bc. 
+awake@workstation:~/certificates> ls
+windows7.key  windows7.pem  windows7.pfx
+
+The one you need to use in Wireshark is the .key file. It is still good to keep the other certificate formats, if you ever need to decrypt a packet capture in a tool other than Wireshark.

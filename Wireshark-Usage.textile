@@ -10,7 +10,7 @@ Sample Wireshark RDP captures can be found in the "Network Level Authentication"
 
 h1. Exporting Self-Signed Certificate with its Private Key
 
-If you want to take your own captures, you will need to extract your server's certificate with its private key. The easiest way to do so is with [[Jailbreak]]. Once you managed to get a certificate with an exportable private key, you can follow the steps for [[Certificate Exportation]] in a format usable by Wireshark.
+If you want to take your own captures, you will need to extract your server's certificate with its private key. The easiest way to do so is with "Jailbreak":Jailbreak. Once you managed to get a certificate with an exportable private key, you can follow the steps for "Certificate Exportation":Certificate-Export in a format usable by Wireshark.
 
 h1. Configuring the Wireshark SSL Dissector
 
@@ -23,15 +23,15 @@ If the word "dissector" sounds weird to you, it is a term used to refer to the W
 
 For instance, if I have a packet capture for an RDP session where the server is located at 192.168.1.125 on port 3389, and that I have stored the private key file (pem format) in C:\privkey.pem, and that I want to analyze the decrypted TLS data to the "rdp" dissector, the configuration line would be:
 
-192.168.1.125,3389,rdp,C:\privkey.pem
+@192.168.1.125,3389,rdp,C:\privkey.pem@
 
 If I have a second packet capture using a different configuration, such as a server at 10.0.5.70 on port 4000, and that I want to pass the decrypted data to the "data" dissector (built-in dissector that doesn't dissect anything), and my private key file is located at C:\privkey_data.pem, the configuration line would be:
 
-10.0.5.70,4000,data,C:\privkey_data.pem
+@10.0.5.70,4000,data,C:\privkey_data.pem@
 
 To avoid having to change the SSL dissector configuration every time we look at one of the two files, more than one configuration can be given in the same line by listing them separated by semi-colons. The two configurations above can be concatenated into a single configuration line like this:
 
-192.168.1.125,3389,rdp,C:\privkey.pem;10.0.5.70,4000,data,C:\privkey_data.pem
+@192.168.1.125,3389,rdp,C:\privkey.pem;10.0.5.70,4000,data,C:\privkey_data.pem@
 
 h1. Self-Signed Certificate (Windows Server 2008 R2)
 
