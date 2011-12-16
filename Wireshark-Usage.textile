@@ -2,11 +2,11 @@ h1. Wireshark Usage
 
 A protocol analyzer such as "Wireshark":http://www.wireshark.com can become quite handy during FreeRDP development, as it can display packets in an interface that makes it really easy to visualize what's going on. If you've never used Wireshark before, it's one of the most popular open source network protocol analyzer, often considered a de facto standard. In order to analyze RDP packets with it, we must first give Wireshark the necessary information to decrypt an encrypted RDP session. As Wireshark has built-in support for TLS encryption but not for the older RDP encryption, it is only possible at this point to use Wireshark to analyze a TLS-encrypted RDP session.
 
-If you are looking for instructions on how to develop the FreeRDP Wireshark RDP Analyzer, read the [[Wireshark Development]] article instead.
+If you are looking for instructions on how to develop the FreeRDP Wireshark RDP Analyzer, read the "Wireshark Development":wiki/Wireshark-Development article instead.
 
 h1. Sample Wireshark RDP Captures
 
-Sample Wireshark RDP captures can be found in the [[Network Level Authentication]] article.
+Sample Wireshark RDP captures can be found in the "Network Level Authentication":wiki/Network-Level-Authentication article.
 
 h1. Exporting Self-Signed Certificate with its Private Key
 

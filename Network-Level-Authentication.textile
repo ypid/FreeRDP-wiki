@@ -2,9 +2,9 @@ h1. Network Level Authentication
 
 h1. Annotated Packet Captures
 
-"Windows XP to Windows 7, Local Logon":samples/NLA-WinXP-Win7
-"Windows 7 to Windows Server 2008 R2, Domain Logon":samples/NLA-Win7-Win2K8R2
-"Windows 7 to Windows Server 2008 R2, Domain Logon, Suppress Extended Protection":samples/NLA-Win7-Win2K8R2-SEP
+"Windows XP to Windows 7, Local Logon":wiki/samples/NLA-WinXP-Win7
+"Windows 7 to Windows Server 2008 R2, Domain Logon":wiki/samples/NLA-Win7-Win2K8R2
+"Windows 7 to Windows Server 2008 R2, Domain Logon, Suppress Extended Protection":wiki/samples/NLA-Win7-Win2K8R2-SEP
 
 Each annotated packet capture comes with the original wireshark packet capture bundled with the private key required to decrypt the packets. To configure wireshark such that it can use the private keys to decrypt the captures, refer to the "Wireshark Usage":Wireshark-Usage article.
 
