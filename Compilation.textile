@@ -68,3 +68,13 @@ awake@envy:~/.freerdp$ ls
 cacert  known_hosts
 
 CA certificates can be added to ~/.freerdp/cacert for additional trusted CAs.
+
+h2. Mac OS X Specifics
+
+The best way to install cmake is via homebrew.
+
+To make a universal binary build, use:
+
+@cmake -D “CMAKE_OSX_ARCHITECTURES:STRING=i386;x86_64” .@
+
+
