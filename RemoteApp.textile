@@ -16,7 +16,7 @@ h1. Usage
 
 RemoteApp support was introduced in FreeRDP 1.0, so you should get the latest sources from git.
 
-@./client/X11/xfreerdp -u <username> -p <password> --app --plugin channels/rail/rail.so --data "<exe_or_file>:<working_dir>:<arguments>" -- <hostname>@
+@./client/X11/xfreerdp -u <username> -p <password> --app --plugin rail.so --data "<exe_or_file>:<working_dir>:<arguments>" -- <hostname>@
 
 *exe_or_file*: usually a program alias prefixed with "||", otherwise a full path to an executable file.
 
@@ -26,4 +26,12 @@ RemoteApp support was introduced in FreeRDP 1.0, so you should get the latest so
 
 For instance, if you configure your server to export the command prompt, it will have the "cmd" alias by default. You could then get the windows command prompt with a command like this:
 
-@./client/X11/xfreerdp -u Administrator -p Password --app --plugin channels/rail/rail.so --data "||cmd" -- 192.168.1.200@
+@./client/X11/xfreerdp -u Administrator -p Password --app --plugin rail.so --data "||cmd" -- 192.168.1.200@
+
+If you haven't installed FreeRDP globally on your system and you are running from the source tree, change --plugin rail.so to --plugin channels/rail/rail.so.
+
+Alternatively, it is possible to use full paths to launch a program instead of an alias. Please note, however, that Windows Server 2008 R2 SP1 disallows this by default and you need to enable it in the group policies. In this case, the command would look like:
+
+@./client/X11/xfreerdp -u Administrator -p Password --app --plugin rail.so --data "%windir%\system32\cmd.exe" -- 192.168.1.200@
+
+There is currently an issue where the usage of the colon ':' conflicts with the --data argument separator, so paths like "C:\Windows\System32\cmd.exe" won't work. If you are experiencing such issues, use environment variables like @%windir%@ to work around the problem until a more permanent solution is found.
