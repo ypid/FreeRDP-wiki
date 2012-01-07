@@ -11,21 +11,34 @@ Remote Desktop Protocol:
 "==[MS-RDPECLIP]: Remote Desktop Protocol: Clipboard Virtual Channel Extension==":http://msdn.microsoft.com/en-us/library/cc241066/
 "==[MS-RDPEDC]:   Remote Desktop Protocol: Desktop Composition Virtual Channel Extension==":http://msdn.microsoft.com/en-us/library/dd358323/
 "==[MS-RDPEDYC]:  Remote Desktop Protocol: Dynamic Channel Virtual Channel Extension==":http://msdn.microsoft.com/en-us/library/cc241215/
+"==[MS-RDPEECO]:  Remote Desktop Protocol: Virtual Channel Echo Extension==":http://msdn.microsoft.com/en-us/library/hh554873/
 "==[MS-RDPEFS]:   Remote Desktop Protocol: File System Virtual Channel Extension==":http://msdn.microsoft.com/en-us/library/cc241305/
 "==[MS-RDPEGDI]:  Remote Desktop Protocol: Graphics Device Interface (GDI) Acceleration Extensions==":http://msdn.microsoft.com/en-us/library/cc241537/
 "==[MS-RDPELE]:   Remote Desktop Protocol: Licensing Extension==":http://msdn.microsoft.com/en-us/library/cc241880/
 "==[MS-RDPEMC]:   Remote Desktop Protocol: Multiparty Virtual Channel Extension==":http://msdn.microsoft.com/en-us/library/cc242017/
+"==[MS-RDPEMT]:   Remote Desktop Protocol: Multitransport Extension==":http://msdn.microsoft.com/en-us/library/hh554775/
 "==[MS-RDPEPC]:   Remote Desktop Protocol: Print Virtual Channel Extension==":http://msdn.microsoft.com/en-us/library/cc242116/
 "==[MS-RDPEPNP]:  Remote Desktop Protocol: Plug and Play Devices Virtual Channel Extension==":http://msdn.microsoft.com/en-us/library/cc242231/
 "==[MS-RDPEPS]:   Remote Desktop Protocol: Session Selection Extension==":http://msdn.microsoft.com/en-us/library/cc242359/
 "==[MS-RDPERP]:   Remote Desktop Protocol: Remote Programs Virtual Channel Extension==":http://msdn.microsoft.com/en-us/library/cc242568/
 "==[MS-RDPESC]:   Remote Desktop Protocol: Smart Card Virtual Channel Extension==":http://msdn.microsoft.com/en-us/library/cc242596/
 "==[MS-RDPESP]:   Remote Desktop Protocol: Serial and Parallel Port Virtual Channel Extension==":http://msdn.microsoft.com/en-us/library/cc242856/
+"==[MS-RDPEUDP]:  Remote Desktop Protocol: UDP Transport Extension==":http://msdn.microsoft.com/en-us/library/hh536846/
 "==[MS-RDPEUSB]:  Remote Desktop Protocol: USB Devices Virtual Channel Extension==":http://msdn.microsoft.com/en-us/library/ff635589/
 "==[MS-RDPEV]:    Remote Desktop Protocol: Video Redirection Virtual Channel Extension==":http://msdn.microsoft.com/en-us/library/dd342975/
+"==[MS-RDPEVOR]:  Remote Desktop Protocol: Video Optimized Remoting Virtual Channel Extension==":http://msdn.microsoft.com/en-us/library/hh554658/
 "==[MS-RDPEXPS]:  Remote Desktop Protocol: XML Paper Specification (XPS) Print Virtual Channel Extension==":http://msdn.microsoft.com/en-us/library/cc242947/
 "==[MS-RDPNSC]:   Remote Desktop Protocol: NSCodec Extension==":http://msdn.microsoft.com/en-us/library/ff635378/
 "==[MS-RDPRFX]:   Remote Desktop Protocol: RemoteFX Codec Extension==":http://msdn.microsoft.com/en-us/library/ff635423/
+"==[MS-RDWR]:     Remote Desktop Workspace Runtime Protocol Specification==":http://msdn.microsoft.com/en-us/library/hh537845/
+
+"Preview Specifications":http://msdn.microsoft.com/en-us/library/ee941641.aspx
+
+"==[MS-RDPEGFX-Preview]: Remote Desktop Protocol: Graphics Pipeline Extension==":http://download.microsoft.com/download/C/6/C/C6C3C6F1-E84A-44EF-82A9-49BD3AAD8F58/[MS-RDPEGFX].pdf
+"==[MS-RDPEGT]: Remote Desktop Protocol: Geometry Tracking Virtual Channel Protocol Extension==":http://download.microsoft.com/download/C/6/C/C6C3C6F1-E84A-44EF-82A9-49BD3AAD8F58/[MS-RDPEGT].pdf
+"==[MS-RDPEI-Preview]: Remote Desktop Protocol: Input Virtual Channel Extension==":http://download.microsoft.com/download/C/6/C/C6C3C6F1-E84A-44EF-82A9-49BD3AAD8F58/[MS-RDPEI].pdf
+"==[MS-RDSOD] Remote Desktop Services Protocols Overview==":http://download.microsoft.com/download/C/6/C/C6C3C6F1-E84A-44EF-82A9-49BD3AAD8F58/[MS-RDSOD].pdf
+"==[MS-TSGU]: Remote Desktop Gateway Server Protocol Specification==":http://download.microsoft.com/download/C/6/C/C6C3C6F1-E84A-44EF-82A9-49BD3AAD8F58/[MS-TSGU].pdf
 
 Protocols Used in RDP:
 "T.125 : Multipoint communication service protocol specification":http://www.itu.int/rec/T-REC-T.125-199802-I/
