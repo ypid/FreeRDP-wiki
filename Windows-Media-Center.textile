@@ -1,0 +1,15 @@
+h1. Windows Media Center
+
+"Windows Media Center":http://windows.microsoft.com/en-US/windows/products/windows-media-center/
+"Windows Media Center Help & How-to":http://windows.microsoft.com/en-US/windows/help/windows-media-center
+
+".NET Framework and Other Protocols":http://msdn.microsoft.com/en-us/library/cc441976/
+
+"==[MS-DMCT]: Device Media Control Protocol Specification==":http://msdn.microsoft.com/en-us/library/ee809584/
+"==[MS-DSLR]: Device Services Lightweight Remoting Protocol Specification==":http://msdn.microsoft.com/en-us/library/ee780942/
+"==[MS-DSMN]: Device Session Monitoring Protocol Specification==":http://msdn.microsoft.com/en-us/library/ee781083/
+"==[MS-DSPA]: Device Session Property Access Protocol Specification==":http://msdn.microsoft.com/en-us/library/ee793108/
+"==[MS-DTAG]: Device Trust Agreement Protocol Specification==":http://msdn.microsoft.com/en-us/library/ee781158/
+"==[MS-RRSP2]: Remote Rendering Server Protocol Version 2.0 Specification==":http://msdn.microsoft.com/en-us/library/ff956443/
+"==[MS-RXAD]: Remote Experience Advertisement Protocol Specification==":http://msdn.microsoft.com/en-us/library/ee809433/
+"==[MS-DRMRI]: Windows Media Digital Rights Management for Network Devices (WMDRM-ND): Registrar Initiation Protocol Specification==":http://msdn.microsoft.com/en-us/library/ee793102/
