@@ -1,12 +1,12 @@
 h1. Changelog
 
-FreeRDP 1.0
+h2. FreeRDP 1.0
 
-License:
+h3. License:
 
 FreeRDP 1.0 is the first release of FreeRDP under the Apache License 2.0. The FreeRDP 1.x series is a rewrite, meaning there is no continuity with the previous FreeRDP 0.x series which were released under GPLv2.
 
-New Features:
+h3. New Features:
 
 * RemoteFX
 ** Both encoder and decoder
@@ -18,10 +18,12 @@ New Features:
 ** ffmpeg support
 * Network Level Authentication (NLA)
 ** NTLMv2
-* Certificate Validation
-* FIPS-compliant RDP Security
+* Certificate validation
+* FIPS-compliant RDP security
+* new build system (cmake)
+* added official logo and icon
 
-New Architecture:
+h3. New Architecture:
 
 * libfreerdp-core
 ** core protocol
@@ -45,7 +47,7 @@ New Architecture:
 * libfreerdp-utils
 ** shared utility library
 
-FreeRDP Clients:
+h3. FreeRDP Clients:
 
 * client/X11 (xfreerdp)
 ** official client
@@ -57,7 +59,7 @@ FreeRDP Clients:
 * client/Windows (wfreerdp)
 ** Native Win32 support
 
-FreeRDP Servers (experimental):
+h3. FreeRDP Servers (experimental):
 
 * server/X11 (xfreerdp-server)
 ** RemoteFX-only
@@ -65,7 +67,7 @@ FreeRDP Servers (experimental):
 ** highly experimental
 ** keyboard and mouse input supported
 
-Virtual Channels:
+h3. Virtual Channels:
 
 * cliprdr (Clipboard Redirection)
 * rail (RemoteApp)
