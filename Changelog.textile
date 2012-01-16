@@ -2,6 +2,10 @@ h1. Changelog
 
 FreeRDP 1.0
 
+License:
+
+FreeRDP 1.0 is the first release of FreeRDP under the Apache License 2.0. The FreeRDP 1.x series is a rewrite, meaning there is no continuity with the previous FreeRDP 0.x series which were released under GPLv2.
+
 New Features:
 
 * RemoteFX
@@ -10,10 +14,12 @@ New Features:
 * NSCodec
 * RemoteApp
 ** Working, minor glitches
-* Network Level Authentication (NLA)
-** NTLMv2
 * Multimedia Redirection
 ** ffmpeg support
+* Network Level Authentication (NLA)
+** NTLMv2
+* Certificate Validation
+* FIPS-compliant RDP Security
 
 New Architecture:
 
@@ -76,9 +82,8 @@ Virtual Channels:
 ** parallel (Parallel Port Redirection)
 ** serial (Serial Port Redirection)
 ** printer (Printer Redirection)
-** smartcard (Smartcard Redirection)
 *** CUPS support 
+** smartcard (Smartcard Redirection)
 * rdpsnd (Sound Redirection)
 ** alsa support
 ** pulse support
-
