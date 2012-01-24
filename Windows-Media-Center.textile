@@ -30,11 +30,11 @@ I did some basic investigation on my side. I took a packet capture between a Win
 
 1028: initial exchange, chunks of 1460 bytes, encrypted?
 3391: SOAP, setup and exchange of certificates.
-3390: RDP, username is Mcx1-<computer>
-8554: RTSP, used for streaming videos. rtsp://<computer>:8554/McxCMS/Mcx1-<computer>/?mediaid=...
+3390: RDP, username is @Mcx1-<computer>@
+8554: RTSP, used for streaming videos. @rtsp://<computer>:8554/McxCMS/Mcx1-<computer>/?mediaid=...@
 1051: DLNA discovery
 
-The RDP session is done over port 3390 instead of the regular port 3389. Connecting using regular user credentials results in an automatic logout right after being logged in. One can get the login screen, however, if the username "Mcx1-<computer>" where <computer> is the name of the Media Center PC. Doing so, I can get a login screen where the username has been changed to a UUID instead. My guess is that the UUID identifies the extender attempting to connect, and that the password has been negotiated during the initial pairing process.
+The RDP session is done over port 3390 instead of the regular port 3389. Connecting using regular user credentials results in an automatic logout right after being logged in. One can get the login screen, however, if the username "@Mcx1-<computer>@" where @<computer>@ is the name of the Media Center PC. Doing so, I can get a login screen where the username has been changed to a UUID instead. My guess is that the UUID identifies the extender attempting to connect, and that the password has been negotiated during the initial pairing process.
 
 Videos are *not* played using RDP's Multimedia Redirection extension or RemoteFX. Instead, they are played using RTSP. Videos also appear to be transcoded on-the-fly by the Media Center such that the extender can play them.
 
