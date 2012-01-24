@@ -17,6 +17,7 @@
 * "Wireshark Usage":wiki/Wireshark-Usage
 * "Wireshark Development":wiki/Wireshark-Development
 * "Windows GDI":wiki/Windows-GDI
+* "Windows Media Center":wiki/Windows-Media-Center
 
 The old wiki can still be accessed "here":http://www.freerdp.com/wiki/.
 
