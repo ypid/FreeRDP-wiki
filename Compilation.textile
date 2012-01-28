@@ -6,6 +6,11 @@ _debian based_
 
 @sudo apt-get install build-essential git-core cmake libssl-dev libx11-dev libxext-dev libxinerama-dev libxcursor-dev libxdamage-dev libxv-dev libxkbfile-dev libasound2-dev libcups2-dev@
 
+Building master after 1.0 now requires:
+
+@sudo apt-get install libavutil-dev libavcodec-dev@
+
+
 _rhel based_
 
 @sudo yum install gcc cmake openssl-devel libX11-devel libXext-devel libXinerama-devel libXcursor-devel libXdamage-devel libXv-devel libxkbfile-devel alsa-lib-devel cups-devel@
