@@ -1,7 +1,13 @@
 h1. Windows Media Center
 
+Windows Media Center leverages the Remote Desktop Protocol when communicating with Windows Media Center Extenders. This is great, because one can keep media on a single PC and access it from different locations on the LAN. One common Windows Media Center Extender is the Xbox.
+
+The protocols used between the extender and the media center are partially open. The presentation of the media center interface is done over RDP using a set of specialized virtual channel extensions. I am trying to gather as much information as possible regarding those protocols, in hope that we eventually come to know enough to build open source third-party Windows Media Center extenders.
+
 "Windows Media Center":http://windows.microsoft.com/en-US/windows/products/windows-media-center/
 "Windows Media Center Help & How-to":http://windows.microsoft.com/en-US/windows/help/windows-media-center
+
+h2. Official Specifications
 
 ".NET Framework and Other Protocols":http://msdn.microsoft.com/en-us/library/cc441976/
 
@@ -13,3 +19,32 @@ h1. Windows Media Center
 "==[MS-RRSP2]: Remote Rendering Server Protocol Version 2.0 Specification==":http://msdn.microsoft.com/en-us/library/ff956443/
 "==[MS-RXAD]: Remote Experience Advertisement Protocol Specification==":http://msdn.microsoft.com/en-us/library/ee809433/
 "==[MS-DRMRI]: Windows Media Digital Rights Management for Network Devices (WMDRM-ND): Registrar Initiation Protocol Specification==":http://msdn.microsoft.com/en-us/library/ee793102/
+
+h2. Reverse Engineering
+
+"SoftSled":http://softsled.codeplex.com/ is project which aims at providing a reverse engineered implementation of a Windows Media Center Extender. While significant work has been done, they seem not to have succeeded in getting something to work so far. 
+
+I did some basic investigation on my side. I took a packet capture between a Windows 7 Ultimate PC and an Xbox from initial pairing of the extender with the media center up to the first video being played. Here is what I found out:
+
+"Xbox to Windows Media Center Packet Capture":files/pcap/mcx.pcap.tar.gz
+
+1028: initial exchange, chunks of 1460 bytes, encrypted?
+3391: SOAP, setup and exchange of certificates.
+3390: RDP, username is @Mcx1-<computer>@
+8554: RTSP, used for streaming videos. @rtsp://<computer>:8554/McxCMS/Mcx1-<computer>/?mediaid=...@
+1051: DLNA discovery
+
+The RDP session is done over port 3390 instead of the regular port 3389. Connecting using regular user credentials results in an automatic logout right after being logged in. One can get the login screen, however, if the username "@Mcx1-<computer>@" where @<computer>@ is the name of the Media Center PC. Doing so, I can get a login screen where the username has been changed to a UUID instead. My guess is that the UUID identifies the extender attempting to connect, and that the password has been negotiated during the initial pairing process.
+
+Videos are *not* played using RDP's Multimedia Redirection extension or RemoteFX. Instead, they are played using RTSP. Videos also appear to be transcoded on-the-fly by the Media Center such that the extender can play them.
+
+The RDP session uses Standard RDP security, not TLS or NLA. Since the list of virtual channels advertised by the RDP client is sent before the exchange is encrypted, we can see which virtual channels are being used:
+
+* devcaps
+* avctrl
+* mcxsess
+* splash
+
+I am not aware of documentation for these virtual channel extensions, but some of the above open specifications mention RDP as a possible transport protocol. It is possible that some of these extensions are publicly documented, but I didn't have the time to look into them more in depth. 
+
+!images/screenshots/freerdp_mcx.png!
