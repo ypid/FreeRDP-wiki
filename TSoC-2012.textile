@@ -1,0 +1,31 @@
+h1. Thinstuff Summer of Code 2012
+
+Yes, it is this time of the year again! Following the success of TSoC 2011, Thinstuff is again offering to sponsor FreeRDP development over the summer. This is pretty much like Google Summer of Code with the exception that TSoC is better ;)
+
+Are you a student? Are you a professional consultant? Do you the have the skills required to work on the sponsored tasks? We want to hear from you! If you are a company other than Thinstuff but would like to add tasks which you are willing to sponsor, feel free to join, this is open to everyone. Contact information is provided for each sponsored task, so if you like FreeRDP but you like it even more when you get sponsored to work on it, go ahead and send an email right now. Good luck to all participants!
+
+h2. USB Redirection
+
+We are looking for someone who could implement USB redirection compliant with "MS-RDPEUSB":http://msdn.microsoft.com/en-us/library/ff635589/ as part of the FreeRDP project.
+
+In a second phase of this project we would also need an MS-RDPEUSB compliant server-side component which can interface with QEMU/KVM. This work is similar to what Hans Goede did with "usbredir":http://spice-space.org/page/UsbRedir". usbredir currently already works with KVM/Qemu/Spice. Another project which may be relevant is "libusb":http://www.libusb.org/.
+
+Ideally, one would start with usbredir/libusb and work on providing an MS-RDPEUSB compliant interface on top of it.
+
+If you have experience with USB development on Linux (usbredir/libusb) and also with FreeRDP you might be the right one to do it.
+
+If you are interested please contact us at mgibson@thinstuff.com.
+
+h2. Kerberos Authentication
+
+We are looking for someone who could implement Kerberos authentication following "MS-KILE":http://msdn.microsoft.com/en-us/library/cc233855/
+
+FreeRDP currently supports NTLMv2 authentication as part of Network Level Authentication. The NTLMv2 authentication is designed as a module usable from an authentication abstraction layer called "CredSSP":http://msdn.microsoft.com/en-us/library/cc226764/. Your goal is to implement a Kerberos authentication module which can be used by CredSSP as a replacement of the current NTLMv2 authentication module.
+
+Relevant specifications:
+"==[MS-KILE]: Kerberos Protocol Extensions==":http://msdn.microsoft.com/en-us/library/cc233855/
+"==[MS-NLMP]: NT LAN Manager (NTLM) Authentication Protocol Specification==":http://msdn.microsoft.com/en-us/library/cc236621/
+"==[MS-CSSP]: Credential Security Support Provider (CredSSP) Protocol Specification==":http://msdn.microsoft.com/en-us/library/cc226764/
+"==[MS-SPNG]: Simple and Protected Generic Security Service Application Program Interface Negotiation Mechanism (SPNEGO) Protocol Extensions==":http://msdn.microsoft.com/en-us/library/cc247021/
+
+If you are interested please contact us at mgibson@thinstuff.com.
