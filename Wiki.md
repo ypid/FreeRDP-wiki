@@ -1,9 +1,9 @@
-# Building FreeRDP on Mac OS X with MacPorts
+# Build on OS X with MacPorts
 
 ## Requirements
-* Working MacPorts environment
-* Developer tools installed (required for MacPorts)
 
-### 
+[Working MacPorts setup](http://www.macports.org/install.php)
 
-`sudo port install git-core`
+### Install build-dependencies
+
+`sudo port install git-core ffmpeg-devel`
