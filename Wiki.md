@@ -6,4 +6,4 @@
 
 ### 
 
-@sudo port install git-core@
+`sudo port install git-core`
