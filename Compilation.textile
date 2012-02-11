@@ -1,4 +1,4 @@
-h1. Compilation
+h1. Compilation 
 
 h4. Install the suggested base dependencies:
 
@@ -109,4 +109,5 @@ cmake -DCMAKE_SYSTEM_NAME="Windows" \
 This will configure FreeRDP for cross-compilation. Note that you need to adjust the paths according to your installation of Mingw and OpenSSL. Using the command above the wfreerdp.exe binary will be statically linked and can be executed on any Windows machine.
 
 Note: You need a recent version of cmake (I used 2.8.7) as the logic in the FindOpenSSL cmake makro is broken (for cross-compilation) in older versions. 
-{Mac OS X - MacPorts}
+
+* "Mac OS X with MacPorts":wiki/Mac_OS_X_MacPorts
