@@ -58,10 +58,14 @@ Remote Desktop Services API:
 "Remote Desktop Services API Reference":http://msdn.microsoft.com/en-us/library/aa383468/
 
 Network Level Authentication (NLA):
+"MSDN - Authentication Reference":http://msdn.microsoft.com/en-us/library/windows/desktop/aa374736/
 "==[MS-KILE]: Kerberos Protocol Extensions==":http://msdn.microsoft.com/en-us/library/cc233855/
 "==[MS-NLMP]: NT LAN Manager (NTLM) Authentication Protocol Specification==":http://msdn.microsoft.com/en-us/library/cc236621/
 "==[MS-CSSP]: Credential Security Support Provider (CredSSP) Protocol Specification==":http://msdn.microsoft.com/en-us/library/cc226764/
-"==[MS-SPNG]: Simple and Protected Generic Security Service Application Program Interface Negotiation Mechanism (SPNEGO) Protocol Extensions==":http://msdn.microsoft.com/en-us/library/cc247021/
+"==[MS-APDS]: Authentication Protocol Domain Support Specification==":http://msdn.microsoft.com/en-us/library/cc223948/
+"==[MS-NRPC]: Netlogon Remote Protocol Specification==":http://msdn.microsoft.com/en-us/library/cc237008/
+"==[MS-TLSP]: Transport Layer Security (TLS) Profile==":http://msdn.microsoft.com/en-us/library/dd207968/
+"==[MS-SPNG]: Simple and Protected GSS-API Negotiation Mechanism (SPNEGO) Extension==":http://msdn.microsoft.com/en-us/library/cc247021/
 
 Terminal Server Gateway (TS Gateway):
 "==[MS-TSGU]: Terminal Services Gateway Server Protocol Specification==":http://msdn.microsoft.com/en-us/library/cc248485(PROT.10).aspx
@@ -70,4 +74,5 @@ Terminal Server Gateway (TS Gateway):
 
 Active Directory:
 "==[MS-ADTS]: Active Directory Technical Specification==":http://msdn.microsoft.com/en-us/library/cc223122/
+"==[MS-SAMR]: Security Account Manager (SAM) Remote Protocol Specification (Client-to-Server)==":http://msdn.microsoft.com/en-us/library/cc245476/
 

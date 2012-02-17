@@ -1,15 +1,14 @@
-h1. Compilation
+h1. Compilation 
 
-Install the suggested base dependencies:
+h4. Install the suggested base dependencies:
 
 _debian based_
 
 @sudo apt-get install build-essential git-core cmake libssl-dev libx11-dev libxext-dev libxinerama-dev libxcursor-dev libxdamage-dev libxv-dev libxkbfile-dev libasound2-dev libcups2-dev@
 
-Building master after 1.0 now requires:
+Building 1.0.1 or master requires:
 
 @sudo apt-get install libavutil-dev libavcodec-dev@
-
 
 _rhel based_
 
@@ -23,7 +22,7 @@ _debian based_
 
 where cunit is for the unit tests, directfb is for dfreerdp, xmlto is for man pages, and doxygen for API documentation.
 
-Generate makefiles:
+h4. Generate makefiles:
 
 @cmake -DCMAKE_BUILD_TYPE=Debug -DWITH_SSE2=ON .@
 
@@ -31,11 +30,11 @@ If you are using Eclipse, you can also generate Eclipse project files:
 
 @cmake -G "Eclipse CDT4 - Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug -DWITH_SSE2=ON .@
 
-Build:
+h3. Build:
 
 @make@
 
-Install:
+h4. Install:
 
 @sudo make install@
 
@@ -110,3 +109,5 @@ cmake -DCMAKE_SYSTEM_NAME="Windows" \
 This will configure FreeRDP for cross-compilation. Note that you need to adjust the paths according to your installation of Mingw and OpenSSL. Using the command above the wfreerdp.exe binary will be statically linked and can be executed on any Windows machine.
 
 Note: You need a recent version of cmake (I used 2.8.7) as the logic in the FindOpenSSL cmake makro is broken (for cross-compilation) in older versions. 
+
+* "Mac OS X with MacPorts":wiki/Mac_OS_X_MacPorts
