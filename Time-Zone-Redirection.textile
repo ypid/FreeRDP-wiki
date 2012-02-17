@@ -6,7 +6,10 @@ FreeRDP has a local copy the Windows time zone database extracted with a C# prog
 
 h2. Group Policy
 
+"Technet: Configuring Terminal Server for Differing Time Zones":http://technet.microsoft.com/en-us/library/cc783386.aspx
+
 In the group policy editor (gpedit.msc), browse to the following location:
+
 "Windows Components / Remote Desktop Services / Remote Desktop Session Host / Device and Resource Redirection"
 
 and then edit the following policy: "Allow Time Zone Redirection"
