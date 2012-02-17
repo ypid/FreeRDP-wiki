@@ -58,6 +58,7 @@ Remote Desktop Services API:
 "Remote Desktop Services API Reference":http://msdn.microsoft.com/en-us/library/aa383468/
 
 Network Level Authentication (NLA):
+"MSDN - Authentication Reference":http://msdn.microsoft.com/en-us/library/windows/desktop/aa374736/
 "==[MS-KILE]: Kerberos Protocol Extensions==":http://msdn.microsoft.com/en-us/library/cc233855/
 "==[MS-NLMP]: NT LAN Manager (NTLM) Authentication Protocol Specification==":http://msdn.microsoft.com/en-us/library/cc236621/
 "==[MS-CSSP]: Credential Security Support Provider (CredSSP) Protocol Specification==":http://msdn.microsoft.com/en-us/library/cc226764/
