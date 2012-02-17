@@ -1,10 +1,14 @@
-h1. Compilation
+h1. Compilation 
 
-Install the suggested base dependencies:
+h4. Install the suggested base dependencies:
 
 _debian based_
 
 @sudo apt-get install build-essential git-core cmake libssl-dev libx11-dev libxext-dev libxinerama-dev libxcursor-dev libxdamage-dev libxv-dev libxkbfile-dev libasound2-dev libcups2-dev@
+
+Building 1.0.1 or master requires:
+
+@sudo apt-get install libavutil-dev libavcodec-dev@
 
 _rhel based_
 
@@ -18,7 +22,7 @@ _debian based_
 
 where cunit is for the unit tests, directfb is for dfreerdp, xmlto is for man pages, and doxygen for API documentation.
 
-Generate makefiles:
+h4. Generate makefiles:
 
 @cmake -DCMAKE_BUILD_TYPE=Debug -DWITH_SSE2=ON .@
 
@@ -26,11 +30,11 @@ If you are using Eclipse, you can also generate Eclipse project files:
 
 @cmake -G "Eclipse CDT4 - Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug -DWITH_SSE2=ON .@
 
-Build:
+h3. Build:
 
 @make@
 
-Install:
+h4. Install:
 
 @sudo make install@
 
@@ -77,4 +81,33 @@ To make a universal binary build, use:
 
 @cmake -D “CMAKE_OSX_ARCHITECTURES:STRING=i386;x86_64” .@
 
+h1. Cross-Compilation using Mingw-w64
 
+FreeRDP can be compiled for Windows (32/64 Bit) on a Linux system using the Mingw cross-compilers. The following instruction was tested with Mingw-w64 2.0 and gcc-4.7 on Scientific Linux 6.1 (x64) but should work relatively independent of the Mingw/gcc version. 
+
+1. Install the Mingw-cross compilers (most Linux distros offer binary packages for Mingw in their repos). On older distros you may need to compile the latest version of Mingw from source. If you want to create 32 Bit binaries only, then Mingw32 is sufficient, otherwise you should install Mingw-w64. 
+
+2. Download the latest version of openssl (http://www.openssl.org/), compile it using the Mingw cross-compilers and install it. Instructions how to do this can be found on http://www.blogcompiler.com/.
+
+3. Download FreeRDP and unpack the source archive. Create a subdirectory in the FreeRDP source tree called "mingw_build" where FreeRDP will be build. Open a terminal and goto this directory. Enter the command
+
+bc. 
+cmake -DCMAKE_SYSTEM_NAME="Windows" \
+      -DCMAKE_C_COMPILER="/opt/mingw64/bin/x86_64-w64-mingw32-gcc" \
+      -DCMAKE_RC_COMPILER="/opt/mingw64/bin/x86_64-w64-mingw32-windres" \
+      -DCMAKE_INSTALL_PREFIX="/opt/mingw64" \
+      -DBUILD_SHARED_LIBS=OFF \
+      -DCMAKE_C_FLAGS="-DFREERDP_EXPORTS -Dsprintf_s=snprintf" \
+      -DCMAKE_EXE_LINKER_FLAGS="-L/opt/mingw64/lib" \
+      -DWITH_SSE2=OFF \
+      -DWITH_SSE2_TARGET=OFF \
+      -DOPENSSL_INCLUDE_DIR="/opt/mingw64/include" \
+      -DLIB_EAY="/opt/mingw64/lib/libcrypto.a" \
+      -DSSL_EAY="/opt/mingw64/lib/libssl.a" \
+      ..
+
+This will configure FreeRDP for cross-compilation. Note that you need to adjust the paths according to your installation of Mingw and OpenSSL. Using the command above the wfreerdp.exe binary will be statically linked and can be executed on any Windows machine.
+
+Note: You need a recent version of cmake (I used 2.8.7) as the logic in the FindOpenSSL cmake makro is broken (for cross-compilation) in older versions. 
+
+* "Mac OS X with MacPorts":wiki/Mac_OS_X_MacPorts
