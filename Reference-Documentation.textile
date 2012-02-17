@@ -73,4 +73,5 @@ Terminal Server Gateway (TS Gateway):
 
 Active Directory:
 "==[MS-ADTS]: Active Directory Technical Specification==":http://msdn.microsoft.com/en-us/library/cc223122/
+"==[MS-SAMR]: Security Account Manager (SAM) Remote Protocol Specification (Client-to-Server)==":http://msdn.microsoft.com/en-us/library/cc245476/
 
