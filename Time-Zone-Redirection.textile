@@ -1,0 +1,20 @@
+h1. Time Zone Redirection
+
+FreeRDP has full support for time zone redirection. In order to use it, you need to enable it on the server, since it is normally disabled by default.
+
+FreeRDP has a local copy the Windows time zone database extracted with a C# program. It also has a table that maps UNIX time zones to Windows time zones. Time zone redirection works by detecting the current UNIX time zone, finding its match in the Windows time zone database, and then finding the daylight savings time rules for the current year. This is important, since the server expects a Windows time zone with the exact Windows time zone names, along with complete daylight savings time starting and ending times.
+
+h2. Group Policy
+
+In the group policy editor (gpedit.msc), browse to the following location:
+"Windows Components / Remote Desktop Services / Remote Desktop Session Host / Device and Resource Redirection"
+
+and then edit the following policy: "Allow Time Zone Redirection"
+
+h2. Registry Setting
+
+In the registry editor, browse to the following location:
+
+"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server"
+
+and then create a DWORD with the name "fEnableTimeZoneRedirection" and set its value to 1.
