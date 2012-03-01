@@ -18,7 +18,7 @@ Optionally, you can install the following dependencies:
 
 _debian based_
 
-@sudo apt-get install libcunit1-dev libdirectfb-dev xmlto doxygen@
+@sudo apt-get install libcunit1-dev libdirectfb-dev xmlto doxygen libxtst-dev@
 
 where cunit is for the unit tests, directfb is for dfreerdp, xmlto is for man pages, and doxygen for API documentation.
 
