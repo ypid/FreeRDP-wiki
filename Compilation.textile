@@ -12,7 +12,7 @@ Building 1.0.1 or master requires:
 
 _rhel based_
 
-@sudo yum install gcc cmake openssl-devel libX11-devel libXext-devel libXinerama-devel libXcursor-devel libXdamage-devel libXv-devel libxkbfile-devel alsa-lib-devel cups-devel@
+@sudo yum install gcc cmake openssl-devel libX11-devel libXext-devel libXinerama-devel libXcursor-devel libXdamage-devel libXv-devel libxkbfile-devel alsa-lib-devel cups-devel ffmpeg-devel@
 
 Optionally, you can install the following dependencies:
 
@@ -41,6 +41,9 @@ h4. Install:
 Now create /etc/ld.so.conf.d/freerdp.conf and add the following line to it:
 
 @/usr/local/lib/freerdp@
+
+For a 64-bit rhel based OS add:
+@/usr/local/lib64/freerdp@
 
 Depending on your OS/distribution, you may also need to add this line:
 
