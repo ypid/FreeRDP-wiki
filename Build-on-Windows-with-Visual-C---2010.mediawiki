@@ -1,16 +1,28 @@
+== Why ==
+We want to have an open source rdp client on Windows with multimedia redirection and all modern features freerdp offers. We do not want to depend on any other library like cygwin etc. We want a mostly statically linked, stand alone, installation free executable.
+
 ==Prerequisites==
 
 * MS Visual C++ Express 2010 http://www.microsoft.com/visualstudio/en-us/products/2010-editions/express
 * MS SDK http://www.microsoft.com/en-us/download/details.aspx?id=8279
 * OpenSSL Library http://slproweb.com/products/Win32OpenSSL.html
 
-I recommend that you get cygwin, too, but this is not necessary. If you install it, get git, too. If you do not have cygwin, try this: http://code.google.com/p/tortoisegit/
+I recommend that you get cygwin, too, but this is not necessary. If you install it, get git, too. If you do not have cygwin, try this: http://code.google.com/p/tortoisegit/ . Git is needed.
 
 ==Obtaining the source==
-git clone git://github.com/FreeRDP/FreeRDP.git
+<pre>git clone git://github.com/FreeRDP/FreeRDP.git</pre>
 
 ==Getting the Project==
-(TODO: Upload project to some site)
+(TODO: Upload visual C project files to some site)
+(TODO: Upload patch to sources to some site)
+
+==Problems in the sources and fixes ==
+This is what the patch adresses:
+
+* Most problems arise from wrong order of includes. My suggested fix is to always include config.h first, and include <winpr/windows.h> there.
+* libfreerdp-utils:pcap.c remove definition of struct timeval
+* libfreerdp-util/bitmap.c bitmap types collide. Hack: Do not include <freerdp/types.h> and rather define uint8 et al directly there
+* plugins: Definitions in rdpdr_constants.h collide with definitions in other includes. It is necessary to always include  rdpdr_constants.h as the first file
 
 ==config.h==
 you need a config.h include, here is mine:
@@ -24,9 +36,9 @@ you need a config.h include, here is mine:
 #define FREERDP_VERSION_MINOR 0
 #define FREERDP_VERSION_REVISION 1
 
-#define FREERDP_DATA_PATH "/usr/local/share/freerdp"
-#define FREERDP_PLUGIN_PATH "/usr/local/lib/freerdp"
-#define FREERDP_KEYMAP_PATH "/usr/local/share/freerdp/keymaps"
+#define FREERDP_DATA_PATH "c:\\freerdp"
+#define FREERDP_PLUGIN_PATH "C:\\freerdp\\lib"
+#define FREERDP_KEYMAP_PATH "C:\\freerdp\\keymaps"
 
 #define FREERDP_STATIC
 
