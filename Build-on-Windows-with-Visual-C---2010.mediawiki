@@ -27,7 +27,7 @@ This is what the patch adresses:
 ==config.h==
 you need a config.h include, here is mine:
 
-<pre> #ifndef __CONFIG_H
+#ifndef __CONFIG_H
 #define __CONFIG_H
 
 #define FREERDP_VERSION "1.0"
@@ -89,4 +89,4 @@ you need a config.h include, here is mine:
 /* #undef WITH_DEBUG_X11_CLIPRDR */
 /* #undef WITH_DEBUG_X11_LOCAL_MOVESIZE */
 /* #undef WITH_DEBUG_XV */
-#endif</pre>
+#endif
