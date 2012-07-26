@@ -22,7 +22,12 @@ This is what the patch adresses:
 * Most problems arise from wrong order of includes. My suggested fix is to always include config.h first, and include <winpr/windows.h> there.
 * libfreerdp-utils:pcap.c remove definition of struct timeval
 * libfreerdp-util/bitmap.c bitmap types collide. Hack: Do not include <freerdp/types.h> and rather define uint8 et al directly there
+* inlining: Inlining in static librarys seems not to work in Visual C. Change the definition of INLINE in include/freerdp/api.h and include/winpr/winpr.h to be empty
 * plugins: Definitions in rdpdr_constants.h collide with definitions in other includes. It is necessary to always include  rdpdr_constants.h as the first file
+
+== Known Problems ==
+* you need --sec tls on the command line, this is true for my linux build, too
+* colours are garbled unless you say -a 32, this is not true for my linus build
 
 ==config.h==
 you need a config.h include, here is mine (edit the page for ungarbled source):
