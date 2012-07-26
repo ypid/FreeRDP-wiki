@@ -25,8 +25,9 @@ This is what the patch adresses:
 * plugins: Definitions in rdpdr_constants.h collide with definitions in other includes. It is necessary to always include  rdpdr_constants.h as the first file
 
 ==config.h==
-you need a config.h include, here is mine:
+you need a config.h include, here is mine (edit the page for ungarbled source):
 
+<pre>
 #ifndef __CONFIG_H
 #define __CONFIG_H
 
@@ -89,4 +90,4 @@ you need a config.h include, here is mine:
 /* #undef WITH_DEBUG_X11_CLIPRDR */
 /* #undef WITH_DEBUG_X11_LOCAL_MOVESIZE */
 /* #undef WITH_DEBUG_XV */
-#endif
+#endif</pre>
