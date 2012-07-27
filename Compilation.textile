@@ -89,6 +89,9 @@ FreeRDP is now available as a homebrew recipe.
 bc. brew install freerdp
 sudo brew link freerdp
 
+h1. Compiling with Visual C++ 2010 Express
+See "this page":https://github.com/FreeRDP/FreeRDP/wiki/Build-on-Windows-with-Visual-C---2010
+
 h1. Cross-Compilation using Mingw-w64
 
 FreeRDP can be compiled for Windows (32/64 Bit) on a Linux system using the Mingw cross-compilers. The following instruction was tested with Mingw-w64 2.0 and gcc-4.7 on Scientific Linux 6.1 (x64) but should work relatively independent of the Mingw/gcc version. 
