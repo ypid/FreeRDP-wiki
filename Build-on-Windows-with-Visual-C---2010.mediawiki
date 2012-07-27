@@ -6,93 +6,23 @@ We want to have an open source rdp client on Windows with multimedia redirection
 * MS Visual C++ Express 2010 http://www.microsoft.com/visualstudio/en-us/products/2010-editions/express
 * MS SDK http://www.microsoft.com/en-us/download/details.aspx?id=8279
 * OpenSSL Library http://slproweb.com/products/Win32OpenSSL.html
+* cmake http://www.cmake.org/cmake/resources/software.html
+* git http://code.google.com/p/tortoisegit/
 
-I recommend that you get cygwin, too, but this is not necessary. If you install it, get git, too. If you do not have cygwin, try this: http://code.google.com/p/tortoisegit/ . Git is needed.
+If you like working in a shell, get cygwin. You can also use cygwins git, but NOT the cmake that comes with cygwin
 
 ==Obtaining the source==
 <pre>git clone git://github.com/FreeRDP/FreeRDP.git</pre>
 
-==Getting the Project==
-(TODO: Upload visual C project files to some site)
-(TODO: Upload patch to sources to some site)
+==Preparing the build==
+From the command line, go to the directory where you pulled the sources and type
+<pre>cmake .</pre>
+Of course, you can also run cmake-gui that comes with the windows cmake install and point it to your sources.
 
-==Problems in the sources and fixes ==
-This is what the patch adresses:
-
-* Most problems arise from wrong order of includes. My suggested fix is to always include config.h first, and include <winpr/windows.h> there.
-* libfreerdp-utils:pcap.c remove definition of struct timeval
-* libfreerdp-util/bitmap.c bitmap types collide. Hack: Do not include <freerdp/types.h> and rather define uint8 et al directly there
-* inlining: Inlining in static librarys seems not to work in Visual C. Change the definition of INLINE in include/freerdp/api.h and include/winpr/winpr.h to be empty
-* plugins: Definitions in rdpdr_constants.h collide with definitions in other includes. It is necessary to always include  rdpdr_constants.h as the first file
+== Building ==
+In Visual Studio, open the FreeRDP project map and build it. It should build clean.
 
 == Known Problems ==
 * you need --sec tls on the command line, this is true for my linux build, too
 * colours are garbled unless you say -a 32, this is not true for my linus build
 
-==config.h==
-you need a config.h include, here is mine (edit the page for ungarbled source):
-
-<pre>
-#ifndef __CONFIG_H
-#define __CONFIG_H
-
-#define FREERDP_VERSION "1.0"
-#define FREERDP_VERSION_FULL "1.0.1"
-#define FREERDP_VERSION_MAJOR 1
-#define FREERDP_VERSION_MINOR 0
-#define FREERDP_VERSION_REVISION 1
-
-#define FREERDP_DATA_PATH "c:\\freerdp"
-#define FREERDP_PLUGIN_PATH "C:\\freerdp\\lib"
-#define FREERDP_KEYMAP_PATH "C:\\freerdp\\keymaps"
-
-#define FREERDP_STATIC
-
-/* Include files */
-#define HAVE_FCNTL_H
-/* #define HAVE_UNISTD_H */
-#define HAVE_LIMITS_H
-#define HAVE_STDINT_H
-/* #define HAVE_STDBOOL_H */
-/* #define HAVE_INTTYPES_H */
-
-#define WIN32_LEAN_AND_MEAN 
-
-#ifndef FREERDP_NO_WIN
-#include <winpr/windows.h>
-#endif
-
-/* #undef HAVE_TM_GMTOFF */
-
-/* Options */
-/* #undef WITH_PROFILER */
-#define WITH_SSE2
-/* #undef WITH_NEON */
-#define WITH_NATIVE_SSPI
-
-/* Debug */
-/* #undef WITH_DEBUG_CERTIFICATE */
-/* #undef WITH_DEBUG_CHANNELS */
-/* #undef WITH_DEBUG_CLIPRDR */
-/* #undef WITH_DEBUG_DVC */
-/* #undef WITH_DEBUG_GDI */
-/* #undef WITH_DEBUG_KBD */
-/* #undef WITH_DEBUG_LICENSE */
-/* #undef WITH_DEBUG_NEGO */
-/* #undef WITH_DEBUG_NLA */
-/* #undef WITH_DEBUG_NTLM */
-/* #undef WITH_DEBUG_TSG */
-/* #undef WITH_DEBUG_ORDERS */
-/* #undef WITH_DEBUG_RAIL */
-/* #undef WITH_DEBUG_RDP */
-/* #undef WITH_DEBUG_REDIR */
-/* #undef WITH_DEBUG_RFX */
-/* #undef WITH_DEBUG_SCARD */
-/* #undef WITH_DEBUG_SVC */
-/* #undef WITH_DEBUG_TRANSPORT */
-/* #undef WITH_DEBUG_WND */
-/* #undef WITH_DEBUG_X11 */
-/* #undef WITH_DEBUG_X11_CLIPRDR */
-/* #undef WITH_DEBUG_X11_LOCAL_MOVESIZE */
-/* #undef WITH_DEBUG_XV */
-#endif</pre>
