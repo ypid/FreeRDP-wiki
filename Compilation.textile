@@ -100,8 +100,7 @@ http://www.martinlos.com/?p=41
 If attempting to compile for media redirection on mac, and enabling ffmpeg using cmake, make sure ffmpeg configure is run with --arch=x86_64.  For example, the following is a working configuration step before running make for ffmpeg:
 
 bc. 
-./configure --enable-runtime-cpudetect --enable-libxvid --arch=x86_64 --disable-stripping --enable-gpl --enable-nonfree 
---cc=clang --extra-cflags="-I/sw64/include -m64" --extra-ldflags=-m64 --enable-libmp3lame --enable-libfaac --enable-shared --enable-static
+./configure --enable-runtime-cpudetect --enable-libxvid --arch=x86_64 --disable-stripping --enable-gpl --enable-nonfree --cc=clang --extra-cflags="-I/sw64/include -m64" --extra-ldflags=-m64 --enable-libmp3lame --enable-libfaac --enable-shared --enable-static
 
 Use the following steps for compiling and installing Pulseaudio:
 
