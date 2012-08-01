@@ -90,20 +90,22 @@ bc. brew install freerdp
 sudo brew link freerdp
 
 h4. If you are interested in trying out multimedia redirection on a Mac, use the following steps:
+
 To install ffmpeg with MacPorts:  
 @sudo port install ffmpeg-devel@
 
-Here are instructions for compiling ffmpeg on Mac OS X (tested on Mountain Lion)
+Here are working instructions for compiling ffmpeg on Mac OS X (tested on Mountain Lion):
 http://www.martinlos.com/?p=41
-If attempting to compile for media redirection on mac, and enabling ffmpeg using cmake, make sure ffmpeg configure is run with
---arch=x86_64.  
 
-Here is an example of the configuration step before running make for ffmpeg:
-bc.
-./configure --enable-runtime-cpudetect --enable-libxvid --arch=x86_64 --disable-stripping --enable-gpl --enable-nonfree --cc=clang --extra-cflags="-I/sw64/include -m64" --extra-ldflags=-m64 --enable-libmp3lame --enable-libfaac --enable-shared --enable-static
+If attempting to compile for media redirection on mac, and enabling ffmpeg using cmake, make sure ffmpeg configure is run with --arch=x86_64.  For example, the following is a working configuration step before running make for ffmpeg:
+
+bc. 
+./configure --enable-runtime-cpudetect --enable-libxvid --arch=x86_64 --disable-stripping --enable-gpl --enable-nonfree 
+--cc=clang --extra-cflags="-I/sw64/include -m64" --extra-ldflags=-m64 --enable-libmp3lame --enable-libfaac --enable-shared --enable-static
 
 Use the following steps for compiling and installing Pulseaudio:
-bc.
+
+bc. 
 sudo port install json-c
 sudo port install gettext
 sudo port install intltool
