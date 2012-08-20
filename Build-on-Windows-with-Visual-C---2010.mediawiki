@@ -22,4 +22,4 @@ In Visual Studio, open the FreeRDP project map and build it. It should build cle
 == Known Problems ==
 * you need --sec tls on the command line, this is true for my linux build, too
 * colours are garbled unless you say -a 32, this is not true for my linus build
-
+* plugins do not (yet) work
