@@ -6,6 +6,7 @@
 * cmake http://www.cmake.org/cmake/resources/software.html
 * git http://code.google.com/p/tortoisegit/
 
+There are reports that you need 32 bit OpenSSL even on a 64 bit System, otherwise the build fails. Investigation is in progress.
 If you like working in a shell, get cygwin. You can also use cygwins git, but NOT the cmake that comes with cygwin
 
 ==Obtaining the source==
