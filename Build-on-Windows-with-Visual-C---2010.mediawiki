@@ -24,4 +24,8 @@ In Visual Studio, open the FreeRDP project map and build it. It should build cle
 == Known Problems ==
 * you need --sec tls on the command line, this is true for my linux build, too
 * colours are garbled unless you say -a 32, this is not true for my linus build
-* plugins do not (yet) work
+
+== Plugin status ==
+* rdpdr disk, printer and smartcard plugin are actively developed and should be available soon (Sept. 2012)
+* cliprdr plugin lacks ~1000 lines of source and does not yet work, though it builds clean
+* Status of all other plugins is unknown
