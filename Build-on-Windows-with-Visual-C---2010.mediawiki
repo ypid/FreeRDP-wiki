@@ -7,7 +7,8 @@
 * git http://code.google.com/p/tortoisegit/
 * Windows Vista or newer. It does not build on XP.
 
-There are reports that you need 32 bit OpenSSL even on a 64 bit System, otherwise the build fails. Investigation is in progress.
+There are reports that you need 32 bit OpenSSL even on a 64 bit System, otherwise the build fails. Note that Visual Studio Express only build 32 bit binaries and cannot work with 64 bit dlls at all.
+
 If you like working in a shell, get cygwin. You can also use cygwins git, but NOT the cmake that comes with cygwin
 
 ==Obtaining the source==
