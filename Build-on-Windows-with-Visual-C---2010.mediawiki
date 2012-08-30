@@ -5,7 +5,7 @@
 * OpenSSL Library http://slproweb.com/products/Win32OpenSSL.html
 * cmake http://www.cmake.org/cmake/resources/software.html
 * git http://code.google.com/p/tortoisegit/
-* Windows Vista or newer. It does not build on XP.
+* Windows Vista or newer. It does neither build nor run on XP.
 
 There are reports that you need 32 bit OpenSSL even on a 64 bit System, otherwise the build fails. Note that Visual Studio Express only build 32 bit binaries and cannot work with 64 bit dlls at all.
 
