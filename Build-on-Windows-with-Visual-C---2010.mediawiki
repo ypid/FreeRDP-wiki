@@ -30,3 +30,9 @@ In Visual Studio, open the FreeRDP project map and build it. It should build cle
 * rdpdr disk, printer and smartcard plugin are actively developed and should be available soon (Sept. 2012)
 * cliprdr plugin lacks ~1000 lines of source and does not yet work, though it builds clean
 * Status of all other plugins is unknown
+
+== Dev Snapshot ==
+
+* You can get a Snapshot of the current status here: [http://www.file-upload.net/download-4757055/FreeRDP-source.tbz.html] . For the plugins, you need [http://www.file-upload.net/download-4757059/plugins.tbz.html]
+
+* Binaries are also available: [http://www.file-upload.net/download-4757061/FreeRDP.zip.html]
