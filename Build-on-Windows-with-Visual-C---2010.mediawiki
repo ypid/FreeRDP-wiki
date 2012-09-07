@@ -24,12 +24,12 @@ In Visual Studio, open the FreeRDP project map and build it. It should build cle
 
 == Known Problems ==
 * you need --sec tls on the command line, this is true for my linux build, too
-* colours are garbled unless you say -a 32, this is not true for my linus build
 
 == Plugin status ==
 * rdpdr disk, printer and smartcard plugin are actively developed and should be available soon (Sept. 2012)
 * cliprdr plugin lacks ~1000 lines of source and does not yet work, though it builds clean
 * Status of all other plugins is unknown
+* For info on how to use the plugins, see [http://manpages.ubuntu.com/manpages/maverick/man1/xfreerdp.1.html]. Note there is one difference: Substitute a ':' in a win path by '+', eg to export the whole of drive c:, say 'disk:MyShare:C+\' . Dont forget the \ or it crashes..
 
 == Dev Snapshot ==
 
