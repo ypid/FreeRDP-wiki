@@ -5,5 +5,5 @@ There are several options you can specify when you create the Makefiles/Project 
 * WITH_SSE2 : 
 * WITH_SSE2_TARGET 
 * WITH_NEON
-* WITH_THIRD_PARTY
+* WITH_THIRD_PARTY : Enable builing of third-party code located in third-party
 * WITH_JPEG
