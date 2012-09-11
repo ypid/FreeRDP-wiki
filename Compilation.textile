@@ -30,6 +30,8 @@ If you are using Eclipse, you can also generate Eclipse project files:
 
 @cmake -G "Eclipse CDT4 - Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug -DWITH_SSE2=ON .@
 
+See "Build Options":https://github.com/FreeRDP/FreeRDP/wiki/Build-Options for a list of options.
+
 h3. Build:
 
 @make@
