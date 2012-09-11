@@ -2,8 +2,8 @@ There are several options you can specify when you create the Makefiles/Project 
 
 * WITH_MONOLITHIC_BUILD : This will build libfreerdp and libwinpr into one single dll each
 * CMAKE_BUILD_TYPE=Debug : Leave this empty for (optimized) Release build
-* WITH_SSE2 : Compile codecs (nsc, rfx) with sse2 optimizations
-* WITH_SSE2_TARGET : Compile code sse2 optimized (-msse2)
-* WITH_NEON : Compile codecs (rfx) with neon optimizations
+* WITH_SSE2_TARGET : Compile complete code sse2 optimized (-msse2)
+* WITH_SSE2 : Add support sse2 optimized codecs (nsc, rfx) detection is done at runtime
+* WITH_NEON : Add support neon optimized codecs (rfx) detection is done at runtime
 * WITH_THIRD_PARTY : Enable builing of third-party code located in third-party
 * WITH_JPEG : Enable jpeg codec
