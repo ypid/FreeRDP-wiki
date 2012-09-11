@@ -1,8 +1,8 @@
 There are several options you can specify when you create the Makefiles/Project Files with cmake. You can see some, but not all, if you use ccmake or the windows equivalent cmake-gui. The ones listed are mostly selfexplanatory, so lets focus her on the ones not listed. A build option WITH_XXX is specified as -DWITH_XXX=ON on the cmake command line.
 
 * WITH_MONOLITHIC_BUILD : This will build libfreerdp and libwinpr into one single dll each
-* CMAKE_BUILD_TYPE=Debug
-* WITH_SSE2
+* CMAKE_BUILD_TYPE=Debug : Leave this empty for (optimized) Release build
+* WITH_SSE2 : 
 * WITH_SSE2_TARGET 
 * WITH_NEON
 * WITH_THIRD_PARTY
