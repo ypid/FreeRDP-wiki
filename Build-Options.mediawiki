@@ -1,0 +1,4 @@
+There are several options you can specify when you create the Makefiles/Project Files with cmake. You can see some, but not all, if you use ccmake or the windows equivalent cmake-gui. The one listed are mostly self, explanatory, so lets focus her on the ones not listed. A build option WITH_XXX is specified as -DWITH_XXX=ON on the cmake command line.
+
+* WITH_MONOLITHIC_BUILD : This will build libfreerdp and libwinpr into one single dll each
+
