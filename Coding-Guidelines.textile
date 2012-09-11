@@ -1,6 +1,6 @@
 h1. Coding Guidelines
 
-The FreeRDP coding guidelines are mostly based on the previous coding guidelines for rdesktop, but have changed over time. In terms of writing portable C code, the Wireshark project provides good guidelines in section 1.1 "Code Style" of their "README.developer":http://anonsvn.wireshark.org/viewvc/trunk/doc/README.developer?revision=HEAD&view=raw.
+The FreeRDP coding guidelines are mostly based on the previous coding guidelines for rdesktop, but have changed over time. In terms of writing portable C code, the Wireshark project provides good guidelines in section 1.1 "Code Style" of their "README.developer":http://anonsvn.wireshark.org/viewvc/trunk/doc/README.developer?revision=HEAD.
 
 h2. Naming Conventions
 
