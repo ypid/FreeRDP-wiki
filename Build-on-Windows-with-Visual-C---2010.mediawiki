@@ -18,7 +18,7 @@ If you like working in a shell, get cygwin. You can also use cygwins git, but NO
 From the command line, go to the directory where you pulled the sources and type
 <pre>cmake .</pre>
 Of course, you can also run cmake-gui that comes with the windows cmake install and point it to your sources.
-
+See [[Build options]] for a list of options you can specify.
 == Building ==
 In Visual Studio, open the FreeRDP project map and build it. It should build clean.
 
