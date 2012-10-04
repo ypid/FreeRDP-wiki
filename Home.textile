@@ -9,6 +9,7 @@
 * "Multimedia Redirection":wiki/Multimedia-Redirection
 * "RemoteApp":wiki/RemoteApp
 * "RemoteFX":wiki/RemoteFX
+* "Plugins":Plugins
 * "Doxygen":wiki/Doxygen
 * "Keyboard":wiki/Keyboard
 * "PandaBoard":wiki/PandaBoard
