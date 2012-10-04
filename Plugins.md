@@ -1,4 +1,4 @@
-** This page is not completed **
+**This page is not completed**
 
 # Plugins list
 * cliprdr - synchronize buffers between host and local machines
