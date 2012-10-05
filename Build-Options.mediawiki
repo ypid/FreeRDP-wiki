@@ -8,3 +8,4 @@ There are several options you can specify when you create the Makefiles/Project 
 * WITH_THIRD_PARTY : Enable builing of third-party code located in third-party
 * WITH_JPEG : Enable jpeg codec
 * WITH_X11 : When OFF, don't link against X11 (useful when redistributing library files)
+* WITH_CUNIT : When ON, create makefiles for building unit tests, runnable with "make test"
