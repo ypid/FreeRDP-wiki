@@ -1,10 +1,12 @@
 **This page is not completed**
 
 # Plugins list
-* cliprdr - synchronize buffers between host and local machines
-* drdynvc - ???
-* rdpdr - disk redirection
-* tsmf - ???
+* audin - Audio Input Redirection Virtual Channel Extension
+* cliprdr - Clipboard Virtual Channel Extension
+* drdynvc - Dynamic Virtual Channel Extension
+* rdpdr - Device Redirection Virtual Channel Extension
+* rdpsnd - Audio Output Virtual Channel Extension
+* tsmf - Video Redirection Virtual Channel Extension
 
 # Plugins usage
 
