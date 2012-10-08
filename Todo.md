@@ -4,3 +4,5 @@
 * create required subset of bcrypt api (http://msdn.microsoft.com/en-us/library/windows/desktop/aa376210/)
  * write stubs and tests
  * warp openssl (maybe other ssl libraries in future)
+* Collect ideas and define a release management
+ * stable releases should be available more often
