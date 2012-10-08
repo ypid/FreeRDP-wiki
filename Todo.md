@@ -6,3 +6,4 @@
  * warp openssl (maybe other ssl libraries in future)
 * Collect ideas and define a release management
  * stable releases should be available more often
+* Create more and in depth documentation
