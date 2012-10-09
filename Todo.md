@@ -7,3 +7,7 @@
 * Collect ideas and define a release management
  * stable releases should be available more often
 * Create more and in depth documentation
+* Replacement for current debug system/macros
+ * easy to use
+ * option to output to a file
+ * create a wrapper printf function in winpr, probably the one from the strsafe api, which provides us with a consistent format string format
