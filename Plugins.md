@@ -18,12 +18,12 @@ All plugins can be used by adding parameter `--plugin <plugin name>` in command 
 
 ## rdpsnd
 
-* `--data alsa --` - use ALSA system
-* `--data pulse --` - use PulseAudio
+* `--plugin rdpsnd --data alsa --` - use ALSA system
+* `--plugin --data pulse --` - use PulseAudio
 
 ## rdpdr
 
-* `--data disk:<Name>:<Path> --` - redirect system **\<Path\>** as disk with name **\<Name\>**
+* `--plugin rdpdr --data disk:<Name>:<Path> --` - redirect system **\<Path\>** as disk with name **\<Name\>**
 
 ## tsmf
 
