@@ -13,6 +13,7 @@
 All plugins can be used by adding parameter `--plugin <plugin name>` in command line. But some plugins has extra parameters.
 
 ## cliprdr
+* `--plugin cliprdr` - Synchronize client and server clipboard data
 
 ## rdpsnd
 
@@ -24,6 +25,6 @@ All plugins can be used by adding parameter `--plugin <plugin name>` in command 
 * `--data disk:<Name>:<Path> --` - redirect system **\<Path\>** as disk with name **\<Name\>**
 
 ## tsmf
-* --plugin drdynvc --data tsmf:decoder:gstreamer - use gstreamer as media decoder
+* `--plugin drdynvc --data tsmf:decoder:gstreamer` - use gstreamer as media decoder
 
 That tsmf can be used rdpsnd needs to be enabled (eg --plugin rdpsnd --data alsa --) as well.
