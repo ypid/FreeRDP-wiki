@@ -21,8 +21,6 @@
 * "Windows Media Center":wiki/Windows-Media-Center
 * "Frequently Asked Questions":wiki/FAQ
 
-The old wiki can still be accessed "here":http://www.freerdp.com/wiki/.
-
 h2. Usage
 
 This wiki is written in the "textile markup language":http://en.wikipedia.org/wiki/Textile_(markup_language). By default, the online GitHub editor will use the markdown mode, so make sure to change it to the textile mode.
