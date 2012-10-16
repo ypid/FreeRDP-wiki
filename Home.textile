@@ -19,7 +19,7 @@
 * "Wireshark Development":wiki/Wireshark-Development
 * "Windows GDI":wiki/Windows-GDI
 * "Windows Media Center":wiki/Windows-Media-Center
-* "Frequently Asked Questions":wiki/faq
+* "Frequently Asked Questions":wiki/FAQ
 
 The old wiki can still be accessed "here":http://www.freerdp.com/wiki/.
 
