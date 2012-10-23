@@ -1,3 +1,4 @@
+
 # (Longterm) Tasks and Todos
 * Collect ideas to ease up command line ([Command Line Interface](https://github.com/FreeRDP/FreeRDP/wiki/CommandLineInterface))
 * Create test code for schannel (deeply linked with the certificate validation API)
@@ -11,3 +12,17 @@
  * easy to use
  * option to output to a file
  * create a wrapper printf function in winpr, probably the one from the strsafe api, which provides us with a consistent format string format
+
+## Tasks Corey is thinking of doing
+* Windows Server
+ * fix sound latency
+ * send sound with parallel clients
+ * support using non default screen/monitor
+ * support simple password authentication
+* C# GUI / Bindings
+ * password auth
+ * per client force disconnect
+ * set max clients
+ * simple IP filter
+* Linux server
+ * Lots of things
