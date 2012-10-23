@@ -18,6 +18,7 @@
  * send sound with parallel clients
  * support using non default screen/monitor
  * support simple password authentication
+ * handle when screen resizes/rotates/magic happens
 * C# GUI / Bindings
  * password auth
  * per client force disconnect
