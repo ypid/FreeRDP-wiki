@@ -4,7 +4,7 @@
 * Create required subset of bcrypt api (http://msdn.microsoft.com/en-us/library/windows/desktop/aa376210/)
  * write stubs and tests
  * warp openssl (maybe other ssl libraries in future)
-* Collect ideas and define a release management
+* Collect ideas and define a release management started - see https://github.com/FreeRDP/FreeRDP/wiki/Releaseguide
  * stable releases should be available more often
 * Create more and in depth documentation
 * Replacement for current debug system/macros
