@@ -19,7 +19,7 @@
 * "Wireshark Development":wiki/Wireshark-Development
 * "Windows GDI":wiki/Windows-GDI
 * "Windows Media Center":wiki/Windows-Media-Center
-* "Frequently Asked Questions":wiki/FAQ
+* "Frequently Asked Questions - FAQ":wiki/FAQ
 
 h2. Usage
 
