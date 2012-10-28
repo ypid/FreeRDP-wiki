@@ -10,7 +10,7 @@ Freerdp uses a x.y.z[-rcx] versioning scheme where
 For release canidates the suffix -rc with an number will be used to indicate that this is not the final release.
 
 ## Tags
-Tags should be in the format of the version string described above (x.y.z[-rc]) . Like 1.0.1-rc1, 1.2.2
+Tags should be in the format of the version string described above. Like 1.0.1-rc1, 1.2.2
 
 
 # Branches
