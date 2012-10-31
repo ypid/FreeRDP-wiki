@@ -1,5 +1,6 @@
 **Welcome to the FreeRDP wiki!**
 
+* "Reporting a Bug":wiki/BugReporting
 * "Compilation":wiki/Compilation
 * "Eclipse IDE":wiki/Eclipse
 * "Coding Guidelines":wiki/Coding-Guidelines
@@ -20,6 +21,7 @@
 * "Windows GDI":wiki/Windows-GDI
 * "Windows Media Center":wiki/Windows-Media-Center
 * "Frequently Asked Questions - FAQ":wiki/FAQ
+
 
 h2. Usage
 
