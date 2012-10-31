@@ -1,3 +1,5 @@
+**Please don't "report" questions a bug**
+
 Found a bug? - We would like to help you and smash the bug away.
 
 **Before reporting** a bug have a look into [our issue tracker](https://github.com/FreeRDP/FreeRDP/issues) to see if the bug was already reported and you can add some additional information.
@@ -14,4 +16,6 @@ To save time and help us identify the issue a bug report should at least contain
 * if you built it yourself add some notes which branch you have used, also your cmake parameters can help
 * extra information helping us to find the bug
 
-Thank you for reporting a bug!
+If you have question join us in irc (#freerdp on freenode) or write a mail to our mailing list.  
+
+**Thank you for reporting a bug!**
