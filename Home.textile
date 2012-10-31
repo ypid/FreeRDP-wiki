@@ -1,6 +1,6 @@
 **Welcome to the FreeRDP wiki!**
 
-* "Reporting a Bug":wiki/BugReporting
+* "Report a Bug":wiki/BugReporting
 * "Compilation":wiki/Compilation
 * "Eclipse IDE":wiki/Eclipse
 * "Coding Guidelines":wiki/Coding-Guidelines
