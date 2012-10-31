@@ -1,4 +1,4 @@
-**Please don't "report" questions a bug**
+**Please don't "report" questions as bugs**
 
 Found a bug? - We would like to help you and smash the bug away.
 
