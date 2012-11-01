@@ -23,7 +23,16 @@ All plugins can be used by adding parameter `--plugin <plugin name>` in command 
 
 ## rdpdr
 
-* `--plugin rdpdr --data disk:<Name>:<Path> --` - redirect system **\<Path\>** as disk with name **\<Name\>**
+* disk
+
+`--plugin rdpdr --data disk:<Name>:<Path> --` - redirect system **\<Path\>** as disk with name **\<Name\>**
+
+* smartcard
+
+`--plugin rdpdr --data smartcard:<name> --` - redirect smartcard with name \<name\>
+
+* serial
+* parallel
 
 ## tsmf
 
