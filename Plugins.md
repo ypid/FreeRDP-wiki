@@ -10,10 +10,11 @@
 
 # Plugins usage
 
-All plugins can be used by adding parameter `--plugin <plugin name>` in command line. But some plugins have extra parameters (sub-plugins). A plugin may have one or more parameters.
+All plugins can be used by adding parameter `--plugin <plugin name>` in command line. But some plugins have extra parameters (sub-plugins). A plugin may have one or more parameters followed by its extra parameters.
 
-Note that for each plugin additional parameters start with '--data' and have to be trailed for each plugin with '--' to mark the end of additional parameters.
-E.g.: xfreerdp --plugin rdpsnd --data alsa latency:50 -- --plugin drdynvc --data tsmf audin -- serveradress
+Note: Extra parameters are triggered with '--data' and must be trailed for each plugin with '--' to mark the end of extra parameters for a particular plugin.
+
+E.g.: `xfreerdp --plugin rdpsnd --data alsa latency:50 -- --plugin drdynvc --data tsmf audin -- serveradress`
 
 ## cliprdr
 
@@ -45,7 +46,7 @@ Note: With freerdp version 1.0.2 the parameter "disk" is going to be replaced by
 
 `--plugin rdpr --data parallel:<parallelport>:<device> --` - Redirect parallel port (e.g. LPTx) to the server
 
-* printers
+* printer
 
 `--plugin rdpr --data printer:<printername>:<driver> --` - Redirect one or more printers to the server
  
@@ -57,9 +58,9 @@ If  both  **\<printername\>**  and  **\<driver\>** are omitted, the printer sub-
 * `--plugin drdynvc --data tsmf:decoder:gstreamer --` - use gstreamer as media decoder.
 That tsmf can be used rdpsnd needs to be enabled (eg --plugin rdpsnd --data alsa --) as well.
 
-## audin (Microphone)
+## audin
 
-* `--plugin drdynvc --data audin --` - enable audio-in redirect
+* `--plugin drdynvc --data audin --` - enable audio-in redirect (microphone)
 
 ## rail (RemoteApp mode)
 
