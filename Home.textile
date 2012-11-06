@@ -2,6 +2,7 @@
 
 * "Report a Bug":wiki/BugReporting
 * "Compilation":wiki/Compilation
+* "Manuals":http://www.awakecoding.com/publish
 * "Eclipse IDE":wiki/Eclipse
 * "Coding Guidelines":wiki/Coding-Guidelines
 * "Reference Documentation":wiki/Reference-Documentation
