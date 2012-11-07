@@ -1,4 +1,3 @@
-
 ### sources
 
 Sources: https://github.com/FreeRDP/FreeRDP/tree/1.0.2-rc1 
@@ -40,5 +39,7 @@ xfreerdp -u administrator -p password -d 192.168.16.xx  -g 1366x748 --rfx --plug
 * Multimedia Redirect (tsmf) has no sound of its own. Sound is only available via rdpsnd (but poor quality and with a great delay of ~5-10 seconds). This is a regression to freerdp 1.0.
 * Big Buck Bunny (h264, 480p) is played very choppy and too slow in Windows Media Player. MMR doesn't seem to work.
 
-
+### Testing with Windows 7 Ultimate and a different client:
+http://pastebin.com/9sVKk7yt
+Multimedia Redirect crashes my whole session.
 
