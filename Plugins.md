@@ -44,11 +44,11 @@ Note: With freerdp version 1.0.2 the parameter "disk" is going to be replaced by
 
 * parallel
 
-`--plugin rdpr --data parallel:<parallelport>:<device> --` - Redirect parallel port (e.g. LPTx) to the server
+`--plugin rdpdr --data parallel:<parallelport>:<device> --` - Redirect parallel port (e.g. LPTx) to the server
 
 * printer
 
-`--plugin rdpr --data printer:<printername>:<driver> --` - Redirect one or more printers to the server
+`--plugin rdpdr --data printer:<printername>:<driver> --` - Redirect one or more printers to the server
  
 If  both  **\<printername\>**  and  **\<driver\>** are omitted, the printer sub-plugin will automatically redirect all CUPS printers using  the default PostScript driver "MS Publisher Imagesetter".
 
