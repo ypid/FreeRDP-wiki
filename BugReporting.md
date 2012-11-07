@@ -9,6 +9,8 @@ To save time and help us identify the issue a bug report should at least contain
 
 * an useful description of the bug - "It's not working" isn't good enough - you must try harder ;)
 * the steps to reproduce the bug
+* command line you have used
+* to what system did you connect to? (win8, 2008, ..)
 * what did you expect to happen?
 * what actually happened?
 * freerdp version (e.g. xfreerdp --version) or package version or git commit
