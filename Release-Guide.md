@@ -38,7 +38,8 @@ Each release follows the following procedure:
 * A release candidate must pass all available tests
 * A release candidate should be tested agains a predefined test matrix (e.g. win7, win8, nla/rdp/tls..) - tbd
 
-## Creating the release
+## Creating the release (canidate)
+* Update revision
 * Create a (signed) tag for the release
 * Create tarball/packages/...
 * Write an announcement/blog post/...
