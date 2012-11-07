@@ -15,8 +15,6 @@
 * Windows Server
  * fix sound latency
  * send sound with parallel clients
- * support using non default screen/monitor (in progress)
- * support simple password authentication
  * handle when screen resizes/rotates/magic happens
  * refuse to run inside a remote desktop session
 * C# GUI / Bindings
@@ -26,5 +24,10 @@
  * simple IP filter
  * tray iconification
  * enumerate monitors and select screen to capture
+* Mac Server
+ * Keyboard support
+ * Mouse support
+ * Basic RemoteFX
+ * Optimized RemoteFX
 * Linux server
  * Lots of things
