@@ -86,7 +86,11 @@ The best way to install cmake is via homebrew.
 
 To make a universal binary build, use:
 
-@cmake -D “CMAKE_OSX_ARCHITECTURES:STRING=i386;x86_64” .@
+@cmake -D "CMAKE_OSX_ARCHITECTURES:STRING=i386;x86_64" . && make@
+
+To make a 64-bit only binary:
+
+@cmake -D "CMAKE_OSX_ARCHITECTURES:STRING=x86_64" . && make@
 
 FreeRDP is now available as a homebrew recipe.
 
