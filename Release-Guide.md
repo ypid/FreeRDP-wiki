@@ -7,10 +7,10 @@ Freerdp uses a x.y.z[-rcx] versioning scheme where
 * y defines the API version - this will be incremented when the public API is changed and not backwards compatible anymore.
 * z patch version - incremented after bug fixes - no changes to the public API.
 
-For release canidates the suffix -rc with an number will be used to indicate that this is not the final release.
+For release canidates the suffix -rc with an number will be used to indicate that this is not the final release. On development branch the -dev suffix is used to indicate ongoing development.
 
 ## Tags
-Tags should be in the format of the version string described above. Like 1.0.1-rc1, 1.2.2
+Tags should be in the format of the version string described above. Like 1.0.1-rc1, 1.1.0-dev, 1.2.2
 
 
 # Branches
