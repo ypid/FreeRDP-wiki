@@ -9,6 +9,7 @@ There are several options you can specify when you create the Makefiles/Project 
 * WITH_JPEG : Enable jpeg codec
 * WITH_X11 : When OFF, don't link against X11 (useful when redistributing library files)
 * WITH_CUNIT : When ON, create makefiles for building unit tests, runnable with "make test"
+* WITH_SERVER : When on, it creates make files for server libs
 
 There are a large number of debug options.  To find these options, run the command:
 '''cmake -L . | grep WITH_DEBUG'''
