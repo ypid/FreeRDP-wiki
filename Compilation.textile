@@ -5,7 +5,8 @@ h4. Install the suggested base dependencies:
 _debian based_
 <pre>
 sudo apt-get install build-essential git-core cmake libssl-dev libx11-dev libxext-dev libxinerama-dev \
-libxcursor-dev libxdamage-dev libxv-dev libxkbfile-dev libxrandr-dev libasound2-dev libcups2-dev libxml2 libxml2-dev
+libxcursor-dev libxdamage-dev libxv-dev libxkbfile-dev libasound2-dev libcups2-dev libxml2 libxml2-dev \
+libxrandr-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev
 </pre>
 
 Building 1.0.1 or master requires:
