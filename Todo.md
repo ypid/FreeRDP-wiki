@@ -5,7 +5,7 @@
  * write stubs and tests
  * warp openssl (maybe other ssl libraries in future)
 * Create more and in depth documentation
-* Replacement for current debug system/macros
+* Replacement for current debug system/macros - https://github.com/FreeRDP/FreeRDP/wiki/Debug-System
  * easy to use
  * option to output to a file
  * create a wrapper printf function in winpr, probably the one from the strsafe api, which provides us with a consistent format string format
