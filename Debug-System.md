@@ -8,9 +8,14 @@ There are portability issues: format strings are not universal, especially for p
 
 Besides portability of format strings, the debug utils should also handle UNICODE builds just as well as non-UNICODE builds. This means we might want to consider using WinPR's TCHAR macros.
 
+The Windows event tracing and logging system has many advantages, but I am not sure it would directly fit our needs, or be entirely appropriate. However, it provides a clean producer/consumer interface, it is high-performance, and provides the ability of collecting the logs remotely. If we do not end up using it, we should at least design our custom debug system such that it can easily be mapped to the Windows system. This would allow us to implement the Windows system later on and have it used as a backend for our own system.
+
+[Event Tracing (Windows)](http://msdn.microsoft.com/en-us/library/windows/desktop/bb968803(v=vs.85).aspx)
+[MS Open Tech Contributes Support for Windows ETW and Perf Counters to Node.js](http://blogs.msdn.com/b/interoperability/archive/2012/12/03/ms-open-tech-contributes-support-for-windows-etw-and-perf-counters-to-node-js.aspx)
+
 ***
 
-## Implemetation Draft
+## Implementation Draft
 
 
     /* logging.h - Logging "subsystem" */
@@ -45,4 +50,3 @@ LL_ERR will be handled special. Error message will in addition to be loged in th
 This is similar to the an ealier push request which can be found at
 
 https://github.com/FreeRDP/FreeRDP/commit/819f44fcca86513072032f141acc75b1dbdb0719
-
