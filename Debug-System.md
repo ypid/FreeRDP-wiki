@@ -10,8 +10,10 @@ Besides portability of format strings, the debug utils should also handle UNICOD
 
 The Windows event tracing and logging system has many advantages, but I am not sure it would directly fit our needs, or be entirely appropriate. However, it provides a clean producer/consumer interface, it is high-performance, and provides the ability of collecting the logs remotely. If we do not end up using it, we should at least design our custom debug system such that it can easily be mapped to the Windows system. This would allow us to implement the Windows system later on and have it used as a backend for our own system.
 
-[Event Tracing (Windows)](http://msdn.microsoft.com/en-us/library/windows/desktop/bb968803(v=vs.85).aspx)
-[MS Open Tech Contributes Support for Windows ETW and Perf Counters to Node.js](http://blogs.msdn.com/b/interoperability/archive/2012/12/03/ms-open-tech-contributes-support-for-windows-etw-and-perf-counters-to-node-js.aspx)
+[Event Tracing (Windows)](http://msdn.microsoft.com/en-us/library/windows/desktop/bb968803/)
+[MS Open Tech Contributes Support for Windows ETW and Perf Counters to Node.js]
+
+(http://blogs.msdn.com/b/interoperability/archive/2012/12/03/ms-open-tech-contributes-support-for-windows-etw-and-perf-counters-to-node-js.aspx)
 
 ***
 
