@@ -21,11 +21,17 @@ The Windows event tracing and logging system has many advantages, but I am not s
 
     /* logging.h - Logging "subsystem" */
 
-    #define LL_ERR  1
-    #define LL_WARN 2
-    #define LL_INFO 3
-
-    #define LL_DEBUG 10 /* anything equal or above this level is debug */
+    #define LOG_EMERG 0
+    #define LOG_ALERT 1
+    #define LOG_CRIT  2
+    #define LOG_ERR   3 
+    #define LOG_WARNING 4
+    #define LOG_NOTICE 5
+    #define LOG_INFO  6
+    #define LOG_DEBUG 7 /* anything equal or above this level is debug */
+    #define LOG_DEBUG2 8
+    #define LOG_DEBUG3 9
+    ....
 
     #define LOGGER(level, channel, msg, ...) log_msg (level, channel, msg, ## __VA_ARGS__)
 
@@ -38,15 +44,19 @@ The Windows event tracing and logging system has many advantages, but I am not s
 
 Usage:
 
-`LOGGER(LL_ERR, _T("channelname"), _T("Something went wrong in %s"), anydata) ;`
+`LOGGER(LOG_ERR, _T("channelname"), _T("Something went wrong in %s"), anydata) ;`
 
 Commandline switches should allow to set the minimum log level and which channels to be logged. The channelname is defined as string, so any module can define it's own channelname, without the need to have a central header file, which contains all channels.
 
 LOGDBG statements will not included in the Release builds.
 
-All log output above the currently set debuglevel will go to a log file. Later on other targets can be added.
+All log output above the currently set debuglevel will go to a log file. Later on other targets (stderr, syslog, eventlog, etc.) can be added.
 
-LL_ERR will be handled special. Error message will in addition to be loged in the log file saved in a in memory list and outputed in a dialog box when freerdp terminates. This allows to display all errors not only the last one (which might be something not so usefull like "connection terminated") to the user. It also makes sure any thread can log an error, but only the main thread will display the dialog box.
+The current debug/log level should be setable by a commandline option, also the log target and maybe other flags like if timestamps should be added.
+
+LOG_ERR and below will be handled special. Error message will in addition to be loged in the log file saved in a in memory list and outputed in a dialog box when freerdp terminates. This allows to display all errors not only the last one (which might be something not so usefull like "connection terminated") to the user. It also makes sure any thread can log an error, but only the main thread will display the dialog box.
+
+LOGDBG should always flush directly to the file (maybe this can be turn on/off by a command line switch)
 
 This is similar to the an ealier push request which can be found at
 
