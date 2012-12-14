@@ -14,6 +14,10 @@ The Windows event tracing and logging system has many advantages, but I am not s
 
 [MS Open Tech Contributes Support for Windows ETW and Perf Counters to Node.js](http://blogs.msdn.com/b/interoperability/archive/2012/12/03/ms-open-tech-contributes-support-for-windows-etw-and-perf-counters-to-node-js.aspx)
 
+The Android logging system is an interesting source of inspiration. It is also under the Apache license:
+[logd_write.c](https://github.com/android/platform_system_core/blob/master/liblog/logd_write.c)
+[logprint.c](https://github.com/android/platform_system_core/blob/master/liblog/logprint.c)
+
 ***
 
 ## Implementation Draft
