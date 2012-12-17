@@ -10,6 +10,7 @@
  * option to output to a file
  * create a wrapper printf function in winpr, probably the one from the strsafe api, which provides us with a consistent format string format
 * create a test plan for new releases - in progress (bm)
+* add plug and play device redirection
 
 ## Tasks Corey is thinking of doing
 * Windows Server
