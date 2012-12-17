@@ -14,9 +14,10 @@ Building 1.0.1 or master requires:
 @sudo apt-get install libavutil-dev libavcodec-dev@
 
 _rhel based_
-
-@sudo yum install gcc cmake openssl-devel libX11-devel libXext-devel libXinerama-devel libXcursor-devel libXdamage-devel libXv-devel libxkbfile-devel alsa-lib-devel cups-devel ffmpeg-devel@
-
+<pre>
+sudo yum install gcc cmake openssl-devel libX11-devel libXext-devel libXinerama-devel libXcursor-devel \
+libXdamage-devel libXv-devel libxkbfile-devel alsa-lib-devel cups-devel ffmpeg-devel
+</pre>
 Optionally, you can install the following dependencies:
 
 _debian based_
