@@ -12,6 +12,7 @@ h1. USB Redirection
 Existing USB Redirection Open Source software:
 "USB/IP project":http://usbip.sourceforge.net/
 "USB Virtual Host Controller Interface":http://sourceforge.net/projects/usb-vhci/
+"usbredir library (used in qemu/kvm/spice)":http://spice-space.org/page/UsbRedir
 
 Proposed architecture of USB Redirection on client side:
 * kernel part: integrate from already existing projects
