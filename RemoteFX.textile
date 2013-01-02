@@ -6,7 +6,7 @@ RemoteFX is defined in:
 
 h1. Packet Captures
 
-Windows 7 SP1 to Windows Server 2008 R2 SP1 (RSDH): "mstsc_remotefx.zip":mstsc_remotefx.zip
+Windows 7 SP1 to Windows Server 2008 R2 SP1 (RSDH):"mstsc_remotefx.zip":files/pcap/mstsc_remotefx.zip
 
 h1. RDSH Deployment
 
