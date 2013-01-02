@@ -1,5 +1,7 @@
 h1. Changelog
 
+for an up 2 date changelog have a look to the ChangeLog file in the source directory.
+
 h2. FreeRDP 1.0
 
 h3. License:
