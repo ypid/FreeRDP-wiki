@@ -1,1 +1,1 @@
-New command line syntax
+Documentation about the new command line.
