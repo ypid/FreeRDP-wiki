@@ -1,7 +1,7 @@
 **Welcome to the FreeRDP wiki!**
 
 * "Howto report a Bug":wiki/BugReporting
-* "New command line":wiki/CommandLine
+* "New command line":wiki/NewCommandLine
 * "Compilation":wiki/Compilation
 * "Manuals":http://www.awakecoding.com/publish
 * "Eclipse IDE":wiki/Eclipse
