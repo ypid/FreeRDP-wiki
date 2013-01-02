@@ -1,6 +1,6 @@
 **Welcome to the FreeRDP wiki!**
 
-* "Report a Bug":wiki/BugReporting
+* "Howto report a Bug":wiki/BugReporting
 * "New command line":wiki/CommandLine
 * "Compilation":wiki/Compilation
 * "Manuals":http://www.awakecoding.com/publish
