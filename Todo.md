@@ -1,4 +1,6 @@
 # (Longterm) Tasks and Todos
+* Infrastructure
+ * Download services (mainly for releases)
 * Create test code for schannel (deeply linked with the certificate validation API)
 * Create required subset of bcrypt api (http://msdn.microsoft.com/en-us/library/windows/desktop/aa376210/)
  * write stubs and tests
