@@ -14,6 +14,8 @@
 * add plug and play device redirection
 
 ## Tasks Corey is thinking of doing
+* Build system
+ * Standardize and stabilize packaging with CMAKE and CPACK
 * Windows Server
  * fix sound latency
  * send sound with parallel clients
