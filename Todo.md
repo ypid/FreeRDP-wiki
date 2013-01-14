@@ -29,7 +29,6 @@
 * Mac Server
  * Keyboard support
  * Mouse support
- * Basic RemoteFX
- * Optimized RemoteFX
+ * Sound support
 * Linux server
  * Lots of things
