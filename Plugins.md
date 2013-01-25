@@ -50,7 +50,7 @@ Note: With freerdp version 1.0.2 the parameter "disk" is going to be replaced by
 
 `--plugin rdpdr --data printer:<printername>:<driver> --` - Redirect one or more printers to the server
  
-If  both  **\<printername\>**  and  **\<driver\>** are omitted, the printer sub-plugin will automatically redirect all CUPS printers using  the default PostScript driver "MS Publisher Imagesetter".
+Previously, if  both  **\<printername\>**  and  **\<driver\>** are omitted, the printer sub-plugin will automatically redirect all CUPS printers using  the default PostScript driver "MS Publisher Imagesetter". This is currently defunct.
 
 ## tsmf
 
