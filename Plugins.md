@@ -18,7 +18,7 @@ E.g.: `xfreerdp --plugin rdpsnd --data alsa latency:50 -- --plugin drdynvc --dat
 
 ## cliprdr
 
-* `--plugin cliprdr` - Synchronize client and server clipboard data
+* `--plugin cliprdr` - Synchronize client and server clipboard data. This is the old syntax and now defunct. Use /a:cliprdr
 
 ## rdpsnd
 
