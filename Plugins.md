@@ -1,5 +1,7 @@
 **This page is not completed**
 
+Command line syntax has massively changed, which also affects plugins. This page needs updating. See [CommandLineInterface](https://github.com/FreeRDP/FreeRDP/wiki/CommandLineInterface)
+
 # Plugins list
 * audin - Audio Input Redirection Virtual Channel Extension
 * cliprdr - Clipboard Virtual Channel Extension
