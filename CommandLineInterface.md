@@ -1,12 +1,11 @@
+Thre are currently two command line interfaces, an old, deprecated one an a new one which was designed to give better interoperability with Windows. Generally speaking, you can now use both --log-option or /long-option
 
-Plugins currently have a rather hard to remember command line syntax (see [plugins](https://github.com/FreeRDP/FreeRDP/wiki/Plugins)). 
-To ease plugin use this page should collect ideas for new command line parameters.
 
-# Plugin
-## rdpdr
---disk "target:/local"
-## audin
-## cliprdr
-## drdynvc
-## rdpsnd
-## tsmf
+# Old style options
+## Plugins
+Option handling was very counter intuitive.
+
+# New style options
+
+# Source
+Command line options are derived from a datastructure. You can dump this using _xfreerdp --help_ or _xfreerdp /help_
