@@ -1,15 +1,21 @@
-There are several options you can specify when you create the Makefiles/Project Files with cmake. You can see some, but not all, if you use ccmake or the windows equivalent cmake-gui. The ones listed are mostly selfexplanatory, so lets focus her on the ones not listed. A build option WITH_XXX is specified as -DWITH_XXX=ON on the cmake command line.
+There are several options you can specify when you create the Makefiles/Project Files with cmake. You can see some, but not all, if you use ccmake or the windows equivalent cmake-gui. The ones listed are mostly selfexplanatory, so lets focus her on the ones not listed. The settings in the listing below are the opposite of the default.
 
-* MONOLITHIC_BUILD : This will build libfreerdp and libwinpr into one single dll each (requires cmake >= 2.8.8)
-* CMAKE_BUILD_TYPE=Debug : Leave this empty or set it to Release for (optimized) Release build
-* WITH_SSE2_TARGET : Compile complete code sse2 optimized (-msse2)
-* WITH_SSE2 : Add support sse2 optimized codecs (nsc, rfx) detection is done at runtime
-* WITH_NEON : Add support neon optimized codecs (rfx) detection is done at runtime
-* WITH_THIRD_PARTY : Enable builing of third-party code located in third-party
-* WITH_JPEG : Enable jpeg codec
-* WITH_X11 : When OFF, don't link against X11 (useful when redistributing library files)
-* WITH_CUNIT : When ON, create makefiles for building unit tests, runnable with "make test"
-* WITH_SERVER : When on, it creates make files for server libs
-* WITH_XKBFILE : When on, keyboard detection is via xkbfile. When off, other keymaps are loaded. The default changed to ON recently. For MacOS Systems, OFF works better
+* -DMONOLITHIC_BUILD=ON : This will build libfreerdp and libwinpr into one single dll each (requires cmake >= 2.8.8)
+* -DDBUILD_SHARED_LIBS=OFF : This together with MONOLITHIC_BUILD will build one large single executable
+* -DCMAKE_BUILD_TYPE:STRING=Debug : Leave this empty or set it to Release for (optimized) Release build
+* -DCMAKE_OSX_ARCHITECTURES=i386 : (Mac only) Build 32 bit executables
+* -DWITH_SSE2_TARGET : Compile complete code sse2 optimized (-msse2)
+* -DWITH_SSE2=OFF : Disable support for sse2 optimized codecs (nsc, rfx) detection is done at runtime
+* -DWITH_NEON=OFF : Disable support neon optimized codecs (rfx) detection is done at runtime
+* -DWITH_THIRD_PARTY=ON : Enable builing of third-party code located in third-party
+* -DWITH_JPEG=OFF : Disable jpeg codec
+* -DWITH_X11=OFF : When OFF, don't link against X11 (useful when redistributing library files)
+* -DWITH_CUNIT=ON : When ON, create makefiles for building unit tests, runnable with "make test"
+* -DWITH_SERVER=ON : When on, it creates make files for server libs
+* -DWITH_XKBFILE=OFF : When on, keyboard detection is via xkbfile. When off, other keymaps are loaded. The default changed to ON recently. For MacOS Systems, OFF works better
+
+
 There are a large number of debug options.  To find these options, run the command:
 '''cmake -L . | grep WITH_DEBUG'''
+
+Note that debugging needs a rework [[Debug-System]]
