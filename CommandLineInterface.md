@@ -1,82 +1,5 @@
-Thre are currently two command line interfaces, an old, deprecated one an a new one which was designed to give better interoperability with Windows. Generally speaking, you can now use both --log-option or /long-option
+Thre are currently two command line interfaces, an old, deprecated one an a new one which was designed to give better interoperability with Windows and is easier to user. Generally speaking, you can now use both --log-option or /long-option. You should use the new interface now the old interface is just kept for compatibility and will be dropped at some point.
 
-
-# Old style options
-## Plugins
-Option handling was very counter intuitive. The general syntax was --plugin &lt;pluginname&gt;  &#91; --data &lt;plugindata&gt; -- &#93;
-
-* -- plugin cliprdr : Synchronize client and server clipboard data. Plain text, Unicode text, HTML content and images are supported on UX platforms. For xfreerdp on Mac, only text works due to the interaction between X Server and the Mac. For windows, cliprdr does not work.
-
-* --plugin rdpdr --data &lt;subplugin&gt; &#91;&lt;subplugin&gt; ...&#93; -- : Redirects file system devices on your client to the server. &lt;subplugin&gt; can be one of more of the following:
-
-    + disk:&lt;sharename&gt;:&lt;path&gt; Redirect &lt;path&gt; to the server as shared folder \\tsclient\&lt;sharename&gt;.
-
-    + printer&#91;:&lt;printername&gt;&#91:&lt;driver&gt;&#93;&#93; Redirect printers to the server. Redirecting all printers does not work right now.
-
-    + serial:&lt;sharename&gt;:&lt;device&gt; Redirect serial &lt;device&gt; to the server. It will be referenced by &lt;sharedname&gt;.
-
-    + parallel:&lt;sharedname&gt;:&lt;lptdevice&gt; Redirects parallel device &lt;lptdevice&gt; on your client to the server, where it will be referenced by <sharedname>. Bidirectional/Read support requires Windows XP or newer. 
-
-* --plugin drdynvc --data &lt;subplugin&gt; &#91;&lt;subplugin&gt; ...&#93; -- : Load the Dynamic Virtual Channel. &lt;ubplugin&gt; can be the DVC sub-plugin name, or a path specifying the sub-plugin module. If the DVC sub-plugin name was passed, xfreerdp will try to locate the sub-plugin in its plugin path. Allowed subplugins:
-
-    + audin Redirect audio recording device to the server. This is an RDP 7.0 feature available in Windows 7, Windows 2008 and Windows 2008 R2. Note that Windows 7 Enterprise edition and Windows 2008 Server has audio redirection disabled by default.
-
-## Other options
-
-*  -0: connect to console session
-*  -a: set color depth in bit, default is 16
-*  -c: initial working directory
-*  -D: hide window decorations
-*  -T: window title
-*  -d: domain
-*  -f: fullscreen mode
-*  -g: set geometry, using format WxH or X% or 'workarea', default is 1024x768
-*  -h: print this help
-*  -k: set keyboard layout ID
-*  -K: do not interfere with window manager bindings
-*  -n: hostname
-*  -o: console audio
-*  -p: password
-*  -s: set startup-shell
-*  -t: alternative port number, default is 3389
-*  -u: username
-*  -x: performance flags (m[odem], b[roadband] or l[an])
-*  -X: embed into another window with a given XID.
-*  -z: enable compression
-*  --app: RemoteApp connection. This implies -g workarea
-*  --ext: load an extension
-*  --no-auth: disable authentication
-*  --authonly: authentication only, no UI
-*  --from-stdin: unspecified username, password, domain and hostname params are prompted
-*  --no-fastpath: disable fast-path
-*  --no-motion: don't send mouse motion events
-*  --gdi: graphics rendering (hw, sw)
-*  --no-osb: disable offscreen bitmaps
-*  --no-bmp-cache: disable bitmap cache
-*  --bcv3: codec for bitmap cache v3 (rfx, nsc, jpeg)
-*  --rfx: enable RemoteFX
-*  --rfx-mode: RemoteFX operational flags (v[ideo], i[mage]), default is video
-*  --frame-ack: number of frames pending to be acknowledged, default is 2 (disable with 0)
-*  --nsc: enable NSCodec (experimental)
-*  --disable-wallpaper: disables wallpaper
-*  --composition: enable desktop composition
-*  --disable-full-window-drag: disables full window drag
-*  --disable-menu-animations: disables menu animations
-*  --disable-theming: disables theming
-*  --no-nego: disable negotiation of security layer and enforce highest enabled security protocol
-*  --no-rdp: disable Standard RDP encryption
-*  --no-tls: disable TLS encryption
-*  --no-nla: disable network level authentication
-*  --ntlm: force NTLM authentication protocol version (1 or 2)
-*  --ignore-certificate: ignore verification of logon certificate
-*  --certificate-name: use this name for the logon certificate, instead of the server name
-*  --sec: force protocol security (rdp, tls or nla)
-*  --tsg: Terminal Server Gateway (<username> <password> <hostname>)
-*  --kbd-list: list all keyboard layout ids used by -k
-*  --no-salted-checksum: disable salted checksums with Standard RDP encryption
-*  --pcid: preconnection id
-*  --pcb: preconnection blob
-*  --version: print version information
 
 # New style options
 ## Plugins
@@ -169,6 +92,83 @@ Syntax: /flag enables flag, +toggle or -toggle enables or disables toggle. /togg
 *    -fast-path (default:on)	fast-path input/output
 *    /version             	print version
 *    /help                	print help
+
+# Old style options
+## Plugins
+Option handling was very counter intuitive. The general syntax was --plugin &lt;pluginname&gt;  &#91; --data &lt;plugindata&gt; -- &#93;
+
+* -- plugin cliprdr : Synchronize client and server clipboard data. Plain text, Unicode text, HTML content and images are supported on UX platforms. For xfreerdp on Mac, only text works due to the interaction between X Server and the Mac. For windows, cliprdr does not work.
+
+* --plugin rdpdr --data &lt;subplugin&gt; &#91;&lt;subplugin&gt; ...&#93; -- : Redirects file system devices on your client to the server. &lt;subplugin&gt; can be one of more of the following:
+
+    + disk:&lt;sharename&gt;:&lt;path&gt; Redirect &lt;path&gt; to the server as shared folder \\tsclient\&lt;sharename&gt;.
+
+    + printer&#91;:&lt;printername&gt;&#91:&lt;driver&gt;&#93;&#93; Redirect printers to the server. Redirecting all printers does not work right now.
+
+    + serial:&lt;sharename&gt;:&lt;device&gt; Redirect serial &lt;device&gt; to the server. It will be referenced by &lt;sharedname&gt;.
+
+    + parallel:&lt;sharedname&gt;:&lt;lptdevice&gt; Redirects parallel device &lt;lptdevice&gt; on your client to the server, where it will be referenced by <sharedname>. Bidirectional/Read support requires Windows XP or newer. 
+
+* --plugin drdynvc --data &lt;subplugin&gt; &#91;&lt;subplugin&gt; ...&#93; -- : Load the Dynamic Virtual Channel. &lt;ubplugin&gt; can be the DVC sub-plugin name, or a path specifying the sub-plugin module. If the DVC sub-plugin name was passed, xfreerdp will try to locate the sub-plugin in its plugin path. Allowed subplugins:
+
+    + audin Redirect audio recording device to the server. This is an RDP 7.0 feature available in Windows 7, Windows 2008 and Windows 2008 R2. Note that Windows 7 Enterprise edition and Windows 2008 Server has audio redirection disabled by default.
+
+## Other options
+
+*  -0: connect to console session
+*  -a: set color depth in bit, default is 16
+*  -c: initial working directory
+*  -D: hide window decorations
+*  -T: window title
+*  -d: domain
+*  -f: fullscreen mode
+*  -g: set geometry, using format WxH or X% or 'workarea', default is 1024x768
+*  -h: print this help
+*  -k: set keyboard layout ID
+*  -K: do not interfere with window manager bindings
+*  -n: hostname
+*  -o: console audio
+*  -p: password
+*  -s: set startup-shell
+*  -t: alternative port number, default is 3389
+*  -u: username
+*  -x: performance flags (m[odem], b[roadband] or l[an])
+*  -X: embed into another window with a given XID.
+*  -z: enable compression
+*  --app: RemoteApp connection. This implies -g workarea
+*  --ext: load an extension
+*  --no-auth: disable authentication
+*  --authonly: authentication only, no UI
+*  --from-stdin: unspecified username, password, domain and hostname params are prompted
+*  --no-fastpath: disable fast-path
+*  --no-motion: don't send mouse motion events
+*  --gdi: graphics rendering (hw, sw)
+*  --no-osb: disable offscreen bitmaps
+*  --no-bmp-cache: disable bitmap cache
+*  --bcv3: codec for bitmap cache v3 (rfx, nsc, jpeg)
+*  --rfx: enable RemoteFX
+*  --rfx-mode: RemoteFX operational flags (v[ideo], i[mage]), default is video
+*  --frame-ack: number of frames pending to be acknowledged, default is 2 (disable with 0)
+*  --nsc: enable NSCodec (experimental)
+*  --disable-wallpaper: disables wallpaper
+*  --composition: enable desktop composition
+*  --disable-full-window-drag: disables full window drag
+*  --disable-menu-animations: disables menu animations
+*  --disable-theming: disables theming
+*  --no-nego: disable negotiation of security layer and enforce highest enabled security protocol
+*  --no-rdp: disable Standard RDP encryption
+*  --no-tls: disable TLS encryption
+*  --no-nla: disable network level authentication
+*  --ntlm: force NTLM authentication protocol version (1 or 2)
+*  --ignore-certificate: ignore verification of logon certificate
+*  --certificate-name: use this name for the logon certificate, instead of the server name
+*  --sec: force protocol security (rdp, tls or nla)
+*  --tsg: Terminal Server Gateway (<username> <password> <hostname>)
+*  --kbd-list: list all keyboard layout ids used by -k
+*  --no-salted-checksum: disable salted checksums with Standard RDP encryption
+*  --pcid: preconnection id
+*  --pcb: preconnection blob
+*  --version: print version information
 
 # Source
 Command line options are derived from a datastructure. You can dump this using _xfreerdp --help_ or _xfreerdp /help_
