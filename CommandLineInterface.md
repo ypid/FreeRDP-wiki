@@ -4,7 +4,7 @@ Thre are currently two command line interfaces, an old, deprecated one an a new 
 # New style options
 ## Plugins
 * \+clipboard : redirect clipboard
-* /a:drive,&lt;sharename&gt;,&lt;path&gt : Redirect &lt;path&gt; as share &lt;sharename&gt;
+* /a:drive,&lt;sharename&gt;,&lt;path&gt; : Redirect &lt;path&gt; as share &lt;sharename&gt;
 * /a:smartcard,&lt;device&gt; : Redirect smartcard &lt;device&gt;
 * /a:printer,&lt;device&gt;,&lt;driver&gt; : Redirect a specific printer. Redirecting all printers does not currently work.
 * /a:serial,&lt;device&gt; : redirect serial port &lt;device&gt; 
