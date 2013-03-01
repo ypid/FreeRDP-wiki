@@ -10,8 +10,8 @@ Freerdp uses a x.y.z[-rcx] versioning scheme where
 For release canidates the suffix -rc with an number will be used to indicate that this is not the final release. On development branch the -dev suffix is used to indicate ongoing development.
 
 ## Tags
-Tags should be in the format of the version string described above. Like 1.0.1-rc1, 1.1.0-dev, 1.2.2
-
+Tags should be in the format of the version string described above. Like 1.0.1-rc1, 1.1.0-dev, 1.2.2.
+A additional "build" or release string can be appended with + e.g. 1.0.1-rc1+android, 1.1.1+public_release to identify special releases or events.
 
 # Branches
 
