@@ -17,7 +17,6 @@
 * Build system
  * Standardize and stabilize packaging with CMAKE and CPACK
 * Windows Server
- * fix sound latency
  * send sound with parallel clients
  * handle when screen resizes/rotates/magic happens
  * refuse to run inside a remote desktop session
@@ -28,9 +27,5 @@
  * simple IP filter
  * tray iconification
  * enumerate monitors and select screen to capture
-* Mac Server
- * Keyboard support
- * Mouse support
- * Sound support
 * Linux server
  * Lots of things
