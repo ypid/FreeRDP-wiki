@@ -34,4 +34,7 @@ Alternatively, it is possible to use full paths to launch a program instead of a
 
 @./client/X11/xfreerdp -u Administrator -p Password --app --plugin rail --data "%windir%\system32\cmd.exe" -- 192.168.1.200@
 
+You may also want to try newer syntax:
+@xfreerdp /u:user /d:domain /p:password /app:"||calc" /v:server@
+
 There is currently an issue where the usage of the colon ':' conflicts with the --data argument separator, so paths like "C:\Windows\System32\cmd.exe" won't work. If you are experiencing such issues, use environment variables like @%windir%@ to work around the problem until a more permanent solution is found.
