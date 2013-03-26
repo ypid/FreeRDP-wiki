@@ -4,15 +4,15 @@ Thre are currently two command line interfaces, an old, deprecated one an a new 
 # New style options
 ## Plugins
 * \+clipboard : redirect clipboard
-* /a:drive,&lt;sharename&gt;,&lt;path&gt; : Redirect &lt;path&gt; as share &lt;sharename&gt;
-* /a:smartcard,&lt;device&gt; : Redirect smartcard &lt;device&gt;
-* /a:printer,&lt;device&gt;,&lt;driver&gt; : Redirect a specific printer. Redirecting all printers does not currently work.
-* /a:serial,&lt;device&gt; : redirect serial port &lt;device&gt; 
-* /a:parallel,<device>  : redirect parallel port &lt;device&gt; 
-* /dvc:audin,sys:alsa : Redirect audio input
-* /vc:rdpsnd,sys:alsa : Redirect audio output
-* /dvc:tsmf,sys:alsa : Multimedia redirection
-* /dvc:urbdrc,id,&lt;usbid&gt; : Redirect usb device &lt;usbid&gt;. Usbid is a string like dev:054c:0268
+* /drive:&lt;sharename&gt;,&lt;path&gt; : Redirect &lt;path&gt; as share &lt;sharename&gt;
+* /smartcard:&lt;device&gt; : Redirect smartcard &lt;device&gt;
+* /printer:&lt;device&gt;,&lt;driver&gt; : Redirect a specific printer. Redirecting all printers does not currently work.
+* /serial:&lt;device&gt; : redirect serial port &lt;device&gt; 
+* /parallel:&lt;device&gt;  : redirect parallel port &lt;device&gt; 
+* /microphone:sys:alsa : Redirect audio input
+* /sound:sys:alsa : Redirect audio output
+* /multimedia:sys:alsa : Multimedia redirection
+* /usb:id,&lt;usbid&gt; : Redirect usb device &lt;usbid&gt;. Usbid is a string like dev:054c:0268
 
 ## Other options
 Syntax: /flag enables flag, +toggle or -toggle enables or disables toggle. /toggle and +toggle are the same. Options with values work like this: /option:&lt;value&gt;    
@@ -33,7 +33,7 @@ Syntax: /flag enables flag, +toggle or -toggle enables or disables toggle. /togg
 *    /workarea            	Work area
 *    /t:&lt;title&gt;           	Window title
 *    +decorations (default:off)	Window decorations
-*    /a                   	Addin, see plugins section
+*    /a                   	Addin (additional plugins)
 *    /vc                  	Static virtual channel, see plugins section
 *    /dvc                 	Dynamic virtual channel, see plugins section
 *    /u:&#91;&lt;domain&gt;\&#93;&lt;user&gt; or &lt;user&gt;&#91;@&lt;domain&gt;&#93;	Username
