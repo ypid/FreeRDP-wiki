@@ -1,4 +1,4 @@
-Thre are currently two command line interfaces, an old, deprecated one an a new one which was designed to give better interoperability with Windows and is easier to user. Generally speaking, you can now use both --log-option or /long-option. You should use the new interface now the old interface is just kept for compatibility and will be dropped at some point.
+There are currently two command line interfaces, an old, deprecated one an a new one which was designed to give better interoperability with Windows and is easier to user. Generally speaking, you can now use both --log-option or /long-option. You should use the new interface now the old interface is just kept for compatibility and will be dropped at some point.
 
 
 # New style options
