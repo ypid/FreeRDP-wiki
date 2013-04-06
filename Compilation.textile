@@ -93,9 +93,21 @@ CA certificates can be added to ~/.freerdp/cacert for additional trusted CAs.
 
 h2. Mac OS X Specifics
 
-The best way to install cmake is via homebrew.
+h3. Using a package manager
 
-To make a universal binary build, use:
+If you're using MacPorts then just install FreeRDP port:
+
+bc. sudo port install FreeRDP
+
+FreeRDP is now available as a homebrew recipe.
+
+bc. brew install freerdp
+sudo brew link freerdp
+
+h3. Compiling from sources
+
+You'll need cmake in order to build sourc.
+Install it if you don't have it already then to make a universal binary build, use:
 
 @cmake -D "CMAKE_OSX_ARCHITECTURES:STRING=i386;x86_64" . && make@
 
@@ -103,18 +115,13 @@ To make a 64-bit only binary:
 
 @cmake -D "CMAKE_OSX_ARCHITECTURES:STRING=x86_64" . && make@
 
-FreeRDP is now available as a homebrew recipe.
+h3. If you are interested in trying out multimedia redirection on a Mac, use the following steps:
 
-bc. brew install freerdp
-sudo brew link freerdp
+Install ffmpeg, using MacPorts:
 
-h4. If you are interested in trying out multimedia redirection on a Mac, use the following steps:
+bc. sudo port install ffmpeg-devel
 
-To install ffmpeg with MacPorts:  
-@sudo port install ffmpeg-devel@
-
-Here are working instructions for compiling ffmpeg on Mac OS X (tested on Mountain Lion):
-http://www.martinlos.com/?p=41
+or compiling it from sources by following instructions at http://www.martinlos.com/?p=41 - tested on Mountain Lion.
 
 If attempting to compile for media redirection on mac, and enabling ffmpeg using cmake, make sure ffmpeg configure is run with --arch=x86_64.  For example, the following is a working configuration step before running make for ffmpeg:
 
@@ -124,11 +131,7 @@ bc.
 Use the following steps for compiling and installing Pulseaudio:
 
 bc. 
-sudo port install json-c
-sudo port install gettext
-sudo port install intltool
-sudo port install speex
-sudo port install libsndfile
+sudo port install json-c gettext intltool speex libsndfile
 sudo ./configure --with-udev-rules-dir=/usr/local/lib/udev/rules.d --with-mac-sysroot=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk --with-mac-version-min=10.8
 sudo make install
 
