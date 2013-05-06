@@ -3,7 +3,7 @@
 * "Howto report a Bug":wiki/BugReporting
 * "New command line":wiki/CommandLineInterface
 * "Compilation":wiki/Compilation
-* "Manuals":http://www.awakecoding.com/publish
+* "Manuals":wiki/manuals
 * "Eclipse IDE":wiki/Eclipse
 * "Coding Guidelines":wiki/Coding-Guidelines
 * "Reference Documentation":wiki/Reference-Documentation
