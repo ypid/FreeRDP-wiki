@@ -2,6 +2,7 @@
 
 * "Howto report a Bug":wiki/BugReporting
 * "New command line":wiki/CommandLineInterface
+* Pre-Builds
 * "Compilation":wiki/Compilation
 * "Manuals":wiki/manuals
 * "Eclipse IDE":wiki/Eclipse
