@@ -3,6 +3,7 @@ For ubuntu there is a [remmina](http://remmina.sourceforge.net/)/freerdp persona
 For other distributions are currently no daily packages available so you will need to build from source.
 
 ## I am experiencing severe audio lag when viewing multimedia content.
+### For v1.0.x
 Use the ``--data latency:X --`` argument to specify the audio latency.  X is in milliseconds.
 
 Example command line:
