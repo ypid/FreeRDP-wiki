@@ -6,6 +6,7 @@ For other distributions are currently no daily packages available so you will ne
 Further reading:
 * http://comments.gmane.org/gmane.network.freerdp.devel/1469
 * https://github.com/FreeRDP/FreeRDP/issues/352
+
 ### For v1.0.x
 Use the ``--data latency:X --`` argument to specify the audio latency.  X is in milliseconds.
 
