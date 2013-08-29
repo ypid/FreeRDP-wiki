@@ -4,7 +4,7 @@
 * "New command line":wiki/CommandLineInterface
 * "Pre-Build":wiki/PreBuilds
 * "Compilation":wiki/Compilation
-* "clang scan-build":wiki/scan-build
+* "clang scan-build":wiki/clang-scan-build
 * "Manuals":wiki/manuals
 * "Eclipse IDE":wiki/Eclipse
 * "Coding Guidelines":wiki/Coding-Guidelines
