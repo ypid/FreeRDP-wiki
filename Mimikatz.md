@@ -1,4 +1,4 @@
-"http://blog.gentilkiwi.com/mimikatz":Mimikatz is shell for various modules. Here is simple example how to export RDP and/or HyperV certificates with private keys for debugging of RDP session in Wireshark.
+[Mimikatz](http://blog.gentilkiwi.com/mimikatz) is shell for various modules. Here is simple example how to export RDP and/or HyperV certificates with private keys for debugging of RDP session in Wireshark.
 
 Run mimikatz alpha x64, then execute following commands:
 
