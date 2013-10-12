@@ -10,7 +10,7 @@ Sample Wireshark RDP captures can be found in the "Network Level Authentication"
 
 h1. Exporting Self-Signed Certificate with its Private Key
 
-If you want to take your own captures, you will need to extract your server's certificate with its private key. The easiest way to do so is with "Jailbreak":Jailbreak. Once you managed to get a certificate with an exportable private key, you can follow the steps for "Certificate Exportation":Certificate-Export in a format usable by Wireshark.
+If you want to take your own captures, you will need to extract your server's certificate with its private key. The easiest way to do so is with "Jailbreak":Jailbreak (Win32 only) or "Mimikatz":Mimikatz (win32 and winx64). Once you managed to get a certificate with an exportable private key, you can follow the steps for "Certificate Exportation":Certificate-Export in a format usable by Wireshark.
 
 h1. Configuring the Wireshark SSL Dissector
 
