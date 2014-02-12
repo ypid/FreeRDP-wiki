@@ -7,3 +7,7 @@
 ### Install build-dependencies
 
 `sudo port install git-core ffmpeg-devel`
+
+then install from source, or just install it via macports
+
+`sudo port install freerdp`
