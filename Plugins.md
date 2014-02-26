@@ -30,6 +30,8 @@ E.g.: `xfreerdp --plugin rdpsnd --data alsa latency:50 -- --plugin drdynvc --dat
 
 ## rdpdr
 
+**If you want any redirection to work with Windows Server 2012 you MUST use --plugin rdpsnd before you use any rdpdr options.**
+
 * disk
 
 `--plugin rdpdr --data disk:<Name>:<Path> --` - redirect system **\<Path\>** as disk with name **\<Name\>**
