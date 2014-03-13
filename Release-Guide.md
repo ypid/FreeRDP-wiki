@@ -7,7 +7,7 @@ Freerdp uses a x.y.z[-rcx] versioning scheme where
 * y defines the API version - this will be incremented when the public API is changed and not backwards compatible anymore.
 * z patch version - incremented after bug fixes - no changes to the public API.
 
-For release canidates the suffix -rc with an number will be used to indicate that this is not the final release. On development branch the -dev suffix is used to indicate ongoing development.
+For release candidates the suffix -rc with an number will be used to indicate that this is not the final release. On development branch the -dev suffix is used to indicate ongoing development.
 
 ## Tags
 Tags should be in the format of the version string described above. Like 1.0.1-rc1, 1.1.0-dev, 1.2.2.
@@ -34,11 +34,11 @@ When possible a test case should be added for an issue in order to make regressi
 Each release follows the following procedure:
 
 * If it's a new major release create a stable-x.y branch
-* Create a release canidate (rc)
+* Create a release candidate (rc)
 * A release candidate must pass all available tests
 * A release candidate should be tested agains a predefined test matrix (e.g. win7, win8, nla/rdp/tls..) - tbd
 
-## Creating the release (canidate)
+## Creating the release (candidate)
 * Update revision
 * Create a (signed) tag for the release
 * Create tarball/packages/...
