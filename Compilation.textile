@@ -131,7 +131,7 @@ sudo ./configure --with-udev-rules-dir=/usr/local/lib/udev/rules.d \
 sudo make install
 
 h1. Compiling with Visual C++ 2010 Express
-See "this page":https://github.com/FreeRDP/FreeRDP/wiki/Build-on-Windows-with-Visual-C---2010
+See "this page":https://github.com/FreeRDP/FreeRDP/wiki/Build-on-Windows-with-Visual-C---2010 and 2012 32/64 bit builds See "this page":https://github.com/FreeRDP/FreeRDP/wiki/Build-on-Windows-Visual-C---2012-(32-and-64-bit)
 
 h1. Cross-Compilation using Mingw-w64
 
