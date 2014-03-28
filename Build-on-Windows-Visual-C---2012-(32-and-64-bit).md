@@ -17,8 +17,8 @@ If you like working in a shell, get cygwin. You can also use cygwins git, but NO
 ==Preparing the build==
 From the command line, go to the directory where you pulled the sources and type
 <pre>cmake .</pre>  If you wish to build for 64 bit systems an edit is required.  Edit winpr/sysinfo.c and change the line
-<pre>#if "&#40;!defined&#40;_WIN32&#41;&#41; || &#40;defined&#40;_WIN32&#41; && &#40;_WIN32_WINNT < 0x0600&#41;&#41;"</pre> back to the original
-<pre>#if &#40;!defined&#40_WIN32&#41;&#41; || &#40;defined&#40;_WIN32&#41; && &#40;_WIN32_WINNT < 0x0501&#41;&#41;</pre> and type
+<pre>#if &#40;!defined&#40;_WIN32&#41;&#41; || &#40;defined&#40;_WIN32&#41; && &#40;_WIN32_WINNT &lt; 0x0600&#41;&#41;</pre> back to the original
+<pre>#if &#40;!defined&#40_WIN32&#41;&#41; || &#40;defined&#40;_WIN32&#41; && &#40;_WIN32_WINNT &lt; 0x0501&#41;&#41;</pre> and type
 <pre>cmake . -G"Visual Studio 11 Win64"</pre>.  I will look for a way around this in the future as the compiler complains that GetTickCount64 is already defined.
 
 If you have a multi targeting environment that targets Win32 and Win64, you'll note that OpenSSL is not in your path.  To add it at the cmake at the
